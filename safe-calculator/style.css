@@ -1,67 +1,374 @@
-/* This sets the font and background for the whole page */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f4f8;
-  text-align: center;
-  padding: 40px;
+/* =========================================================
+   SAFE CALCULATOR — "precision workbench" theme
+   ========================================================= */
+
+:root {
+  --ink: #101826;
+  --paper: #101826;
+  --surface: #17223a;
+  --surface-2: #1d2b47;
+  --text: #eaf0ff;
+  --text-muted: #a9b6d6;
+  --border: rgba(234, 240, 255, 0.1);
+
+  --copper: #d98c2b;
+  --copper-bright: #f2a93b;
+  --mint: #43c583;
+  --red: #ff7a5c;
+
+  --font-display: "Space Grotesk", "IBM Plex Sans", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius: 16px;
+  --shadow: 0 25px 55px rgba(0, 0, 0, 0.4);
 }
 
-/* This styles the big heading */
-h1 {
-  color: #1a3c5e;
+html[data-theme="light"] {
+  --paper: #f4f6fb;
+  --surface: #ffffff;
+  --surface-2: #f1f4fb;
+  --text: #101826;
+  --text-muted: #55627e;
+  --border: rgba(16, 24, 38, 0.1);
+  --shadow: 0 20px 45px rgba(16, 24, 38, 0.1);
 }
 
-/* This creates a nice card-like box for our calculator */
-.calculator {
-  background-color: white;
-  max-width: 350px;
-  margin: 20px auto;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: left;
-}
-
-/* This styles the labels above each input */
-label {
-  display: block;
-  margin-top: 12px;
-  font-weight: bold;
-  color: #1a3c5e;
-}
-
-/* This styles the text boxes and dropdown */
-input, select {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
+* {
   box-sizing: border-box;
 }
 
-/* This styles the Calculate button */
-button {
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+h1,
+h2 {
+  font-family: var(--font-display);
+  margin: 0 0 0.4em;
+}
+
+code,
+kbd {
+  font-family: var(--font-mono);
+}
+
+kbd {
+  font-size: 0.72rem;
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--border);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  color: var(--copper);
+  font-weight: 500;
+  margin: 0 0 0.6em;
+}
+
+.page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 48px 24px 24px;
+}
+
+.page__intro {
+  max-width: 62ch;
+  margin-bottom: 36px;
+}
+
+.page__intro h1 {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+}
+
+.page__intro p {
+  color: var(--text-muted);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+/* -------- calculator card -------- */
+.calculator {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 26px;
+}
+
+.calculator__display {
+  background: var(--surface-2);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+}
+
+.calculator__expression {
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  word-break: break-word;
+}
+
+.calculator__result {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  min-height: 1.4em;
+}
+
+.calculator__result.is-error {
+  color: var(--red);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.calculator__result.is-success {
+  color: var(--mint);
+}
+
+.calculator__fields label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 16px 0 6px;
+}
+
+.calculator__fields label:first-child {
+  margin-top: 0;
+}
+
+.calculator__fields input {
   width: 100%;
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #ff8c42;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 1rem;
+  font-family: var(--font-mono);
+}
+
+.calculator__fields input:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 1px;
+}
+
+.op-toggle {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.op-btn {
+  padding: 12px 0;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 1.1rem;
+  font-family: var(--font-mono);
   cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
 }
 
-/* This makes the button change color when you hover over it */
-button:hover {
-  background-color: #e6752b;
+.op-btn:hover {
+  transform: translateY(-1px);
 }
 
-/* This styles the result/error message box */
-#result {
-  margin-top: 15px;
-  font-weight: bold;
-  font-size: 16px;
+.op-btn.is-active {
+  background: var(--copper);
+  border-color: var(--copper);
+  color: #101826;
+  font-weight: 700;
+}
+
+.op-btn:focus-visible {
+  outline: 2px solid var(--copper-bright);
+  outline-offset: 2px;
+}
+
+.calculator__actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--copper-bright);
+  outline-offset: 2px;
+}
+
+.btn--primary {
+  background: var(--copper);
+  color: #101826;
+  flex: 1;
+  box-shadow: 0 14px 26px rgba(217, 140, 43, 0.28);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.btn--ghost:hover {
+  border-color: var(--copper);
+  color: var(--copper);
+}
+
+.btn--sm {
+  padding: 7px 14px;
+  font-size: 0.8rem;
+}
+
+/* -------- history -------- */
+.history {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+
+.history__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.history__head h2 {
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.history__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 340px;
+  overflow-y: auto;
+}
+
+.history__list li {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  background: var(--surface-2);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--text-muted);
+}
+
+.history__list li strong {
+  color: var(--text);
+}
+
+.history__empty {
+  text-align: center;
+  padding: 24px 8px !important;
+}
+
+/* -------- notes -------- */
+.notes {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.notes h2 {
+  font-size: 1.1rem;
+}
+
+.notes ul {
+  color: var(--text-muted);
+  padding-left: 20px;
+}
+
+.notes li {
+  margin-bottom: 8px;
+}
+
+/* -------- footer -------- */
+.site-footer {
+  text-align: center;
+  padding: 32px 24px 56px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.site-footer a {
+  color: var(--copper);
+}
+
+/* -------- responsive -------- */
+@media (max-width: 780px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 32px 16px 16px;
+  }
+
+  .calculator,
+  .history {
+    padding: 18px;
+  }
+
+  .calculator__actions {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .op-btn {
+    transition: none;
+  }
 }

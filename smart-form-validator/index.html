@@ -14,6 +14,7 @@
       content="Upgrade your form experience with live validation, gamified achievements, and a futuristic regex playground."
     />
     <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="../assets/css/portfolio-nav.css" />
     <link rel="stylesheet" href="./src/styles/main.css" />
     <link
       rel="icon"
@@ -22,6 +23,15 @@
     />
   </head>
   <body>
+    <div class="portfolio-topbar">
+      <a href="../index.html" class="portfolio-topbar__brand">
+        <span class="portfolio-topbar__mark">BA</span>
+        <span class="portfolio-topbar__text">Babatunde Awoyemi <em>— Build Log</em></span>
+      </a>
+      <nav class="portfolio-topbar__nav" aria-label="Primary">
+        <a href="../index.html" class="is-back">All builds</a>
+      </nav>
+    </div>
     <div class="blur-orb-1"></div>
     <div class="blur-orb-2"></div>
     <canvas id="confetti-canvas"></canvas>
@@ -539,6 +549,7 @@
         <strong>Babatunde Awoyemi</strong>
       </p>
       <p class="footer-note">Techbase STEM Academy · Regex mastery in style.</p>
+      <p class="footer-note">Build-002 · Part of the <a href="../index.html">Babatunde Awoyemi Build Log</a>.</p>
     </footer>
 
     <script type="module" src="./src/main.js"></script>

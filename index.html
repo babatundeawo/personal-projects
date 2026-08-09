@@ -1,557 +1,243 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Magical Code Validator | Immersive Regex Academy</title>
+    <title>Babatunde Awoyemi — Build Log</title>
     <meta
       name="description"
-      content="An immersive educational form platform that teaches and validates developer identity data with regex, badges, and a live sandbox."
+      content="A running build log of practical, from-scratch JavaScript projects by Babatunde Awoyemi — a safe calculator, a gamified form validator, and a student report card dashboard."
     />
-    <meta property="og:title" content="Magical Code Validator" />
-    <meta
-      property="og:description"
-      content="Upgrade your form experience with live validation, gamified achievements, and a futuristic regex playground."
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
     />
-    <meta property="og:type" content="website" />
-    <link rel="stylesheet" href="../assets/css/portfolio-nav.css" />
-    <link rel="stylesheet" href="./src/styles/main.css" />
     <link
       rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%233454d1%22/><text x=%2250%22 y=%2266%22 font-size=%2248%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22monospace%22>BA</text></svg>"
     />
+    <link rel="stylesheet" href="assets/css/portfolio-nav.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <div class="portfolio-topbar">
-      <a href="../index.html" class="portfolio-topbar__brand">
+      <a href="#top" class="portfolio-topbar__brand">
         <span class="portfolio-topbar__mark">BA</span>
-        <span class="portfolio-topbar__text">Babatunde Awoyemi <em>— Build Log</em></span>
+        <span class="portfolio-topbar__text"
+          >Babatunde Awoyemi <em>— Build Log</em></span
+        >
       </a>
       <nav class="portfolio-topbar__nav" aria-label="Primary">
-        <a href="../index.html" class="is-back">All builds</a>
-      </nav>
-    </div>
-    <div class="blur-orb-1"></div>
-    <div class="blur-orb-2"></div>
-    <canvas id="confetti-canvas"></canvas>
-
-    <header>
-      <div class="theme-toggle-container">
-        <button id="theme-toggle" class="theme-btn" aria-label="Toggle themes">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <button
+          id="portfolio-theme-toggle"
+          class="portfolio-theme-toggle"
+          type="button"
+          aria-label="Toggle light/dark mode"
+        >
           🌙
         </button>
-      </div>
-      <p class="eyebrow">Immersive Student Developer Portal</p>
-      <h1>Magical Code <span class="accent">Validator</span></h1>
-      <p>
-        Train your regex instincts, forge a secure identity, and unlock a
-        constellation of digital badges.
-      </p>
-    </header>
+      </nav>
+    </div>
 
-    <main>
-      <div class="left-col">
-        <section
-          class="progress-container"
-          aria-label="Form completion progress"
-        >
-          <div class="progress-circle-wrap">
-            <svg>
-              <defs>
-                <linearGradient
-                  id="progress-gradient"
-                  x1="0%"
-                  y1="0%"
-                  x2="100%"
-                  y2="100%"
-                >
-                  <stop offset="0%" stop-color="var(--primary)" />
-                  <stop offset="100%" stop-color="var(--secondary)" />
-                </linearGradient>
-              </defs>
-              <circle
-                class="progress-circle-bg"
-                cx="30"
-                cy="30"
-                r="20"
-              ></circle>
-              <circle
-                class="progress-circle-bar"
-                id="progress-circle"
-                cx="30"
-                cy="30"
-                r="20"
-              ></circle>
-            </svg>
-            <div class="progress-text" id="progress-percentage">0%</div>
+    <canvas id="grid-canvas" aria-hidden="true"></canvas>
+
+    <main id="main">
+      <header class="hero" id="top">
+        <div class="hero__copy">
+          <p class="eyebrow">Build Log · Web Dev Workshop</p>
+          <h1>
+            I build small tools that solve <span class="accent">real</span>
+            problems.
+          </h1>
+          <p class="hero__lede">
+            This is a running log of practical, from-scratch JavaScript
+            builds — a calculator, a form validator, a records dashboard —
+            each one shipped, documented, and open for review. No
+            frameworks, no shortcuts, just HTML, CSS and JS taken seriously.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#projects">View the builds</a>
+            <a class="btn btn--ghost" href="#about">About this log</a>
           </div>
-          <div class="progress-info">
-            <h2 class="progress-title">Mission Progress</h2>
-            <p class="progress-subtitle">
-              Complete each field to unlock badges and launch your success
-              rocket.
+          <dl class="hero__stats">
+            <div>
+              <dt>Live builds</dt>
+              <dd data-count-to="3">0</dd>
+            </div>
+            <div>
+              <dt>Lines shipped</dt>
+              <dd data-count-to="2400">0</dd>
+            </div>
+            <div>
+              <dt>Frameworks used</dt>
+              <dd>0</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="hero__terminal" role="img" aria-label="Terminal animation listing the three builds in this log">
+          <div class="terminal">
+            <div class="terminal__bar">
+              <span></span><span></span><span></span>
+              <span class="terminal__title">build-log — zsh</span>
+            </div>
+            <pre class="terminal__body" id="terminal-body"></pre>
+          </div>
+        </div>
+      </header>
+
+      <section class="projects" id="projects" aria-label="Project builds">
+        <div class="section-heading">
+          <p class="eyebrow">Log entries</p>
+          <h2>Three builds. Zero frameworks.</h2>
+          <p class="section-lede">
+            Every entry links to a fully working, standalone page — open it,
+            use it, read the code.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card reveal">
+            <div class="project-card__stamp">BUILD-001 · STABLE</div>
+            <h3>Safe Calculator</h3>
+            <p>
+              A calculator engineered to never crash. Guard clauses catch
+              bad input, non-numbers and divide-by-zero before they become
+              runtime errors — with a friendly message instead of a broken
+              page.
             </p>
-          </div>
-        </section>
-
-        <section class="card" aria-label="Developer registration form">
-          <div class="field">
-            <div class="field-label-row">
-              <label for="username">🛸 Coder Nickname</label>
-              <span
-                class="field-status-icon"
-                id="status-icon-username"
-                aria-hidden="true"
-              ></span>
-            </div>
-            <div class="input-wrapper">
-              <input
-                type="text"
-                id="username"
-                placeholder="Choose a unique nickname"
-                autocomplete="username"
-                aria-describedby="hint-username fb-username"
-              />
-            </div>
-            <p class="hint" id="hint-username">
-              Start with a letter and use 3–20 letters, numbers, or underscores.
-            </p>
-            <p class="feedback" id="fb-username" aria-live="polite"></p>
-          </div>
-
-          <div class="field">
-            <div class="field-label-row">
-              <label for="email">✉️ Developer Mailbox</label>
-              <span
-                class="field-status-icon"
-                id="status-icon-email"
-                aria-hidden="true"
-              ></span>
-            </div>
-            <div class="input-wrapper">
-              <input
-                type="text"
-                id="email"
-                placeholder="name@studio.dev"
-                autocomplete="email"
-                aria-describedby="hint-email fb-email"
-              />
-            </div>
-            <p class="hint" id="hint-email">
-              Use a standard mailbox format such as name@domain.com.
-            </p>
-            <p class="feedback" id="fb-email" aria-live="polite"></p>
-          </div>
-
-          <div class="field">
-            <div class="field-label-row">
-              <label for="password">🔐 Access Key</label>
-              <span
-                class="field-status-icon"
-                id="status-icon-password"
-                aria-hidden="true"
-              ></span>
-            </div>
-            <div class="input-wrapper">
-              <input
-                type="password"
-                id="password"
-                class="password-input"
-                placeholder="Create a strong access key"
-                autocomplete="new-password"
-                aria-describedby="password-criteria-list fb-password"
-              />
-              <button
-                type="button"
-                class="password-toggle"
-                id="password-toggle"
-                aria-label="Show or hide secret code"
+            <ul class="project-card__tags">
+              <li>JavaScript</li>
+              <li>Error Handling</li>
+              <li>DOM</li>
+            </ul>
+            <div class="project-card__actions">
+              <a class="btn btn--primary btn--sm" href="safe-calculator/index.html"
+                >Open build →</a
               >
-                👁️
-              </button>
             </div>
-            <div class="strength-container">
-              <div class="strength-track" aria-hidden="true">
-                <div class="strength-fill" id="strength-meter-fill"></div>
-              </div>
-              <div class="strength-copy" id="strength-score">
-                Entropy score: 0 bits
-              </div>
-              <div class="password-criteria" id="password-criteria-list">
-                <div class="criterion" id="crit-length">
-                  <span class="crit-icon"></span>8+ characters
-                </div>
-                <div class="criterion" id="crit-uppercase">
-                  <span class="crit-icon"></span>One uppercase letter
-                </div>
-                <div class="criterion" id="crit-lowercase">
-                  <span class="crit-icon"></span>One lowercase letter
-                </div>
-                <div class="criterion" id="crit-number">
-                  <span class="crit-icon"></span>One number
-                </div>
-                <div class="criterion" id="crit-special">
-                  <span class="crit-icon"></span>One special symbol
-                </div>
-              </div>
-            </div>
-            <p class="feedback" id="fb-password" aria-live="polite"></p>
-          </div>
+          </article>
 
-          <div class="field">
-            <div class="field-label-row">
-              <label for="phone">📞 Signal Number</label>
-              <span
-                class="field-status-icon"
-                id="status-icon-phone"
-                aria-hidden="true"
-              ></span>
-            </div>
-            <div class="input-wrapper">
-              <input
-                type="text"
-                id="phone"
-                placeholder="080-1234-5678"
-                aria-describedby="hint-phone fb-phone"
-              />
-            </div>
-            <p class="hint" id="hint-phone">
-              Use a Nigerian-style number such as 080-1234-5678 or
-              +2348012345678.
+          <article class="project-card reveal">
+            <div class="project-card__stamp">BUILD-002 · STABLE</div>
+            <h3>Magical Code Validator</h3>
+            <p>
+              A gamified, accessible registration form with live regex
+              validation, a password entropy meter, achievement badges, and
+              a built-in sandbox for testing your own patterns.
             </p>
-            <p class="feedback" id="fb-phone" aria-live="polite"></p>
-          </div>
-
-          <section
-            class="profile-accordion"
-            aria-label="Developer profile details"
-          >
-            <div class="profile-accordion-header">
-              <h3>🛰️ Developer Profile</h3>
-              <span class="pill">Advanced identity data</span>
-            </div>
-            <div class="profile-form-grid">
-              <div class="field">
-                <div class="field-label-row">
-                  <label for="dob">🎂 Date of Birth</label>
-                  <span
-                    class="field-status-icon"
-                    id="status-icon-dob"
-                    aria-hidden="true"
-                  ></span>
-                </div>
-                <div class="input-wrapper">
-                  <input
-                    type="date"
-                    id="dob"
-                    aria-describedby="hint-dob fb-dob"
-                  />
-                </div>
-                <p class="hint" id="hint-dob">
-                  You must be at least 13 years old to participate.
-                </p>
-                <p class="feedback" id="fb-dob" aria-live="polite"></p>
-              </div>
-
-              <div class="field">
-                <div class="field-label-row">
-                  <label for="github">🐙 GitHub Username</label>
-                  <span
-                    class="field-status-icon"
-                    id="status-icon-github"
-                    aria-hidden="true"
-                  ></span>
-                </div>
-                <div class="input-wrapper">
-                  <input
-                    type="text"
-                    id="github"
-                    placeholder="octocat"
-                    aria-describedby="hint-github fb-github"
-                  />
-                </div>
-                <p class="hint" id="hint-github">
-                  Use 1–39 characters, starting with a letter or number and
-                  optional single hyphens.
-                </p>
-                <p class="feedback" id="fb-github" aria-live="polite"></p>
-              </div>
-
-              <div class="field">
-                <div class="field-label-row">
-                  <label for="postal">📮 Postal / ZIP Code</label>
-                  <span
-                    class="field-status-icon"
-                    id="status-icon-postal"
-                    aria-hidden="true"
-                  ></span>
-                </div>
-                <div class="input-wrapper">
-                  <input
-                    type="text"
-                    id="postal"
-                    placeholder="100001 or 5N1 7LH"
-                    aria-describedby="hint-postal fb-postal"
-                  />
-                </div>
-                <p class="hint" id="hint-postal">
-                  Accepts Nigerian 6-digit codes or common international ZIP
-                  formats.
-                </p>
-                <p class="feedback" id="fb-postal" aria-live="polite"></p>
-              </div>
-
-              <div class="field">
-                <div class="field-label-row">
-                  <label for="url">🌐 Portfolio Link (Optional)</label>
-                  <span
-                    class="field-status-icon"
-                    id="status-icon-url"
-                    aria-hidden="true"
-                  ></span>
-                </div>
-                <div class="input-wrapper">
-                  <input
-                    type="text"
-                    id="url"
-                    placeholder="https://your-portfolio.dev"
-                    aria-describedby="hint-url fb-url"
-                  />
-                </div>
-                <p class="hint" id="hint-url">
-                  Optional, but if supplied it must start with http:// or
-                  https://.
-                </p>
-                <p class="feedback" id="fb-url" aria-live="polite"></p>
-              </div>
-            </div>
-
-            <div class="field">
-              <div class="field-label-row">
-                <label for="file-dropzone"
-                  >📁 Code Sample or Profile Picture</label
-                >
-                <span
-                  class="field-status-icon"
-                  id="status-icon-file"
-                  aria-hidden="true"
-                ></span>
-              </div>
-              <div
-                id="file-dropzone"
-                class="dropzone"
-                tabindex="0"
-                role="button"
-                aria-label="Upload a profile picture or code sample"
+            <ul class="project-card__tags">
+              <li>Regex</li>
+              <li>Accessibility</li>
+              <li>Modular JS</li>
+            </ul>
+            <div class="project-card__actions">
+              <a
+                class="btn btn--primary btn--sm"
+                href="smart-form-validator/index.html"
+                >Open build →</a
               >
-                <input
-                  type="file"
-                  id="file-input"
-                  accept=".jpg,.jpeg,.png,.pdf"
-                  hidden
-                />
-                <span class="dropzone-icon">⬆️</span>
-                <span class="dropzone-copy"
-                  >Drag and drop your file here or click to browse.</span
-                >
-                <span class="dropzone-meta"
-                  >Accepted: JPG, PNG, PDF · Max 2MB</span
-                >
-              </div>
-              <p class="feedback" id="fb-file" aria-live="polite"></p>
             </div>
-          </section>
+          </article>
 
-          <button id="submit-btn" disabled>Launch the Mission 🚀</button>
-        </section>
+          <article class="project-card reveal">
+            <div class="project-card__stamp">BUILD-003 · STABLE</div>
+            <h3>Student Report Card</h3>
+            <p>
+              A student records dashboard for tracking scores, attendance
+              and behaviour — with a searchable roster, editable curriculum,
+              and print-ready report cards.
+            </p>
+            <ul class="project-card__tags">
+              <li>Data Modeling</li>
+              <li>LocalStorage</li>
+              <li>Print CSS</li>
+            </ul>
+            <div class="project-card__actions">
+              <a
+                class="btn btn--primary btn--sm"
+                href="student-report-card/index.html"
+                >Open build →</a
+              >
+            </div>
+          </article>
 
-        <section
-          class="achievements-panel"
-          id="achievement-summary"
-          aria-live="polite"
-        ></section>
+          <article class="project-card project-card--pending reveal">
+            <div class="project-card__stamp">BUILD-004 · IN PROGRESS</div>
+            <h3>AI Agent Bootcamp</h3>
+            <p>
+              A self-paced series of Python exercises working up to a full
+              AI agent — memory, tools, and reasoning loops built from
+              first principles. Currently in active development, kept
+              separate from this log while it's under construction.
+            </p>
+            <ul class="project-card__tags">
+              <li>Python</li>
+              <li>AI Agents</li>
+              <li>In Progress</li>
+            </ul>
+            <div class="project-card__actions">
+              <a
+                class="btn btn--ghost btn--sm"
+                href="https://github.com/babatundeawo/personal-projects/tree/main/AI-Agent-Bootcamp"
+                target="_blank"
+                rel="noopener"
+                >View source on GitHub ↗</a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
 
-        <section class="result-panel" id="result-panel" aria-live="assertive">
-          <h2 id="result-title"></h2>
-          <ul id="result-list"></ul>
-        </section>
-      </div>
-
-      <div class="right-col">
-        <section class="explainer" aria-label="Regex explainer cards">
-          <h3>🧠 Regex Decoder Lab</h3>
-          <div class="explainer-list">
-            <div class="explainer-item" id="explain-username">
-              <div class="explainer-header">
-                <span class="explainer-title">Nickname Map</span>
-                <div class="code-container">
-                  <code>/^[a-zA-Z][a-zA-Z0-9_]{2,19}$/</code>
-                  <button
-                    type="button"
-                    class="copy-btn"
-                    aria-label="Copy nickname regex"
-                  >
-                    📋
-                  </button>
-                </div>
-              </div>
-              <p class="explainer-desc">
-                Confirms the nickname starts with a letter and uses 3–20 safe
-                characters.
-              </p>
-            </div>
-            <div class="explainer-item" id="explain-email">
-              <div class="explainer-header">
-                <span class="explainer-title">Mailbox Key</span>
-                <div class="code-container">
-                  <code
-                    >/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/</code
-                  >
-                  <button
-                    type="button"
-                    class="copy-btn"
-                    aria-label="Copy email regex"
-                  >
-                    📋
-                  </button>
-                </div>
-              </div>
-              <p class="explainer-desc">
-                Matches a standard email address with a local part and domain
-                extension.
-              </p>
-            </div>
-            <div class="explainer-item" id="explain-password">
-              <div class="explainer-header">
-                <span class="explainer-title">Security Sentinel</span>
-                <div class="code-container">
-                  <code
-                    >/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-]).{8,}$/</code
-                  >
-                  <button
-                    type="button"
-                    class="copy-btn"
-                    aria-label="Copy password regex"
-                  >
-                    📋
-                  </button>
-                </div>
-              </div>
-              <p class="explainer-desc">
-                Requires length, uppercase, lowercase, digits, and a special
-                character.
-              </p>
-            </div>
-            <div class="explainer-item" id="explain-phone">
-              <div class="explainer-header">
-                <span class="explainer-title">Signal Pattern</span>
-                <div class="code-container">
-                  <code>/^(?:\+234|234|0)[789]\d{9}$/</code>
-                  <button
-                    type="button"
-                    class="copy-btn"
-                    aria-label="Copy phone regex"
-                  >
-                    📋
-                  </button>
-                </div>
-              </div>
-              <p class="explainer-desc">
-                Recognizes Nigerian-style numbers with the right prefix and
-                six-digit body.
-              </p>
-            </div>
-            <div class="explainer-item" id="explain-url">
-              <div class="explainer-header">
-                <span class="explainer-title">Portal Link</span>
-                <div class="code-container">
-                  <code
-                    >/^https?:\/\/[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\/\S*)?$/</code
-                  >
-                  <button
-                    type="button"
-                    class="copy-btn"
-                    aria-label="Copy URL regex"
-                  >
-                    📋
-                  </button>
-                </div>
-              </div>
-              <p class="explainer-desc">
-                Validates that a URL begins with http:// or https:// and
-                contains a domain.
-              </p>
-            </div>
+      <section class="about" id="about" aria-label="About this workshop">
+        <div class="about__card reveal">
+          <p class="eyebrow">About</p>
+          <h2>Why this repo exists</h2>
+          <p>
+            This is my personal coding workspace — the place every new
+            project starts as a small learning exercise and gets rebuilt
+            until it holds up to real use. Each build in the log above is a
+            complete, working page: open it, try it, break it, read the
+            source. Nothing here depends on a framework or a build step
+            unless the project explicitly calls for one.
+          </p>
+          <p>
+            I keep this repository as my default workspace in VS Code, so
+            expect it to keep growing — new builds get added to the log as
+            they're finished.
+          </p>
+          <div class="about__links">
+            <a
+              class="btn btn--ghost btn--sm"
+              href="https://github.com/babatundeawo/personal-projects"
+              target="_blank"
+              rel="noopener"
+              >Full repository ↗</a
+            >
+            <a
+              class="btn btn--ghost btn--sm"
+              href="https://github.com/babatundeawo"
+              target="_blank"
+              rel="noopener"
+              >GitHub profile ↗</a
+            >
           </div>
-        </section>
-
-        <section class="sandbox" aria-label="Regex playground">
-          <div class="sandbox-header">
-            <h3 class="sandbox-title">🛸 Alien Regex Playground</h3>
-            <span class="sandbox-badge">Live matcher</span>
-          </div>
-          <div class="sandbox-toolbar">
-            <div class="preset-list" id="preset-list"></div>
-            <button type="button" class="cheat-toggle" id="cheat-toggle">
-              Show Cheat Sheet
-            </button>
-          </div>
-          <div class="sandbox-layout">
-            <div class="sandbox-main">
-              <div class="sandbox-field">
-                <label for="sandbox-regex">Regex pattern</label>
-                <div class="sandbox-regex-input-wrapper">
-                  <span class="sandbox-regex-slash start">/</span>
-                  <input
-                    type="text"
-                    id="sandbox-regex"
-                    placeholder="\\d{3}-\\d{2}"
-                  />
-                  <span class="sandbox-regex-slash end">/</span>
-                  <span class="sandbox-regex-flags">gm</span>
-                </div>
-              </div>
-              <div class="sandbox-field">
-                <label for="sandbox-test-string">Test string</label>
-                <textarea
-                  id="sandbox-test-string"
-                  rows="5"
-                  placeholder="Try a sample string like 123-45 or 12ab"
-                ></textarea>
-              </div>
-              <div class="sandbox-result" id="sandbox-result-panel">
-                <span class="sandbox-status-text">Ready to decode.</span>
-                <span class="hint"
-                  >Type a pattern and a sample message to begin.</span
-                >
-              </div>
-            </div>
-            <aside class="cheat-sheet" id="cheat-sheet" hidden>
-              <h4>Regex Cheat Sheet</h4>
-              <ul>
-                <li><strong>^</strong> Start of string</li>
-                <li><strong>$</strong> End of string</li>
-                <li><strong>\d</strong> Digit</li>
-                <li><strong>+</strong> One or more</li>
-                <li><strong>*</strong> Zero or more</li>
-                <li><strong>(?:)</strong> Non-capturing group</li>
-              </ul>
-            </aside>
-          </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </main>
 
-    <footer>
-      <p>
-        🚀 Magical Code Validator · Designed & Built by
-        <strong>Babatunde Awoyemi</strong>
-      </p>
-      <p class="footer-note">Techbase STEM Academy · Regex mastery in style.</p>
-      <p class="footer-note">Build-002 · Part of the <a href="../index.html">Babatunde Awoyemi Build Log</a>.</p>
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Babatunde Awoyemi. Built with vanilla HTML, CSS &amp; JavaScript — no frameworks.</p>
+      <p class="site-footer__meta">Deployed as a static site · works on every screen.</p>
     </footer>
 
-    <script type="module" src="./src/main.js"></script>
+    <script src="assets/js/portfolio-nav.js"></script>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>

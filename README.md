@@ -1,60 +1,79 @@
-# 👾 Magical Regex Form & Secret Code Playground
+# Babatunde Awoyemi — Build Log
 
-A modernized, highly responsive, child-friendly web application designed to teach kids and students about Regular Expressions (Regex) through gamified interaction.
+A personal coding workspace, presented as a small multi-page portfolio
+site. Every project is a standalone, fully working page — its own HTML,
+its own CSS, its own JS — tied together by a shared top navigation bar and
+a common home page.
 
-Features a playful light pastel design system, progress indicators, secret code strength checkers, and a fully interactive regex sandbox.
+**No build step, no framework.** Everything here is vanilla HTML, CSS and
+JavaScript, so it runs by opening a file in a browser or serving the
+folder with any static file server (GitHub Pages works out of the box).
 
----
+## Live structure
 
-## 🚀 Interactive Features
-
-- **🛸 Coder Nickname (Username)**: Checks if nicknames are between 3 and 20 characters, starting with a letter.
-- **✉️ Magic Mailbox (Email)**: Ensures a standard mailbox structure (`name@domain.com`).
-- **🔑 Secret Code (Password)**: Gamified checker that scores password difficulty based on 5 parameters, checking them off with glowing stars (`★`) in real time. Features an inline show/hide eye toggle.
-- **📞 Walkie-Talkie (Phone)**: Validates Nigerian dialer patterns (standard `0` or international `+234` prefix).
-- **🚀 Web Toy Link (URL)**: Parses optional website scopes starting with web protocols (`http://` or `https://`).
-- **🕵️‍♂️ Secret Decoder Safari**: Focus any input field to highlight the exact regex rules powering it in the sidebar. Includes one-click copy buttons (`📋`) for easy saving.
-- **👾 Alien Code Sandbox**: A real-time playground where students can type custom patterns and secret text strings to watch matches highlight dynamically.
-- **🎉 Confetti Rewards**: Triggers a canvas-based falling pastel particle confetti celebration when all required fields are validated.
-
----
-
-## 🛠️ Tech Stack & Architecture
-
-- **Core**: HTML5 (Semantic & Accessible with `aria-describedby` and `aria-live` screen-reader tags).
-- **Styling**: Vanilla CSS (Custom properties, HSL dynamic themes, Flexbox, Grid, keyframe animations, glassmorphic layout).
-- **Logic**: Modular ES6+ JavaScript (`src/modules/`) loaded directly in the browser.
-- **Hosting**: Static files for GitHub Pages, with no build step required.
-
----
-
-## 📦 Project Structure
-
-```bash
-├── dist/                   # Bundled production files
-├── src/
-│   ├── modules/
-│   │   ├── sandbox.js      # Sandbox testing, copy-to-clipboard helpers
-│   │   ├── ui.js           # Confetti, progress gauges, layout highlights, theme toggling
-│   │   └── validators.js   # Regex rules definitions, validation scoring
-│   ├── styles/
-│   │   └── main.css        # Responsive mobile-first stylesheet
-│   └── main.js             # Orchestrator & DOM event listeners bindings
-├── index.html              # Core application interface file
-├── package.json            # Scripts & build devDependencies
-└── vite.config.js          # Vite configuration
+```
+personal-projects/
+├── index.html                     # Portfolio hub — links to every build
+├── assets/
+│   ├── css/
+│   │   ├── main.css               # Hub page styling (design tokens, hero, cards)
+│   │   └── portfolio-nav.css      # Shared top bar, used on every page
+│   └── js/
+│       ├── main.js                # Hub page interactivity
+│       └── portfolio-nav.js       # Shared theme toggle, used on every page
+│
+├── safe-calculator/                Build-001 — a calculator that never crashes
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+│
+├── smart-form-validator/           Build-002 — gamified, accessible form validation
+│   ├── index.html
+│   └── src/
+│       ├── main.js
+│       ├── modules/                 (validators.js, ui.js, sandbox.js)
+│       └── styles/main.css
+│
+├── student-report-card/            Build-003 — student records dashboard
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+│
+└── AI-Agent-Bootcamp/               In progress — kept untouched, see below
 ```
 
----
+## How the pages fit together
 
-## 💻 How to Run
+- **`index.html`** at the repo root is the portfolio hub: a hero section,
+  a grid of project cards linking to each build, and a short "about" note.
+- Every project page includes the same **shared top bar**
+  (`assets/css/portfolio-nav.css` + `assets/js/portfolio-nav.js`) so you
+  can always jump back to the hub, and light/dark mode preference is
+  remembered across the whole site via `localStorage`.
+- Beyond that shared top bar, **each project keeps its own visual
+  identity** and its own separated CSS/JS files — they were each designed
+  for their own subject matter and didn't need to be forced into one
+  template.
 
-This project is ready to host as a static site on GitHub Pages.
+## Deploying
 
-### 1. Open the app locally
-You can open [index.html](index.html) directly in a browser, or serve the folder with any simple static server.
+This is a static site, so it can be published as-is:
 
-### 2. Publish on GitHub Pages
-Upload the repository contents to GitHub and enable GitHub Pages for the root folder.
+1. Push to GitHub.
+2. In the repo settings, enable **GitHub Pages** → deploy from the `main`
+   branch, root folder.
+3. The hub page (`index.html`) becomes the site's home page automatically.
 
-No build step is required.
+## A note on `AI-Agent-Bootcamp/`
+
+That folder is a separate, actively-developing project and was **left
+untouched** by this redesign — none of its Python files or structure were
+modified. It's referenced from the hub page as an "in progress" card that
+links out to its folder on GitHub, but it isn't part of the web build log
+itself.
+
+## Individual project docs
+
+- [`safe-calculator/README.md`](./safe-calculator/README.md)
+- [`smart-form-validator/README.md`](./smart-form-validator/README.md)
+- [`student-report-card/README.md`](./student-report-card/README.md)
