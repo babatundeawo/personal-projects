@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- This tells the browser "this is a modern HTML page" -->
+<html lang="en">
+<head>
+  <!-- This sets the title shown in the browser tab -->
+  <title>Babatunde's Safe Calculator</title>
+  <!-- This links our CSS file so the page looks nice -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- This is the big heading at the top of the page -->
+  <h1>🧮 Babatunde's Safe Calculator</h1>
+  <p>A calculator that never crashes — it catches mistakes instead!</p>
+
+  <!-- This box holds all our calculator controls -->
+  <div class="calculator">
+
+    <!-- Input box for the first number -->
+    <label for="num1">First number:</label>
+    <input type="text" id="num1" placeholder="e.g. 10">
+
+    <!-- Input box for the second number -->
+    <label for="num2">Second number:</label>
+    <input type="text" id="num2" placeholder="e.g. 5">
+
+    <!-- Dropdown to pick the operation -->
+    <label for="operation">Operation:</label>
+    <select id="operation">
+      <option value="add">Add (+)</option>
+      <option value="subtract">Subtract (-)</option>
+      <option value="multiply">Multiply (×)</option>
+      <option value="divide">Divide (÷)</option>
+    </select>
+
+    <!-- Button that runs our calculation -->
+    <button onclick="handleCalculate()">Calculate</button>
+
+    <!-- This is where our result OR error message will appear -->
+    <p id="result"></p>
+
+  </div>
+
+  <!-- This links our JavaScript file - the brain of the page -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+name = input("Name: ")
+age = input("Age: ")
+school = input("School: ")
+subject = input("Favorite subject: ")
+
+print("----- STUDENT CARD -----")
+print("Name:", name)
+print("Age:", age)
+print("School:", school)
+print("Favorite Subject:", subject)
+print("------------------------")

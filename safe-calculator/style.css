@@ -1,0 +1,67 @@
+/* This sets the font and background for the whole page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f8;
+  text-align: center;
+  padding: 40px;
+}
+
+/* This styles the big heading */
+h1 {
+  color: #1a3c5e;
+}
+
+/* This creates a nice card-like box for our calculator */
+.calculator {
+  background-color: white;
+  max-width: 350px;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+/* This styles the labels above each input */
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+  color: #1a3c5e;
+}
+
+/* This styles the text boxes and dropdown */
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* This styles the Calculate button */
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #ff8c42;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* This makes the button change color when you hover over it */
+button:hover {
+  background-color: #e6752b;
+}
+
+/* This styles the result/error message box */
+#result {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 16px;
+}
