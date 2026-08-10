@@ -2,6 +2,7 @@ from ollama import chat
 from tools import calculator
 
 
+# Tell the LLM what tool is available
 tool_description = """
 You have access to a calculator tool.
 
@@ -11,24 +12,19 @@ calculator
 Purpose:
 Perform mathematical calculations.
 
-Input:
-A mathematical expression.
+When the user asks a mathematical question, do NOT calculate the answer yourself.
 
-IMPORTANT:
-When the user's question requires a calculation, DO NOT calculate the answer yourself.
+Instead, respond using ONLY this format:
 
-Instead, respond using exactly this format:
-
-TOOL: calculator
-EXPRESSION: the mathematical expression
+calculator(expression)
 
 Example:
 
-TOOL: calculator
-EXPRESSION: 45*12
+calculator(45*12)
 """
 
 
+# Send the request to the LLM
 response = chat(
     model="gemma3:1b",
     messages=[
@@ -44,37 +40,52 @@ response = chat(
 )
 
 
+# Get the LLM's text response
 tool_request = response["message"]["content"]
+
 
 print("LLM said:")
 print(tool_request)
 
 
 # Check whether the LLM requested the calculator
-if "TOOL: calculator" in tool_request:
+if "calculator(" in tool_request:
 
     print("\nThe LLM wants to use the calculator.")
 
-    # Find the expression
-    expression_line = None
+    start = tool_request.find("calculator(") + len("calculator(")
+    end = tool_request.find(")", start)
 
-    for line in tool_request.splitlines():
+    if end != -1:
 
-        if line.upper().startswith(("EXPRESSION:", "EXPRESION:")):
+        expression = tool_request[start:end].strip()
 
-            expression_line = line.split(":", 1)[1].strip()
+        print("Expression:", expression)
 
-    if expression_line:
-
-        print("Expression:", expression_line)
-
-        result = calculator(expression_line)
+        result = calculator(expression)
 
         print("Calculator result:", result)
 
+        final_response = chat(
+            model="gemma3:1b",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "Give the user a clear final answer using the tool result."
+                },
+                {
+                    "role": "user",
+                    "content": f"The calculator returned {result}. The original question was: What is 45*12?"
+                }
+            ]
+        )
+
+        print("\nFinal answer:")
+        print(final_response["message"]["content"])
+
     else:
 
-        print("Could not find the expression.")
+        print("Could not find the end of the calculator request.")
 
 else:
 
