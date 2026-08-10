@@ -24,7 +24,11 @@ calculator(45*12)
 """
 
 
-# Send the request to the LLM
+# Get the user's question
+user_question = input("You: ")
+
+
+# Ask the LLM what it wants to do
 response = chat(
     model="gemma3:1b",
     messages=[
@@ -34,17 +38,17 @@ response = chat(
         },
         {
             "role": "user",
-            "content": "What is 45*12?"
+            "content": user_question
         }
     ]
 )
 
 
-# Get the LLM's text response
+# Get the LLM's response
 tool_request = response["message"]["content"]
 
 
-print("LLM said:")
+print("\nLLM said:")
 print(tool_request)
 
 
@@ -53,6 +57,7 @@ if "calculator(" in tool_request:
 
     print("\nThe LLM wants to use the calculator.")
 
+    # Find the expression inside calculator(...)
     start = tool_request.find("calculator(") + len("calculator(")
     end = tool_request.find(")", start)
 
@@ -62,10 +67,13 @@ if "calculator(" in tool_request:
 
         print("Expression:", expression)
 
+        # Run the calculator
         result = calculator(expression)
 
         print("Calculator result:", result)
 
+
+        # Send the result back to the LLM
         final_response = chat(
             model="gemma3:1b",
             messages=[
@@ -75,11 +83,13 @@ if "calculator(" in tool_request:
                 },
                 {
                     "role": "user",
-                    "content": f"The calculator returned {result}. The original question was: What is 45*12?"
+                    "content": f"The calculator returned {result}. The original user question was: {user_question}"
                 }
             ]
         )
 
+
+        # Display the final answer
         print("\nFinal answer:")
         print(final_response["message"]["content"])
 
