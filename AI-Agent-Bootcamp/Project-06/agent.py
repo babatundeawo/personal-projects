@@ -60,7 +60,7 @@ if "TOOL: calculator" in tool_request:
 
     for line in tool_request.splitlines():
 
-        if line.upper().startswith("EXPRESSION:"):
+        if line.upper().startswith(("EXPRESSION:", "EXPRESION:")):
 
             expression_line = line.split(":", 1)[1].strip()
 
