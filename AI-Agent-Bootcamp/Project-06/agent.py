@@ -2,101 +2,241 @@ from ollama import chat
 from tools import calculator
 
 
-# Tell the LLM what tool is available
-tool_description = """
-You have access to a calculator tool.
+# ==========================================
+# LLM DECISION PROMPT
+# ==========================================
 
-Tool name:
-calculator
+decision_prompt = """
+You are the decision maker for an AI agent.
 
-Purpose:
-Perform mathematical calculations.
+Your job is to determine what the user wants.
 
-When the user asks a mathematical question, do NOT calculate the answer yourself.
+You have two possible decisions.
 
-Instead, respond using ONLY this format:
+1. CALCULATE
 
-calculator(expression)
+Choose CALCULATE if the user is asking you to perform
+a mathematical calculation.
 
-Example:
+Examples:
 
-calculator(45*12)
+"What is 45 * 12?"
+CALCULATE
+
+"Calculate 100 / 4"
+CALCULATE
+
+"What is 25 + 75?"
+CALCULATE
+
+
+2. ANSWER
+
+Choose ANSWER for everything else.
+
+Examples:
+
+"Tell me a joke."
+ANSWER
+
+"What is the capital of Nigeria?"
+ANSWER
+
+"Give me five reasons to learn AI."
+ANSWER
+
+
+IMPORTANT:
+
+Return ONLY ONE word.
+
+Either:
+
+CALCULATE
+
+or:
+
+ANSWER
+
+Do not explain your decision.
+Do not include anything else.
 """
 
 
-# Get the user's question
-user_question = input("You: ")
+# ==========================================
+# AGENT LOOP
+# ==========================================
+
+while True:
+
+    # Get user input
+    user_question = input("\nYou: ")
 
 
-# Ask the LLM what it wants to do
-response = chat(
-    model="gemma3:1b",
-    messages=[
-        {
-            "role": "system",
-            "content": tool_description
-        },
-        {
-            "role": "user",
-            "content": user_question
-        }
-    ]
-)
+    # Check for exit
+    if user_question.lower() == "exit":
+
+        print("Goodbye!")
+
+        break
 
 
-# Get the LLM's response
-tool_request = response["message"]["content"]
+    # ==========================================
+    # STEP 1 — ASK LLM FOR INTENT
+    # ==========================================
+
+    decision_response = chat(
+        model="gemma3:1b",
+        messages=[
+            {
+                "role": "system",
+                "content": decision_prompt
+            },
+            {
+                "role": "user",
+                "content": user_question
+            }
+        ]
+    )
 
 
-print("\nLLM said:")
-print(tool_request)
+    # Get the decision
+    decision = decision_response["message"]["content"].strip().upper()
 
 
-# Check whether the LLM requested the calculator
-if "calculator(" in tool_request:
-
-    print("\nThe LLM wants to use the calculator.")
-
-    # Find the expression inside calculator(...)
-    start = tool_request.find("calculator(") + len("calculator(")
-    end = tool_request.find(")", start)
-
-    if end != -1:
-
-        expression = tool_request[start:end].strip()
-
-        print("Expression:", expression)
-
-        # Run the calculator
-        result = calculator(expression)
-
-        print("Calculator result:", result)
+    print("\nLLM decision:")
+    print(decision)
 
 
-        # Send the result back to the LLM
-        final_response = chat(
+    # ==========================================
+    # STEP 2 — CALCULATE
+    # ==========================================
+
+    if decision == "CALCULATE":
+
+        print("\nThe agent decided to use the calculator.")
+
+
+        # Ask LLM to extract ONLY the expression
+        expression_response = chat(
             model="gemma3:1b",
             messages=[
                 {
                     "role": "system",
-                    "content": "Give the user a clear final answer using the tool result."
+                    "content": """
+Extract the mathematical expression from the user's question.
+
+Return ONLY the mathematical expression.
+
+Examples:
+
+User:
+What is 45 * 12?
+
+Return:
+45 * 12
+
+
+User:
+Calculate 100 / 4
+
+Return:
+100 / 4
+
+
+Do not calculate the answer.
+Do not explain anything.
+Return only the expression.
+"""
                 },
                 {
                     "role": "user",
-                    "content": f"The calculator returned {result}. The original user question was: {user_question}"
+                    "content": user_question
                 }
             ]
         )
 
 
-        # Display the final answer
-        print("\nFinal answer:")
+        expression = expression_response["message"]["content"].strip()
+
+
+        print("Expression:", expression)
+
+
+        # ==========================================
+        # STEP 3 — RUN CALCULATOR
+        # ==========================================
+
+        result = calculator(expression)
+
+
+        print("Calculator result:", result)
+
+
+        # ==========================================
+        # STEP 4 — ASK LLM FOR FINAL RESPONSE
+        # ==========================================
+
+        final_response = chat(
+            model="gemma3:1b",
+            messages=[
+                {
+                    "role": "system",
+                    "content": """
+Give the user a short, clear final answer.
+
+The calculation has already been performed.
+
+Do not perform another calculation.
+Use the calculator result provided.
+"""
+                },
+                {
+                    "role": "user",
+                    "content": f"""
+User question:
+
+{user_question}
+
+Calculator result:
+
+{result}
+"""
+                }
+            ]
+        )
+
+
+        print("\nAgent:")
         print(final_response["message"]["content"])
+
+
+    # ==========================================
+    # STEP 5 — NORMAL ANSWER
+    # ==========================================
+
+    elif decision == "ANSWER":
+
+        response = chat(
+            model="gemma3:1b",
+            messages=[
+                {
+                    "role": "user",
+                    "content": user_question
+                }
+            ]
+        )
+
+
+        print("\nAgent:")
+        print(response["message"]["content"])
+
+
+    # ==========================================
+    # INVALID DECISION
+    # ==========================================
 
     else:
 
-        print("Could not find the end of the calculator request.")
-
-else:
-
-    print("\nThe LLM did not request a tool.")
+        print("\nAgent error.")
+        print("The LLM returned an invalid decision.")
