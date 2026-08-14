@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>John Doe | Web Developer</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="#home" class="logo">JD<span>.</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== HOME ===== -->
+    <section id="home" class="section">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="section-label">👋 Welcome</span>
+                <h1>Hello, I'm <br /><span class="highlight">John Doe</span></h1>
+                <p>I build responsive, user‑friendly websites using <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> View Projects</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Get in Touch</a>
+                </div>
+                <div class="hero-social">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="hero-avatar">
+                <div class="avatar-box"><i class="fas fa-code"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="section alt">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <span class="section-label">👨 About Me</span>
+                    <h2 class="section-title">Passionate Developer &amp; Lifelong Learner</h2>
+                    <p>I'm a self‑taught web developer with a love for building things that live on the internet.</p>
+                    <p>Currently, I'm deepening my knowledge of <span class="highlight-text">React</span> and <span class="highlight-text">Node.js</span>.</p>
+                    <div class="about-stats">
+                        <div class="stat-card"><span class="stat-number" id="statProjects">0</span><span class="stat-label">Projects</span></div>
+                        <div class="stat-card"><span class="stat-number" id="statCommits">0</span><span class="stat-label">Commits</span></div>
+                        <div class="stat-card"><span class="stat-number" id="statCoffee">0</span><span class="stat-label">Cups of Coffee</span></div>
+                    </div>
+                </div>
+                <div class="about-image reveal reveal-delay-1">
+                    <div class="img-placeholder"><i class="fas fa-user-astronaut"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">💻 Skills</span>
+                <h2 class="section-title">Technologies I Work With</h2>
+                <p class="section-subtitle">Tools and technologies I use regularly.</p>
+            </div>
+            <div class="skills-grid" id="skillsGrid"></div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="section alt">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">📂 Projects</span>
+                <h2 class="section-title">Things I've Built</h2>
+                <p class="section-subtitle">Each project is a step forward.</p>
+            </div>
+            <div class="projects-grid" id="projectsGrid"></div>
+        </div>
+    </section>
+
+    <!-- ===== RESUME ===== -->
+    <section id="resume" class="section">
+        <div class="container resume-wrapper">
+            <div class="reveal">
+                <span class="section-label">📄 Resume</span>
+                <h2 class="section-title">Download My Resume</h2>
+                <p class="section-subtitle">A PDF version is available.</p>
+            </div>
+            <div class="resume-card reveal reveal-delay-1">
+                <div class="resume-icon"><i class="fas fa-file-pdf"></i></div>
+                <h3>John Doe — Resume</h3>
+                <p>Last updated: August 2026</p>
+                <a href="resume.pdf" download class="btn btn-primary" id="resumeDownload">
+                    <i class="fas fa-download"></i> Download Resume (PDF)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section alt">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">📞 Contact</span>
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">Reach out anytime.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <h3>Get in touch</h3>
+                    <p>I'm always open to new opportunities.</p>
+                    <div class="contact-item"><i class="fas fa-envelope"></i><span>john.doe@example.com</span></div>
+                    <div class="contact-item"><i class="fas fa-phone-alt"></i><span>+1 (555) 123-4567</span></div>
+                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>San Francisco, CA</span></div>
+                </div>
+                <div class="contact-form reveal reveal-delay-1">
+                    <form id="contactForm" novalidate>
+                        <div class="form-group">
+                            <label for="formName">Your Name</label>
+                            <input type="text" id="formName" placeholder="John Doe" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="formEmail">Email Address</label>
+                            <input type="email" id="formEmail" placeholder="john@example.com" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="formMessage">Message</label>
+                            <textarea id="formMessage" placeholder="Tell me about your project…" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
+                        <div class="form-feedback" id="formFeedback"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2026 John Doe &bull; Built with <span class="heart">❤️</span> using HTML, CSS &amp; JavaScript</p>
+        </div>
+    </footer>
+
+    <!-- ===== SCROLL TO TOP ===== -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="script.js"></script>
+</body>
+</html>
