@@ -1,0 +1,185 @@
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  padding: 0 0 56px;
+  align-items: start;
+}
+
+.about-card {
+  padding: 36px;
+}
+
+.about-card p:last-child {
+  margin-bottom: 0;
+}
+
+.about-side {
+  position: sticky;
+  top: calc(var(--nav-height, 58px) + 20px);
+  padding: 28px;
+  display: grid;
+  gap: 18px;
+}
+
+.about-side dl {
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.about-side dt {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.about-side dd {
+  margin: 2px 0 0;
+  font-weight: 600;
+}
+
+.about-side .about__links {
+  display: grid;
+  gap: 8px;
+}
+
+.about-side .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* -------- skills -------- */
+.skills {
+  padding: 8px 0 56px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.skill-card {
+  padding: 22px;
+}
+
+.skill-card h3 {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skill-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.skill-card ul li::before {
+  content: "▸ ";
+  color: var(--blue);
+}
+
+/* -------- timeline -------- */
+.timeline {
+  padding: 8px 0 56px;
+}
+
+.timeline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-left: 2px solid var(--border);
+  display: grid;
+  gap: 28px;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 26px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--blue);
+  border: 3px solid var(--paper);
+}
+
+.timeline-item__stamp {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.timeline-item h3 {
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+
+.timeline-item p {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+/* -------- values -------- */
+.values {
+  padding: 8px 0 64px;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.value-card {
+  padding: 24px;
+}
+
+.value-card h3 {
+  font-size: 1.02rem;
+  margin-bottom: 6px;
+}
+
+.value-card p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .about-side {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .about-card {
+    padding: 24px;
+  }
+}

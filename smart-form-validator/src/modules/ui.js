@@ -151,7 +151,7 @@ export function renderAchievements(unlockedIds = []) {
 
   panel.innerHTML = badges.length
     ? `<h3>Unlocked Badges</h3><div class="achievement-grid">${badges.map((badge) => `<div class="achievement-card${newlyUnlocked.includes(badge.id) ? ' just-unlocked' : ''}" data-badge-id="${badge.id}"><span class="achievement-icon">🏅</span><strong>${badge.title}</strong><p>${badge.description}</p></div>`).join('')}</div>`
-    : '<h3>Unlocked Badges</h3><p class="achievement-empty">No badges yet — complete the mission to begin your collection.</p>';
+    : '<h3>Unlocked Badges</h3><p class="achievement-empty">No badges yet. Complete the mission to begin your collection.</p>';
 
   if (newlyUnlocked.length) {
     panel.classList.remove('achievement-panel-celebrate');

@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Babatunde Awoyemi — Build Log</title>
+    <title>Babatunde Awoyemi: Build Log</title>
     <meta
       name="description"
-      content="A running build log of practical, from-scratch JavaScript projects by Babatunde Awoyemi — a safe calculator, a gamified form validator, and a student report card dashboard."
+      content="A running build log of practical, from-scratch JavaScript projects by Babatunde Awoyemi: a safe calculator, a gamified form validator, and a student report card dashboard."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,31 +18,53 @@
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%233454d1%22/><text x=%2250%22 y=%2266%22 font-size=%2248%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22monospace%22>BA</text></svg>"
     />
+    <link rel="stylesheet" href="assets/css/base.css" />
     <link rel="stylesheet" href="assets/css/portfolio-nav.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/home.css" />
   </head>
-  <body>
+  <body data-nav-current="home">
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <div class="portfolio-topbar">
-      <a href="#top" class="portfolio-topbar__brand">
+    <div class="portfolio-topbar has-mobile-menu">
+      <a href="index.html" class="portfolio-topbar__brand">
         <span class="portfolio-topbar__mark">BA</span>
         <span class="portfolio-topbar__text"
-          >Babatunde Awoyemi <em>— Build Log</em></span
+          >Babatunde Awoyemi <em>Build Log</em></span
         >
       </a>
-      <nav class="portfolio-topbar__nav" aria-label="Primary">
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <button
-          id="portfolio-theme-toggle"
-          class="portfolio-theme-toggle"
-          type="button"
-          aria-label="Toggle light/dark mode"
-        >
-          🌙
-        </button>
-      </nav>
+
+      <div class="portfolio-topbar__right">
+        <nav class="portfolio-topbar__nav" aria-label="Primary">
+          <a href="index.html" data-nav-id="home">Home</a>
+          <a href="projects.html" data-nav-id="projects">Projects</a>
+          <a href="about.html" data-nav-id="about">About</a>
+          <a href="contact.html" data-nav-id="contact">Contact</a>
+          <a
+            href="https://github.com/babatundeawo"
+            target="_blank"
+            rel="noopener"
+            >GitHub ↗</a
+          >
+        </nav>
+        <div class="portfolio-topbar__controls">
+          <button
+            id="portfolio-theme-toggle"
+            class="portfolio-theme-toggle"
+            type="button"
+            aria-label="Toggle light/dark mode"
+          >
+            🌙
+          </button>
+          <button
+            class="portfolio-topbar__burger"
+            type="button"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
     </div>
 
     <canvas id="grid-canvas" aria-hidden="true"></canvas>
@@ -57,13 +79,13 @@
           </h1>
           <p class="hero__lede">
             This is a running log of practical, from-scratch JavaScript
-            builds — a calculator, a form validator, a records dashboard —
+            builds: a calculator, a form validator, a records dashboard,
             each one shipped, documented, and open for review. No
             frameworks, no shortcuts, just HTML, CSS and JS taken seriously.
           </p>
           <div class="hero__actions">
-            <a class="btn btn--primary" href="#projects">View the builds</a>
-            <a class="btn btn--ghost" href="#about">About this log</a>
+            <a class="btn btn--primary" href="projects.html">View the builds</a>
+            <a class="btn btn--ghost" href="about.html">About this log</a>
           </div>
           <dl class="hero__stats">
             <div>
@@ -81,35 +103,56 @@
           </dl>
         </div>
 
-        <div class="hero__terminal" role="img" aria-label="Terminal animation listing the three builds in this log">
+        <div
+          class="hero__terminal"
+          role="img"
+          aria-label="Terminal animation listing the three builds in this log"
+        >
           <div class="terminal">
             <div class="terminal__bar">
               <span></span><span></span><span></span>
-              <span class="terminal__title">build-log — zsh</span>
+              <span class="terminal__title">build-log · zsh</span>
             </div>
             <pre class="terminal__body" id="terminal-body"></pre>
           </div>
         </div>
       </header>
 
-      <section class="projects" id="projects" aria-label="Project builds">
-        <div class="section-heading">
-          <p class="eyebrow">Log entries</p>
-          <h2>Three builds. Zero frameworks.</h2>
-          <p class="section-lede">
-            Every entry links to a fully working, standalone page — open it,
-            use it, read the code.
-          </p>
+      <section class="stack-strip" aria-label="Technology used across every build">
+        <p class="stack-strip__label">Built with, on purpose</p>
+        <div class="stack-strip__row">
+          <span class="stack-chip">Semantic HTML5</span>
+          <span class="stack-chip">Modern CSS (Grid + Custom Properties)</span>
+          <span class="stack-chip">Vanilla JavaScript (ES6+)</span>
+          <span class="stack-chip">IntersectionObserver</span>
+          <span class="stack-chip">LocalStorage</span>
+          <span class="stack-chip">Regex</span>
+          <span class="stack-chip">Print CSS</span>
+          <span class="stack-chip">Zero build step</span>
+        </div>
+      </section>
+
+      <section class="featured" aria-label="Featured builds">
+        <div class="featured__head">
+          <div class="section-heading">
+            <p class="eyebrow">Log entries</p>
+            <h2>The latest builds</h2>
+            <p class="section-lede">
+              A quick look at what's live right now. The full list, with
+              filters and search, lives on the Projects page.
+            </p>
+          </div>
+          <a class="btn btn--ghost btn--sm" href="projects.html">See all builds →</a>
         </div>
 
-        <div class="project-grid">
+        <div class="featured-grid">
           <article class="project-card reveal">
             <div class="project-card__stamp">BUILD-001 · STABLE</div>
             <h3>Safe Calculator</h3>
             <p>
               A calculator engineered to never crash. Guard clauses catch
               bad input, non-numbers and divide-by-zero before they become
-              runtime errors — with a friendly message instead of a broken
+              runtime errors, with a friendly message instead of a broken
               page.
             </p>
             <ul class="project-card__tags">
@@ -151,7 +194,7 @@
             <h3>Student Report Card</h3>
             <p>
               A student records dashboard for tracking scores, attendance
-              and behaviour — with a searchable roster, editable curriculum,
+              and behaviour, with a searchable roster, editable curriculum,
               and print-ready report cards.
             </p>
             <ul class="project-card__tags">
@@ -167,77 +210,110 @@
               >
             </div>
           </article>
-
-          <article class="project-card project-card--pending reveal">
-            <div class="project-card__stamp">BUILD-004 · IN PROGRESS</div>
-            <h3>AI Agent Bootcamp</h3>
-            <p>
-              A self-paced series of Python exercises working up to a full
-              AI agent — memory, tools, and reasoning loops built from
-              first principles. Currently in active development, kept
-              separate from this log while it's under construction.
-            </p>
-            <ul class="project-card__tags">
-              <li>Python</li>
-              <li>AI Agents</li>
-              <li>In Progress</li>
-            </ul>
-            <div class="project-card__actions">
-              <a
-                class="btn btn--ghost btn--sm"
-                href="https://github.com/babatundeawo/personal-projects/tree/main/AI-Agent-Bootcamp"
-                target="_blank"
-                rel="noopener"
-                >View source on GitHub ↗</a
-              >
-            </div>
-          </article>
         </div>
       </section>
 
-      <section class="about" id="about" aria-label="About this workshop">
-        <div class="about__card reveal">
-          <p class="eyebrow">About</p>
-          <h2>Why this repo exists</h2>
-          <p>
-            This is my personal coding workspace — the place every new
-            project starts as a small learning exercise and gets rebuilt
-            until it holds up to real use. Each build in the log above is a
-            complete, working page: open it, try it, break it, read the
-            source. Nothing here depends on a framework or a build step
-            unless the project explicitly calls for one.
+      <section class="process" aria-label="How each build gets made">
+        <div class="section-heading">
+          <p class="eyebrow">Process</p>
+          <h2>How each entry gets built</h2>
+          <p class="section-lede">
+            The same four-step loop, every time, whether it takes an
+            afternoon or a week.
           </p>
-          <p>
-            I keep this repository as my default workspace in VS Code, so
-            expect it to keep growing — new builds get added to the log as
-            they're finished.
-          </p>
-          <div class="about__links">
-            <a
-              class="btn btn--ghost btn--sm"
-              href="https://github.com/babatundeawo/personal-projects"
-              target="_blank"
-              rel="noopener"
-              >Full repository ↗</a
-            >
-            <a
-              class="btn btn--ghost btn--sm"
-              href="https://github.com/babatundeawo"
-              target="_blank"
-              rel="noopener"
-              >GitHub profile ↗</a
-            >
+        </div>
+        <div class="process-grid">
+          <div class="process-step card reveal">
+            <p class="process-step__index">01</p>
+            <h3>Pick a real problem</h3>
+            <p>Something small and concrete enough to finish, not a toy.</p>
           </div>
+          <div class="process-step card reveal">
+            <p class="process-step__index">02</p>
+            <h3>Build from scratch</h3>
+            <p>No frameworks by default. Reach for HTML, CSS and JS first.</p>
+          </div>
+          <div class="process-step card reveal">
+            <p class="process-step__index">03</p>
+            <h3>Handle the edge cases</h3>
+            <p>Bad input, empty states, small screens: all treated as normal.</p>
+          </div>
+          <div class="process-step card reveal">
+            <p class="process-step__index">04</p>
+            <h3>Ship and document</h3>
+            <p>A working page, a clean README, and code that reads back well.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-band reveal" aria-label="Get in touch">
+        <div>
+          <h2>Curious about a build, or want to work together?</h2>
+          <p>I read every message. Reach out through the contact page or on GitHub.</p>
+        </div>
+        <div class="hero__actions" style="margin: 0;">
+          <a class="btn btn--primary" href="contact.html">Get in touch</a>
+          <a
+            class="btn btn--ghost"
+            href="https://github.com/babatundeawo"
+            target="_blank"
+            rel="noopener"
+            >GitHub profile ↗</a
+          >
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>© <span id="year"></span> Babatunde Awoyemi. Built with vanilla HTML, CSS &amp; JavaScript — no frameworks.</p>
-      <p class="site-footer__meta">Deployed as a static site · works on every screen.</p>
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <span class="portfolio-topbar__mark">BA</span>
+          <p><strong>Babatunde Awoyemi</strong></p>
+          <p>
+            A running build log of practical, from-scratch JavaScript
+            projects. Every entry is a complete, working page.
+          </p>
+        </div>
+        <div class="site-footer__cols">
+          <div class="site-footer__col">
+            <h4>Site</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col">
+            <h4>Builds</h4>
+            <ul>
+              <li><a href="safe-calculator/index.html">Safe Calculator</a></li>
+              <li><a href="smart-form-validator/index.html">Magical Code Validator</a></li>
+              <li><a href="student-report-card/index.html">Student Report Card</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col">
+            <h4>Elsewhere</h4>
+            <ul>
+              <li>
+                <a href="https://github.com/babatundeawo" target="_blank" rel="noopener">GitHub ↗</a>
+              </li>
+              <li>
+                <a href="https://github.com/babatundeawo/personal-projects" target="_blank" rel="noopener">Full repository ↗</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>© <span id="year"></span> Babatunde Awoyemi. Built with vanilla HTML, CSS &amp; JavaScript, no frameworks. Deployed as a static site, works on every screen.</p>
+      </div>
     </footer>
 
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+
     <script src="assets/js/portfolio-nav.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/home.js"></script>
   </body>
 </html>

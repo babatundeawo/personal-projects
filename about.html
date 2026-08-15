@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About · Babatunde Awoyemi: Build Log</title>
+    <meta
+      name="description"
+      content="Why this build log exists, the tools behind it, and how each project gets made, from idea to a shipped, documented page."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%233454d1%22/><text x=%2250%22 y=%2266%22 font-size=%2248%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22monospace%22>BA</text></svg>"
+    />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/portfolio-nav.css" />
+    <link rel="stylesheet" href="assets/css/about.css" />
+  </head>
+  <body data-nav-current="about">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="portfolio-topbar has-mobile-menu">
+      <a href="index.html" class="portfolio-topbar__brand">
+        <span class="portfolio-topbar__mark">BA</span>
+        <span class="portfolio-topbar__text"
+          >Babatunde Awoyemi <em>Build Log</em></span
+        >
+      </a>
+
+      <div class="portfolio-topbar__right">
+        <nav class="portfolio-topbar__nav" aria-label="Primary">
+          <a href="index.html" data-nav-id="home">Home</a>
+          <a href="projects.html" data-nav-id="projects">Projects</a>
+          <a href="about.html" data-nav-id="about">About</a>
+          <a href="contact.html" data-nav-id="contact">Contact</a>
+          <a
+            href="https://github.com/babatundeawo"
+            target="_blank"
+            rel="noopener"
+            >GitHub ↗</a
+          >
+        </nav>
+        <div class="portfolio-topbar__controls">
+          <button
+            id="portfolio-theme-toggle"
+            class="portfolio-theme-toggle"
+            type="button"
+            aria-label="Toggle light/dark mode"
+          >
+            🌙
+          </button>
+          <button
+            class="portfolio-topbar__burger"
+            type="button"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <canvas id="grid-canvas" aria-hidden="true"></canvas>
+
+    <main id="main">
+      <header class="page-hero">
+        <p class="eyebrow">About</p>
+        <h1>Why this repo exists.</h1>
+        <p>
+          A personal coding workspace where every new idea starts small and
+          gets rebuilt until it holds up to real use.
+        </p>
+      </header>
+
+      <div class="about-layout">
+        <div class="about-card card reveal">
+          <p>
+            This is my personal coding workspace, the place every new
+            project starts as a small learning exercise and gets rebuilt
+            until it holds up to real use. Each build in the log is a
+            complete, working page: open it, try it, break it, read the
+            source. Nothing here depends on a framework or a build step
+            unless the project explicitly calls for one.
+          </p>
+          <p>
+            I keep this repository as my default workspace in VS Code, so
+            expect it to keep growing; new builds get added to the log as
+            they're finished. Right now that means three stable, shipped
+            projects and a fourth build (a Python AI agent bootcamp)
+            actively in progress, kept separate from the rest of the log
+            while it's under construction.
+          </p>
+          <p>
+            The goal isn't to reach for a framework by default. It's to get
+            genuinely comfortable with HTML, CSS and JavaScript first, so
+            that when a framework does earn its place in a project, I'm
+            reaching for it on purpose, not out of habit.
+          </p>
+        </div>
+
+        <aside class="about-side card reveal">
+          <dl>
+            <div>
+              <dt>Focus</dt>
+              <dd>Front-end fundamentals, from scratch</dd>
+            </div>
+            <div>
+              <dt>Stack</dt>
+              <dd>HTML, CSS, JavaScript, Python</dd>
+            </div>
+            <div>
+              <dt>Currently building</dt>
+              <dd>AI Agent Bootcamp (Build-004)</dd>
+            </div>
+            <div>
+              <dt>Editor</dt>
+              <dd>VS Code</dd>
+            </div>
+          </dl>
+          <div class="about__links">
+            <a
+              class="btn btn--primary btn--sm"
+              href="https://github.com/babatundeawo/personal-projects"
+              target="_blank"
+              rel="noopener"
+              >Full repository ↗</a
+            >
+            <a
+              class="btn btn--ghost btn--sm"
+              href="https://github.com/babatundeawo"
+              target="_blank"
+              rel="noopener"
+              >GitHub profile ↗</a
+            >
+            <a class="btn btn--ghost btn--sm" href="contact.html">Get in touch</a>
+          </div>
+        </aside>
+      </div>
+
+      <section class="skills" aria-label="Skills and tools">
+        <div class="section-heading">
+          <p class="eyebrow">Toolbox</p>
+          <h2>What each build draws on</h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card card reveal">
+            <h3>🧱 Core web</h3>
+            <ul>
+              <li>Semantic HTML5</li>
+              <li>CSS Grid &amp; Flexbox</li>
+              <li>Custom properties &amp; theming</li>
+              <li>Responsive, mobile-first layouts</li>
+            </ul>
+          </div>
+          <div class="skill-card card reveal">
+            <h3>⚙️ JavaScript</h3>
+            <ul>
+              <li>DOM manipulation, no jQuery</li>
+              <li>Regex-based validation</li>
+              <li>LocalStorage-backed state</li>
+              <li>Modular, file-per-concern JS</li>
+            </ul>
+          </div>
+          <div class="skill-card card reveal">
+            <h3>♿ Accessibility</h3>
+            <ul>
+              <li>Keyboard-first interactions</li>
+              <li>ARIA live regions and roles</li>
+              <li>Visible focus states</li>
+              <li>Reduced-motion support</li>
+            </ul>
+          </div>
+          <div class="skill-card card reveal">
+            <h3>🐍 Python</h3>
+            <ul>
+              <li>Scripting and automation</li>
+              <li>Working toward agent design</li>
+              <li>Tool-use and reasoning loops</li>
+              <li>Memory-backed workflows</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="timeline" aria-label="Build timeline">
+        <div class="section-heading">
+          <p class="eyebrow">Timeline</p>
+          <h2>How the log has grown</h2>
+        </div>
+        <ol class="timeline-list">
+          <li class="timeline-item reveal">
+            <p class="timeline-item__stamp">Build-001</p>
+            <h3>Safe Calculator shipped</h3>
+            <p>
+              A guard-clause-first calculator that turns bad input and
+              divide-by-zero into readable messages instead of crashes.
+            </p>
+          </li>
+          <li class="timeline-item reveal">
+            <p class="timeline-item__stamp">Build-002</p>
+            <h3>Magical Code Validator shipped</h3>
+            <p>
+              A gamified registration form with live regex validation, a
+              password strength meter, and achievement badges.
+            </p>
+          </li>
+          <li class="timeline-item reveal">
+            <p class="timeline-item__stamp">Build-003</p>
+            <h3>Student Report Card shipped</h3>
+            <p>
+              A full records dashboard: editable curriculum, auto-calculated
+              grades, and print-ready report cards.
+            </p>
+          </li>
+          <li class="timeline-item reveal">
+            <p class="timeline-item__stamp">Build-004 · In progress</p>
+            <h3>AI Agent Bootcamp underway</h3>
+            <p>
+              A self-paced Python series building toward a working AI agent
+              from first principles.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="values" aria-label="How I work">
+        <div class="section-heading">
+          <p class="eyebrow">How I work</p>
+          <h2>A few working principles</h2>
+        </div>
+        <div class="values-grid">
+          <div class="value-card card reveal">
+            <h3>Ship the whole thing</h3>
+            <p>A build isn't done until it's usable end to end, edge cases included.</p>
+          </div>
+          <div class="value-card card reveal">
+            <h3>Frameworks are a choice</h3>
+            <p>Reach for one when it earns its place, not by default.</p>
+          </div>
+          <div class="value-card card reveal">
+            <h3>Accessible by default</h3>
+            <p>Keyboard support and clear focus states aren't an afterthought.</p>
+          </div>
+          <div class="value-card card reveal">
+            <h3>Document as you go</h3>
+            <p>Every build gets a README that explains the decisions, not just the code.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <span class="portfolio-topbar__mark">BA</span>
+          <p><strong>Babatunde Awoyemi</strong></p>
+          <p>
+            A running build log of practical, from-scratch JavaScript
+            projects. Every entry is a complete, working page.
+          </p>
+        </div>
+        <div class="site-footer__cols">
+          <div class="site-footer__col">
+            <h4>Site</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col">
+            <h4>Builds</h4>
+            <ul>
+              <li><a href="safe-calculator/index.html">Safe Calculator</a></li>
+              <li><a href="smart-form-validator/index.html">Magical Code Validator</a></li>
+              <li><a href="student-report-card/index.html">Student Report Card</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col">
+            <h4>Elsewhere</h4>
+            <ul>
+              <li>
+                <a href="https://github.com/babatundeawo" target="_blank" rel="noopener">GitHub ↗</a>
+              </li>
+              <li>
+                <a href="https://github.com/babatundeawo/personal-projects" target="_blank" rel="noopener">Full repository ↗</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>© <span id="year"></span> Babatunde Awoyemi. Built with vanilla HTML, CSS &amp; JavaScript, no frameworks.</p>
+      </div>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+
+    <script src="assets/js/portfolio-nav.js"></script>
+    <script src="assets/js/animations.js"></script>
+  </body>
+</html>

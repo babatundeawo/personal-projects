@@ -43,7 +43,7 @@
     try {
       localStorage.setItem(STORAGE_KEY, theme);
     } catch (err) {
-      /* localStorage unavailable — theme just won't persist */
+      /* localStorage unavailable: theme just won't persist */
     }
     applyTheme(theme);
   }
@@ -61,5 +61,53 @@
       var current = root.getAttribute("data-theme") === "light" ? "light" : "dark";
       setTheme(current === "light" ? "dark" : "light");
     });
+  });
+})();
+
+/**
+ * Hub-only extensions, additive and safe on every page:
+ *  - mobile hamburger menu (only activates if a
+ *    .portfolio-topbar__burger button exists on the page)
+ *  - active-page highlighting via [data-nav-current] on the
+ *    <body>, matched against each nav link's [data-nav-id]
+ */
+(function () {
+  "use strict";
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var burger = document.querySelector(".portfolio-topbar__burger");
+    var nav = document.querySelector(".portfolio-topbar__nav");
+
+    if (burger && nav) {
+      burger.addEventListener("click", function () {
+        var open = nav.classList.toggle("is-open");
+        burger.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      nav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          nav.classList.remove("is-open");
+          burger.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && nav.classList.contains("is-open")) {
+          nav.classList.remove("is-open");
+          burger.setAttribute("aria-expanded", "false");
+          burger.focus();
+        }
+      });
+    }
+
+    var current = document.body.getAttribute("data-nav-current");
+    if (current) {
+      document.querySelectorAll("[data-nav-id]").forEach(function (link) {
+        if (link.getAttribute("data-nav-id") === current) {
+          link.classList.add("is-active");
+          link.setAttribute("aria-current", "page");
+        }
+      });
+    }
   });
 })();

@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects · Babatunde Awoyemi: Build Log</title>
+    <meta
+      name="description"
+      content="Every build in the log: a safe calculator, a gamified form validator, a student report card dashboard, and a Python AI agent bootcamp in progress. Search and filter by topic."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%233454d1%22/><text x=%2250%22 y=%2266%22 font-size=%2248%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22monospace%22>BA</text></svg>"
+    />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/portfolio-nav.css" />
+    <link rel="stylesheet" href="assets/css/projects.css" />
+  </head>
+  <body data-nav-current="projects">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="portfolio-topbar has-mobile-menu">
+      <a href="index.html" class="portfolio-topbar__brand">
+        <span class="portfolio-topbar__mark">BA</span>
+        <span class="portfolio-topbar__text"
+          >Babatunde Awoyemi <em>Build Log</em></span
+        >
+      </a>
+
+      <div class="portfolio-topbar__right">
+        <nav class="portfolio-topbar__nav" aria-label="Primary">
+          <a href="index.html" data-nav-id="home">Home</a>
+          <a href="projects.html" data-nav-id="projects">Projects</a>
+          <a href="about.html" data-nav-id="about">About</a>
+          <a href="contact.html" data-nav-id="contact">Contact</a>
+          <a
+            href="https://github.com/babatundeawo"
+            target="_blank"
+            rel="noopener"
+            >GitHub ↗</a
+          >
+        </nav>
+        <div class="portfolio-topbar__controls">
+          <button
+            id="portfolio-theme-toggle"
+            class="portfolio-theme-toggle"
+            type="button"
+            aria-label="Toggle light/dark mode"
+          >
+            🌙
+          </button>
+          <button
+            class="portfolio-topbar__burger"
+            type="button"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <canvas id="grid-canvas" aria-hidden="true"></canvas>
+
+    <main id="main">
+      <header class="page-hero">
+        <p class="eyebrow">Log entries</p>
+        <h1>Every build, searchable.</h1>
+        <p>
+          Three shipped builds and one in progress. Filter by topic or
+          search by name to find what you're after, then open the build to
+          use it and read the code.
+        </p>
+      </header>
+
+      <div class="filter-bar">
+        <div class="filter-bar__search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <label class="visually-hidden" for="project-search">Search builds</label>
+          <input type="search" id="project-search" placeholder="Search builds, e.g. regex, print, calculator" />
+        </div>
+        <div class="filter-bar__tags" role="group" aria-label="Filter by topic">
+          <button class="filter-chip is-active" type="button" data-tag="all" aria-pressed="true">All</button>
+          <button class="filter-chip" type="button" data-tag="javascript" aria-pressed="false">JavaScript</button>
+          <button class="filter-chip" type="button" data-tag="accessibility" aria-pressed="false">Accessibility</button>
+          <button class="filter-chip" type="button" data-tag="data" aria-pressed="false">Data</button>
+          <button class="filter-chip" type="button" data-tag="python" aria-pressed="false">Python</button>
+        </div>
+      </div>
+
+      <p class="filter-results" id="filter-results" aria-live="polite">Showing all 4 builds</p>
+
+      <div class="project-grid" id="project-grid">
+        <article
+          class="project-card"
+          data-tags="javascript error-handling dom guard-clauses calculator"
+        >
+          <div class="project-card__stamp">BUILD-001 · STABLE</div>
+          <h3>Safe Calculator</h3>
+          <p>
+            A calculator engineered to never crash. Guard clauses catch bad
+            input, non-numbers and divide-by-zero before they become
+            runtime errors, with a friendly message instead of a broken
+            page. Keeps the last eight calculations in a sidebar history.
+          </p>
+          <ul class="project-card__tags">
+            <li>JavaScript</li>
+            <li>Error Handling</li>
+            <li>DOM</li>
+          </ul>
+          <div class="project-card__actions">
+            <a class="btn btn--primary btn--sm" href="safe-calculator/index.html">Open build →</a>
+            <a
+              class="btn btn--ghost btn--sm"
+              href="https://github.com/babatundeawo/personal-projects/tree/main/safe-calculator"
+              target="_blank"
+              rel="noopener"
+              >Source ↗</a
+            >
+          </div>
+        </article>
+
+        <article
+          class="project-card"
+          data-tags="javascript regex accessibility modular data password"
+        >
+          <div class="project-card__stamp">BUILD-002 · STABLE</div>
+          <h3>Magical Code Validator</h3>
+          <p>
+            A gamified, accessible registration form with live regex
+            validation, a password entropy meter, achievement badges, and a
+            built-in sandbox for testing your own patterns against real
+            examples.
+          </p>
+          <ul class="project-card__tags">
+            <li>Regex</li>
+            <li>Accessibility</li>
+            <li>Modular JS</li>
+          </ul>
+          <div class="project-card__actions">
+            <a class="btn btn--primary btn--sm" href="smart-form-validator/index.html">Open build →</a>
+            <a
+              class="btn btn--ghost btn--sm"
+              href="https://github.com/babatundeawo/personal-projects/tree/main/smart-form-validator"
+              target="_blank"
+              rel="noopener"
+              >Source ↗</a
+            >
+          </div>
+        </article>
+
+        <article
+          class="project-card"
+          data-tags="javascript data localstorage print data-modeling"
+        >
+          <div class="project-card__stamp">BUILD-003 · STABLE</div>
+          <h3>Student Report Card</h3>
+          <p>
+            A student records dashboard for tracking scores, attendance and
+            behaviour, with a searchable roster, editable curriculum,
+            auto-calculated grades, and print-ready report cards saved to
+            local storage.
+          </p>
+          <ul class="project-card__tags">
+            <li>Data Modeling</li>
+            <li>LocalStorage</li>
+            <li>Print CSS</li>
+          </ul>
+          <div class="project-card__actions">
+            <a class="btn btn--primary btn--sm" href="student-report-card/index.html">Open build →</a>
+            <a
+              class="btn btn--ghost btn--sm"
+              href="https://github.com/babatundeawo/personal-projects/tree/main/student-report-card"
+              target="_blank"
+              rel="noopener"
+              >Source ↗</a
+            >
+          </div>
+        </article>
+
+        <article
+          class="project-card project-card--pending"
+          data-tags="python ai-agents in-progress"
+        >
+          <div class="project-card__stamp">BUILD-004 · IN PROGRESS</div>
+          <h3>AI Agent Bootcamp</h3>
+          <p>
+            A self-paced series of Python exercises working up to a full AI
+            agent: memory, tools, and reasoning loops built from first
+            principles. Currently in active development, kept separate from
+            this log while it's under construction.
+          </p>
+          <ul class="project-card__tags">
+            <li>Python</li>
+            <li>AI Agents</li>
+            <li>In Progress</li>
+          </ul>
+          <div class="project-card__actions">
+            <a
+              class="btn btn--ghost btn--sm"
+              href="https://github.com/babatundeawo/personal-projects/tree/main/AI-Agent-Bootcamp"
+              target="_blank"
+              rel="noopener"
+              >View source on GitHub ↗</a
+            >
+          </div>
+        </article>
+      </div>
+
+      <div class="empty-state" id="empty-state">
+        <h3>No builds match that search</h3>
+        <p>Try a different keyword or clear the topic filter.</p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <span class="portfolio-topbar__mark">BA</span>
+          <p><strong>Babatunde Awoyemi</strong></p>
+          <p>
+            A running build log of practical, from-scratch JavaScript
+            projects. Every entry is a complete, working page.
+          </p>
+        </div>
+        <div class="site-footer__cols">
+          <div class="site-footer__col">
+            <h4>Site</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col">
+            <h4>Builds</h4>
+            <ul>
+              <li><a href="safe-calculator/index.html">Safe Calculator</a></li>
+              <li><a href="smart-form-validator/index.html">Magical Code Validator</a></li>
+              <li><a href="student-report-card/index.html">Student Report Card</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col">
+            <h4>Elsewhere</h4>
+            <ul>
+              <li>
+                <a href="https://github.com/babatundeawo" target="_blank" rel="noopener">GitHub ↗</a>
+              </li>
+              <li>
+                <a href="https://github.com/babatundeawo/personal-projects" target="_blank" rel="noopener">Full repository ↗</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>© <span id="year"></span> Babatunde Awoyemi. Built with vanilla HTML, CSS &amp; JavaScript, no frameworks.</p>
+      </div>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+
+    <script src="assets/js/portfolio-nav.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/projects.js"></script>
+  </body>
+</html>

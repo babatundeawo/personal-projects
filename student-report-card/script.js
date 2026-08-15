@@ -272,7 +272,7 @@ const STORAGE_KEY = "student-report-card-v2";
           </article>
           <article class="stat-card">
             <div class="label">Top Performer</div>
-            <div class="value">${topPerformer ? topPerformer.name : "—"}</div>
+            <div class="value">${topPerformer ? topPerformer.name : "N/A"}</div>
           </article>
           <article class="stat-card">
             <div class="label">Pass Rate</div>
@@ -583,7 +583,7 @@ const STORAGE_KEY = "student-report-card-v2";
         const metrics = calculateMetrics(student);
         const rank =
           getRankedStudents().find((item) => item.id === student.id)?.rank ||
-          "—";
+          "N/A";
         const attendancePct = getAttendancePercentage(student);
 
         dom.reportContent.innerHTML = `

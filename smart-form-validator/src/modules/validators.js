@@ -12,7 +12,7 @@ export const FIELD_CONFIGS = {
   username: {
     pattern: PATTERNS.username,
     okMessage: '🛸 Nickname accepted by the galaxy.',
-    errorMessage: 'Start with a letter and use 3–20 letters, digits, or underscores.',
+    errorMessage: 'Start with a letter and use 3 to 20 letters, digits, or underscores.',
     required: true,
     label: 'Coder Nickname'
   },
@@ -47,7 +47,7 @@ export const FIELD_CONFIGS = {
   github: {
     pattern: PATTERNS.github,
     okMessage: '🐙 GitHub identity looks correct.',
-    errorMessage: 'Use 1–39 characters, letters, numbers, or single hyphens.',
+    errorMessage: 'Use 1 to 39 characters, letters, numbers, or single hyphens.',
     required: true,
     label: 'GitHub Username'
   },
