@@ -82,7 +82,7 @@ while True:
 
 
     # ==========================================
-    # STEP 1 — ASK LLM FOR INTENT
+    # STEP 1: ASK LLM FOR INTENT
     # ==========================================
 
     decision_response = chat(
@@ -109,7 +109,7 @@ while True:
 
 
     # ==========================================
-    # STEP 2 — CALCULATE
+    # STEP 2: CALCULATE
     # ==========================================
 
     if decision == "CALCULATE":
@@ -164,7 +164,7 @@ Return only the expression.
 
 
         # ==========================================
-        # STEP 3 — RUN CALCULATOR
+        # STEP 3: RUN CALCULATOR
         # ==========================================
 
         result = calculator(expression)
@@ -174,7 +174,7 @@ Return only the expression.
 
 
         # ==========================================
-        # STEP 4 — ASK LLM FOR FINAL RESPONSE
+        # STEP 4: ASK LLM FOR FINAL RESPONSE
         # ==========================================
 
         final_response = chat(
@@ -212,7 +212,7 @@ Calculator result:
 
 
     # ==========================================
-    # STEP 5 — NORMAL ANSWER
+    # STEP 5: NORMAL ANSWER
     # ==========================================
 
     elif decision == "ANSWER":

@@ -74,9 +74,9 @@
         <p class="eyebrow">Log entries</p>
         <h1>Every build, searchable.</h1>
         <p>
-          Three shipped builds and one in progress. Filter by topic or
-          search by name to find what you're after, then open the build to
-          use it and read the code.
+          Three shipped builds, one in progress, and one side-by-side
+          experiment. Filter by topic or search by name to find what
+          you're after, then open the build to use it and read the code.
         </p>
       </header>
 
@@ -95,10 +95,11 @@
           <button class="filter-chip" type="button" data-tag="accessibility" aria-pressed="false">Accessibility</button>
           <button class="filter-chip" type="button" data-tag="data" aria-pressed="false">Data</button>
           <button class="filter-chip" type="button" data-tag="python" aria-pressed="false">Python</button>
+          <button class="filter-chip" type="button" data-tag="experiment" aria-pressed="false">Experiments</button>
         </div>
       </div>
 
-      <p class="filter-results" id="filter-results" aria-live="polite">Showing all 4 builds</p>
+      <p class="filter-results" id="filter-results" aria-live="polite">Showing all 5 builds</p>
 
       <div class="project-grid" id="project-grid">
         <article
@@ -209,6 +210,35 @@
             <a
               class="btn btn--ghost btn--sm"
               href="https://github.com/babatundeawo/personal-projects/tree/main/AI-Agent-Bootcamp"
+              target="_blank"
+              rel="noopener"
+              >View source on GitHub ↗</a
+            >
+          </div>
+        </article>
+
+        <article
+          class="project-card project-card--pending"
+          data-tags="experiment html css javascript comparison"
+        >
+          <div class="project-card__stamp">EXPERIMENT</div>
+          <h3>Portfolio Website: 4 Ways</h3>
+          <p>
+            The same portfolio brief, given to four different AI models
+            (ChatGPT, DeepSeek, Gemini and Grok) to see how each one
+            approaches structure, styling and interaction with plain HTML,
+            CSS and JavaScript. A side-by-side study, not part of the main
+            build log.
+          </p>
+          <ul class="project-card__tags">
+            <li>Comparison</li>
+            <li>HTML/CSS/JS</li>
+            <li>Exploration</li>
+          </ul>
+          <div class="project-card__actions">
+            <a
+              class="btn btn--ghost btn--sm"
+              href="https://github.com/babatundeawo/personal-projects/tree/main/web-dev-projects"
               target="_blank"
               rel="noopener"
               >View source on GitHub ↗</a

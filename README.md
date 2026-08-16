@@ -49,7 +49,9 @@ personal-projects/
 │   ├── style.css
 │   └── script.js
 │
-└── AI-Agent-Bootcamp/               In progress, kept untouched, see below
+├── AI-Agent-Bootcamp/               In progress, kept untouched, see below
+├── web-dev-projects/                Experiment: 4 AI models, one portfolio brief
+└── learn-python-projects/           Early-stage Python practice, not yet featured
 ```
 
 ## How the pages fit together
@@ -80,13 +82,23 @@ This is a static site, so it can be published as-is:
    branch, root folder.
 3. The hub page (`index.html`) becomes the site's home page automatically.
 
-## A note on `AI-Agent-Bootcamp/`
+## A note on `AI-Agent-Bootcamp/`, `web-dev-projects/` and `learn-python-projects/`
 
-That folder is a separate, actively-developing project and was **left
-untouched** by this redesign. None of its Python files or structure were
-modified. It's referenced from the hub page as an "in progress" card that
-links out to its folder on GitHub, but it isn't part of the web build log
-itself.
+These folders are separate, actively-developing projects and were **left
+untouched** by this redesign. None of their files or structure were
+modified.
+
+- `AI-Agent-Bootcamp/` is referenced from the Projects page as an "in
+  progress" card that links out to its folder on GitHub.
+- `web-dev-projects/` contains a self-directed experiment: the same
+  portfolio brief given to four different AI models (ChatGPT, DeepSeek,
+  Gemini, Grok), kept as a comparison rather than a polished build. It's
+  referenced from the Projects page as an "Experiment" card.
+- `learn-python-projects/` is an early-stage practice folder and isn't
+  featured on the site yet.
+
+None of these are part of the web build log itself in the same sense as
+the three stable builds.
 
 ## Individual project docs
 
