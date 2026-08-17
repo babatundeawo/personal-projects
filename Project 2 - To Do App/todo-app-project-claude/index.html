@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ticket — To-Do List</title>
+<meta name="description" content="A ticket-styled to-do list app: add, edit, complete, filter and search tasks, saved to local storage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button id="themeToggle" class="theme-toggle" aria-label="Toggle dark and light mode">
+  <span class="toggle-dot"></span>
+</button>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="ticket-no">No. <span id="ticketSerial">0001</span></p>
+    <h1>My Task Tickets</h1>
+    <p class="masthead-sub">Admit one task at a time. Tear off when done.</p>
+  </header>
+
+  <!-- STATS STRIP -->
+  <section class="stats-strip" aria-label="Task statistics">
+    <div class="stat">
+      <span class="stat-num" id="statTotal">0</span>
+      <span class="stat-label">total</span>
+    </div>
+    <div class="stat-div" aria-hidden="true"></div>
+    <div class="stat">
+      <span class="stat-num" id="statActive">0</span>
+      <span class="stat-label">active</span>
+    </div>
+    <div class="stat-div" aria-hidden="true"></div>
+    <div class="stat">
+      <span class="stat-num" id="statDone">0</span>
+      <span class="stat-label">done</span>
+    </div>
+  </section>
+
+  <!-- ADD TASK -->
+  <section class="add-card">
+    <form id="addForm" class="add-form" novalidate>
+      <input type="text" id="taskInput" placeholder="Book the venue…" autocomplete="off" maxlength="120">
+
+      <select id="priorityInput" aria-label="Priority">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+      </select>
+
+      <input type="date" id="dueInput" aria-label="Due date">
+
+      <button type="submit" class="btn-add" aria-label="Add task">
+        <img src="icons/plus.svg" alt="" class="icon">
+        <span>Add</span>
+      </button>
+    </form>
+    <p class="add-error" id="addError" role="alert"></p>
+  </section>
+
+  <!-- SEARCH + FILTER -->
+  <section class="control-row">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search tickets…" autocomplete="off">
+    </div>
+    <div class="filter-tabs" id="filterTabs" role="tablist" aria-label="Filter tasks">
+      <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+      <button class="filter-tab" data-filter="active" role="tab" aria-selected="false">Active</button>
+      <button class="filter-tab" data-filter="completed" role="tab" aria-selected="false">Completed</button>
+    </div>
+  </section>
+
+  <!-- TASK LIST -->
+  <section class="tickets-panel">
+    <div class="perforation" aria-hidden="true"></div>
+    <ul id="taskList" class="ticket-list"></ul>
+    <p class="empty-state" id="emptyState">No tickets here — add your first task above.</p>
+  </section>
+
+  <!-- BULK ACTIONS -->
+  <section class="bulk-row">
+    <button id="clearCompletedBtn" class="btn-text">Clear completed</button>
+    <button id="deleteAllBtn" class="btn-text danger">Delete all</button>
+  </section>
+
+</div>
+
+<!-- Edit modal -->
+<div class="edit-overlay" id="editOverlay">
+  <div class="edit-modal" role="dialog" aria-modal="true" aria-labelledby="editTitle">
+    <h2 id="editTitle">Edit ticket</h2>
+    <label for="editInput">Task</label>
+    <input type="text" id="editInput" maxlength="120">
+    <div class="edit-row">
+      <div>
+        <label for="editPriority">Priority</label>
+        <select id="editPriority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+      <div>
+        <label for="editDue">Due</label>
+        <input type="date" id="editDue">
+      </div>
+    </div>
+    <div class="edit-actions">
+      <button id="editCancel" class="btn-text">Cancel</button>
+      <button id="editSave" class="btn-add">Save</button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>Built with HTML, CSS &amp; JavaScript · tasks stored locally in your browser</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

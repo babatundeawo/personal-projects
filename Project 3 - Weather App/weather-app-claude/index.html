@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Station — Weather App</title>
+<meta name="description" content="A weather dashboard showing live current conditions and a 5-day forecast for any city.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="station-panel" id="stationPanel" data-condition="clear">
+
+  <header class="panel-top">
+    <div class="brand">
+      <span class="brand-mark">◎</span>
+      <span class="brand-name">STATION</span>
+    </div>
+    <div class="panel-controls">
+      <button class="unit-toggle" id="unitToggle" aria-label="Toggle Celsius and Fahrenheit">
+        <span class="unit active" data-unit="C">°C</span><span class="unit-sep">/</span><span class="unit" data-unit="F">°F</span>
+      </button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode">
+        <span class="toggle-dot"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- SEARCH -->
+  <section class="search-section">
+    <form id="searchForm" class="search-form" autocomplete="off">
+      <input type="text" id="cityInput" placeholder="Search a city…" aria-label="City name">
+      <button type="submit" class="btn-search" aria-label="Search">Search</button>
+      <button type="button" class="btn-locate" id="locateBtn" aria-label="Use my current location">📍</button>
+    </form>
+    <div class="quick-row">
+      <div class="recent-cities" id="recentCities" aria-label="Recent searches"></div>
+      <button class="fav-btn" id="favBtn" aria-label="Save city to favorites">☆ Save city</button>
+    </div>
+    <div class="favorites-row" id="favoritesRow" aria-label="Favorite cities"></div>
+    <p class="search-error" id="searchError" role="alert"></p>
+  </section>
+
+  <!-- LOADING -->
+  <div class="loader" id="loader" aria-hidden="true"><span class="loader-ring"></span></div>
+
+  <!-- CURRENT READOUT -->
+  <section class="readout" id="readout">
+    <div class="readout-main">
+      <div class="readout-icon" id="weatherIcon"></div>
+      <div class="readout-temp">
+        <span class="temp-value" id="tempValue">--</span>
+        <span class="temp-unit" id="tempUnit">°C</span>
+      </div>
+      <div class="readout-place">
+        <h1 id="cityName">—</h1>
+        <p id="condition">—</p>
+        <p class="local-time" id="localTime">—</p>
+      </div>
+    </div>
+
+    <div class="dial-row">
+      <div class="dial">
+        <span class="dial-label">Feels like</span>
+        <span class="dial-value" id="feelsLike">--°</span>
+      </div>
+      <div class="dial">
+        <span class="dial-label">Humidity</span>
+        <span class="dial-value" id="humidity">--%</span>
+      </div>
+      <div class="dial">
+        <span class="dial-label">Wind</span>
+        <span class="dial-value" id="windSpeed">-- m/s</span>
+      </div>
+      <div class="dial">
+        <span class="dial-label">Sunrise</span>
+        <span class="dial-value" id="sunrise">--:--</span>
+      </div>
+      <div class="dial">
+        <span class="dial-label">Sunset</span>
+        <span class="dial-value" id="sunset">--:--</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORECAST -->
+  <section class="forecast" id="forecast" aria-label="5-day forecast">
+    <p class="forecast-label">5-day forecast</p>
+    <div class="forecast-strip" id="forecastStrip"></div>
+  </section>
+
+  <p class="mode-note" id="modeNote"></p>
+
+</div>
+
+<footer class="footer">
+  <p>Built with HTML, CSS &amp; JavaScript · data from OpenWeather API</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

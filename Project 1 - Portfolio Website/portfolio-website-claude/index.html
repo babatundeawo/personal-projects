@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dara Ade — Web Developer</title>
+<meta name="description" content="Portfolio of Dara Ade, junior web developer building responsive sites with HTML, CSS and JavaScript.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- circuit trace rail -->
+<svg class="rail" viewBox="0 0 40 1400" preserveAspectRatio="none" aria-hidden="true">
+  <path class="rail-path" d="M20,0 L20,140 L8,160 L8,340 L20,360 L20,540 L32,560 L32,740 L20,760 L20,940 L8,960 L8,1140 L20,1160 L20,1400" />
+  <circle class="rail-node" cx="20" cy="0" r="4"/>
+  <circle class="rail-node" cx="20" cy="360" r="4"/>
+  <circle class="rail-node" cx="32" cy="560" r="4"/>
+  <circle class="rail-node" cx="20" cy="760" r="4"/>
+  <circle class="rail-node" cx="20" cy="1160" r="4"/>
+</svg>
+
+<header class="nav" id="top">
+  <div class="nav-inner">
+    <a href="#top" class="logo">dara<span class="accent">.</span>ade</a>
+    <nav class="nav-links">
+      <a href="#about">about</a>
+      <a href="#skills">skills</a>
+      <a href="#projects">projects</a>
+      <a href="#resume">resume</a>
+      <a href="#contact">contact</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode">
+      <span class="toggle-dot"></span>
+    </button>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HOME / HERO -->
+  <section id="home" class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">// portfolio.init()</p>
+      <h1 class="hero-title">
+        <span class="type-line" id="typeLine"></span><span class="cursor">▌</span>
+      </h1>
+      <p class="hero-sub">I build responsive interfaces with HTML, CSS and JavaScript — then wire them up until they actually work.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View projects</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">12</span><span class="stat-label">builds shipped</span></div>
+        <div class="stat"><span class="stat-num">4</span><span class="stat-label">core tools</span></div>
+        <div class="stat"><span class="stat-num">100%</span><span class="stat-label">responsive</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <p class="section-tag">01 — about</p>
+    <div class="about-grid">
+      <div class="about-copy">
+        <h2 class="section-title">Learning in public, one build at a time.</h2>
+        <p>I'm a self-taught developer working through the fundamentals — semantic HTML, layout systems in CSS, and enough JavaScript to make a page respond to a person instead of just sitting there.</p>
+        <p>Every project on this site started as a "can I actually do this" question. Most of the answers took longer than expected, which is usually where the real learning happened.</p>
+        <p class="about-goal"><span class="accent-text">Currently:</span> deepening my React fundamentals and getting comfortable shipping small backend features alongside the frontend.</p>
+      </div>
+      <div class="about-card">
+        <div class="terminal-frame">
+          <div class="terminal-bar"><span></span><span></span><span></span></div>
+          <pre class="terminal-body"><code>const dev = {
+  name: "Dara Ade",
+  role: "Web Developer",
+  focus: ["HTML", "CSS", "JS"],
+  learning: true,
+  coffee: "required"
+};</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <p class="section-tag">02 — skills</p>
+    <h2 class="section-title">Toolkit</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <span class="skill-mark">&lt;/&gt;</span>
+        <h3>HTML5</h3>
+        <p>Semantic structure, accessible forms, clean document outlines.</p>
+        <div class="skill-bar"><span style="width:90%"></span></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-mark">#</span>
+        <h3>CSS3</h3>
+        <p>Flexbox, Grid, responsive layouts, transitions that don't overdo it.</p>
+        <div class="skill-bar"><span style="width:85%"></span></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-mark">{}</span>
+        <h3>JavaScript</h3>
+        <p>DOM manipulation, events, fetch requests, small interactive features.</p>
+        <div class="skill-bar"><span style="width:75%"></span></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-mark">⚛</span>
+        <h3>React</h3>
+        <p>Components, props and state — currently the thing I'm sharpening.</p>
+        <div class="skill-bar"><span style="width:55%"></span></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-mark">git</span>
+        <h3>Git & GitHub</h3>
+        <p>Version control, branching, and shipping through GitHub Pages.</p>
+        <div class="skill-bar"><span style="width:80%"></span></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-mark">▦</span>
+        <h3>Responsive Design</h3>
+        <p>Mobile-first layouts that hold up from a phone to a wide monitor.</p>
+        <div class="skill-bar"><span style="width:88%"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <p class="section-tag">03 — projects</p>
+    <h2 class="section-title">Selected builds</h2>
+    <div class="filter-row" id="filterRow">
+      <button class="filter-btn active" data-filter="all">all</button>
+      <button class="filter-btn" data-filter="js">javascript</button>
+      <button class="filter-btn" data-filter="css">css</button>
+      <button class="filter-btn" data-filter="api">api</button>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+
+      <article class="project-card" data-tags="js api">
+        <div class="project-media">
+          <img src="images/project1.svg" alt="Weather App preview" loading="lazy">
+        </div>
+        <div class="project-body">
+          <h3>Weather Now</h3>
+          <p>A weather lookup app pulling live conditions from the OpenWeather API, with a search-by-city form and simple error states.</p>
+          <div class="tag-row"><span class="tag">JavaScript</span><span class="tag">Fetch API</span><span class="tag">CSS Grid</span></div>
+          <div class="project-links">
+            <a href="#" class="link-btn">View project ↗</a>
+            <a href="#" class="link-btn ghost">Source</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card" data-tags="css js">
+        <div class="project-media">
+          <img src="images/project2.svg" alt="Task Board preview" loading="lazy">
+        </div>
+        <div class="project-body">
+          <h3>Task Board</h3>
+          <p>A drag-free kanban-style task tracker built with vanilla JavaScript and localStorage, styled with a CSS Grid three-column layout.</p>
+          <div class="tag-row"><span class="tag">JavaScript</span><span class="tag">localStorage</span><span class="tag">Grid</span></div>
+          <div class="project-links">
+            <a href="#" class="link-btn">View project ↗</a>
+            <a href="#" class="link-btn ghost">Source</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card" data-tags="css">
+        <div class="project-media">
+          <img src="images/profile.svg" alt="Portfolio site preview" loading="lazy">
+        </div>
+        <div class="project-body">
+          <h3>This Portfolio</h3>
+          <p>The site you're looking at — a responsive, dark/light multi-section layout built from scratch with HTML, CSS and JS.</p>
+          <div class="tag-row"><span class="tag">HTML5</span><span class="tag">CSS Grid</span><span class="tag">Flexbox</span></div>
+          <div class="project-links">
+            <a href="#top" class="link-btn">You are here ↗</a>
+            <a href="#" class="link-btn ghost">Source</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume" class="section resume-section">
+    <p class="section-tag">04 — resume</p>
+    <div class="resume-card">
+      <div>
+        <h2 class="section-title">Want the paper trail?</h2>
+        <p>A one-page rundown of skills, projects and how to reach me — sample resume, swap in your own.</p>
+      </div>
+      <a href="resume.pdf" download class="btn btn-primary btn-lg">Download résumé ↓</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <p class="section-tag">05 — contact</p>
+    <h2 class="section-title">Say hello</h2>
+    <div class="contact-grid">
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+          <span class="error-msg" data-for="name"></span>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          <span class="error-msg" data-for="email"></span>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="What are you building?" required></textarea>
+          <span class="error-msg" data-for="message"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Send message</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+      <div class="contact-side">
+        <p class="contact-line">Prefer social? Find me here.</p>
+        <div class="social-row">
+          <a href="#" aria-label="GitHub" class="social-icon">GH</a>
+          <a href="#" aria-label="LinkedIn" class="social-icon">IN</a>
+          <a href="#" aria-label="Twitter / X" class="social-icon">X</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<button id="scrollTop" class="scroll-top" aria-label="Scroll to top">↑</button>
+
+<footer class="footer">
+  <p>Built with HTML, CSS &amp; JavaScript · <span id="year"></span></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
