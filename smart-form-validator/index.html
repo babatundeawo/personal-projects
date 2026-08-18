@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,35 +14,48 @@
       content="Upgrade your form experience with live validation, gamified achievements, and a futuristic regex playground."
     />
     <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
     <link rel="stylesheet" href="../assets/css/portfolio-nav.css" />
     <link rel="stylesheet" href="./src/styles/main.css" />
     <link
       rel="icon"
       type="image/svg+xml"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%233454d1%22/><text x=%2250%22 y=%2266%22 font-size=%2248%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22monospace%22>BA</text></svg>"
     />
   </head>
-  <body>
-    <div class="portfolio-topbar">
+  <body data-nav-current="projects">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="portfolio-topbar has-mobile-menu">
       <a href="../index.html" class="portfolio-topbar__brand">
         <span class="portfolio-topbar__mark">BA</span>
         <span class="portfolio-topbar__text">Babatunde Awoyemi <em>Build Log</em></span>
       </a>
-      <nav class="portfolio-topbar__nav" aria-label="Primary">
-        <a href="../index.html" class="is-back">All builds</a>
-      </nav>
+      <div class="portfolio-topbar__right">
+        <nav class="portfolio-topbar__nav" aria-label="Primary">
+          <a href="../index.html" data-nav-id="home">Home</a>
+          <a href="../projects.html" data-nav-id="projects">Projects</a>
+          <a href="../about.html" data-nav-id="about">About</a>
+          <a href="../contact.html" data-nav-id="contact">Contact</a>
+          <a href="https://github.com/babatundeawo" target="_blank" rel="noopener">GitHub ↗</a>
+        </nav>
+        <div class="portfolio-topbar__controls">
+          <button id="portfolio-theme-toggle" class="portfolio-theme-toggle" type="button" aria-label="Toggle light/dark mode">🌙</button>
+          <button class="portfolio-topbar__burger" type="button" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
     </div>
     <div class="blur-orb-1"></div>
     <div class="blur-orb-2"></div>
     <canvas id="confetti-canvas"></canvas>
 
-    <header>
-      <div class="theme-toggle-container">
-        <button id="theme-toggle" class="theme-btn" aria-label="Toggle themes">
-          🌙
-        </button>
-      </div>
-      <p class="eyebrow">Immersive Student Developer Portal</p>
+    <header class="reveal">
+      <p class="eyebrow">Build-002 · Immersive Student Developer Portal</p>
       <h1>Magical Code <span class="accent">Validator</span></h1>
       <p>
         Train your regex instincts, forge a secure identity, and unlock a
@@ -543,15 +556,41 @@
       </div>
     </main>
 
-    <footer>
-      <p>
-        🚀 Magical Code Validator · Designed & Built by
-        <strong>Babatunde Awoyemi</strong>
-      </p>
-      <p class="footer-note">Techbase STEM Academy · Regex mastery in style.</p>
-      <p class="footer-note">Build-002 · Part of the <a href="../index.html">Babatunde Awoyemi Build Log</a>.</p>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <span class="portfolio-topbar__mark">BA</span>
+          <p><strong>Babatunde Awoyemi</strong></p>
+          <p>Part of the running Build Log — a series of complete, working pages.</p>
+        </div>
+        <div class="site-footer__cols">
+          <div class="site-footer__col">
+            <h4>Site</h4>
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../projects.html">Projects</a></li>
+              <li><a href="../about.html">About</a></li>
+              <li><a href="../contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col">
+            <h4>Elsewhere</h4>
+            <ul>
+              <li><a href="https://github.com/babatundeawo" target="_blank" rel="noopener">GitHub ↗</a></li>
+              <li><a href="https://github.com/babatundeawo/personal-projects" target="_blank" rel="noopener">Full repository ↗</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>© <span id="year"></span> Babatunde Awoyemi. Built with vanilla HTML, CSS &amp; JavaScript, no frameworks.</p>
+      </div>
     </footer>
 
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+
+    <script src="../assets/js/portfolio-nav.js"></script>
+    <script src="../assets/js/animations.js"></script>
     <script type="module" src="./src/main.js"></script>
   </body>
 </html>

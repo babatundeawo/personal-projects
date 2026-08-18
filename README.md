@@ -113,8 +113,7 @@ the three stable, shipped builds.
   progress" card that links out to its folder on GitHub.
 - `project-1-portfolio-website/`, `project-2-todo-app/` and
   `project-3-weather-app/` are self-directed experiments: the same brief
-  given to five different AI models each time (ChatGPT, Claude, DeepSeek,
-  Gemini, Grok), kept as comparisons rather than polished builds. Each is
+  given to five different generative AI tools each time, kept as comparisons rather than polished builds. Each is
   referenced from the Projects page as an "Experiment" card with an
   expandable list linking to every individual variant.
 

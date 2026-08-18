@@ -1,51 +1,7 @@
 /* =========================================================
-   SAFE CALCULATOR: "precision workbench" theme
+   SAFE CALCULATOR: reskinned to match the portfolio theme
+   (tokens come from ../assets/css/base.css)
    ========================================================= */
-
-:root {
-  --ink: #101826;
-  --paper: #101826;
-  --surface: #17223a;
-  --surface-2: #1d2b47;
-  --text: #eaf0ff;
-  --text-muted: #a9b6d6;
-  --border: rgba(234, 240, 255, 0.1);
-
-  --copper: #d98c2b;
-  --copper-bright: #f2a93b;
-  --mint: #43c583;
-  --red: #ff7a5c;
-
-  --font-display: "Space Grotesk", "IBM Plex Sans", system-ui, sans-serif;
-  --font-body: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-
-  --radius: 16px;
-  --shadow: 0 25px 55px rgba(0, 0, 0, 0.4);
-}
-
-html[data-theme="light"] {
-  --paper: #f4f6fb;
-  --surface: #ffffff;
-  --surface-2: #f1f4fb;
-  --text: #101826;
-  --text-muted: #55627e;
-  --border: rgba(16, 24, 38, 0.1);
-  --shadow: 0 20px 45px rgba(16, 24, 38, 0.1);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--text);
-  font-family: var(--font-body);
-  line-height: 1.6;
-  transition: background-color 0.25s ease, color 0.25s ease;
-}
 
 h1,
 h2 {
@@ -71,7 +27,7 @@ kbd {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-size: 0.75rem;
-  color: var(--copper);
+  color: var(--amber);
   font-weight: 500;
   margin: 0 0 0.6em;
 }
@@ -170,7 +126,7 @@ kbd {
 }
 
 .calculator__fields input:focus-visible {
-  outline: 2px solid var(--copper);
+  outline: 2px solid var(--amber);
   outline-offset: 1px;
 }
 
@@ -197,14 +153,14 @@ kbd {
 }
 
 .op-btn.is-active {
-  background: var(--copper);
-  border-color: var(--copper);
+  background: var(--amber);
+  border-color: var(--amber);
   color: #101826;
   font-weight: 700;
 }
 
 .op-btn:focus-visible {
-  outline: 2px solid var(--copper-bright);
+  outline: 2px solid var(--amber);
   outline-offset: 2px;
 }
 
@@ -235,12 +191,12 @@ kbd {
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--copper-bright);
+  outline: 2px solid var(--amber);
   outline-offset: 2px;
 }
 
 .btn--primary {
-  background: var(--copper);
+  background: var(--amber);
   color: #101826;
   flex: 1;
   box-shadow: 0 14px 26px rgba(217, 140, 43, 0.28);
@@ -253,8 +209,8 @@ kbd {
 }
 
 .btn--ghost:hover {
-  border-color: var(--copper);
-  color: var(--copper);
+  border-color: var(--amber);
+  color: var(--amber);
 }
 
 .btn--sm {
@@ -330,18 +286,6 @@ kbd {
 
 .notes li {
   margin-bottom: 8px;
-}
-
-/* -------- footer -------- */
-.site-footer {
-  text-align: center;
-  padding: 32px 24px 56px;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-}
-
-.site-footer a {
-  color: var(--copper);
 }
 
 /* -------- responsive -------- */
