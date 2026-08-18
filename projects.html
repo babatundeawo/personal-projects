@@ -74,9 +74,14 @@
         <p class="eyebrow">Log entries</p>
         <h1>Every build, searchable.</h1>
         <p>
-          Three shipped builds, one in progress, and one side-by-side
-          experiment. Filter by topic or search by name to find what
+          Three shipped builds, one in progress, and three side-by-side
+          experiments. Filter by topic or search by name to find what
           you're after, then open the build to use it and read the code.
+        </p>
+        <p class="page-hero__status">
+          <span class="status-dot" aria-hidden="true"></span>
+          More builds are currently in progress — this log gets new entries
+          regularly.
         </p>
       </header>
 
@@ -99,7 +104,7 @@
         </div>
       </div>
 
-      <p class="filter-results" id="filter-results" aria-live="polite">Showing all 5 builds</p>
+      <p class="filter-results" id="filter-results" aria-live="polite">Showing all 7 builds</p>
 
       <div class="project-grid" id="project-grid">
         <article
@@ -219,13 +224,13 @@
 
         <article
           class="project-card project-card--pending"
-          data-tags="experiment html css javascript comparison"
+          data-tags="experiment html css javascript comparison portfolio"
         >
           <div class="project-card__stamp">EXPERIMENT</div>
-          <h3>Portfolio Website: 4 Ways</h3>
+          <h3>Portfolio Website: 5 Ways</h3>
           <p>
-            The same portfolio brief, given to four different AI models
-            (ChatGPT, DeepSeek, Gemini and Grok) to see how each one
+            The same portfolio brief, given to five different AI models
+            (ChatGPT, Claude, DeepSeek, Gemini and Grok) to see how each one
             approaches structure, styling and interaction with plain HTML,
             CSS and JavaScript. A side-by-side study, not part of the main
             build log.
@@ -235,10 +240,96 @@
             <li>HTML/CSS/JS</li>
             <li>Exploration</li>
           </ul>
+          <details class="variant-toggle">
+            <summary>Compare all 5 variants</summary>
+            <ul class="variant-list">
+              <li><a href="project-1-portfolio-website/portfolio-website-chatgpt/index.html">ChatGPT →</a></li>
+              <li><a href="project-1-portfolio-website/portfolio-website-claude/index.html">Claude →</a></li>
+              <li><a href="project-1-portfolio-website/portfolio-website-deepseek/index.html">DeepSeek →</a></li>
+              <li><a href="project-1-portfolio-website/portfolio-website-gemini/index.html">Gemini →</a></li>
+              <li><a href="project-1-portfolio-website/portfolio-website-grok/index.html">Grok →</a></li>
+            </ul>
+          </details>
           <div class="project-card__actions">
             <a
               class="btn btn--ghost btn--sm"
-              href="https://github.com/babatundeawo/personal-projects/tree/main/web-dev-projects"
+              href="https://github.com/babatundeawo/personal-projects/tree/main/project-1-portfolio-website"
+              target="_blank"
+              rel="noopener"
+              >View source on GitHub ↗</a
+            >
+          </div>
+        </article>
+
+        <article
+          class="project-card project-card--pending"
+          data-tags="experiment html css javascript comparison todo-app productivity"
+        >
+          <div class="project-card__stamp">EXPERIMENT</div>
+          <h3>To Do App: 5 Ways</h3>
+          <p>
+            A simple to-do app brief, given to five different AI models
+            (ChatGPT, Claude, DeepSeek, Gemini and Grok) to compare task
+            management UX, state handling and styling choices across each
+            build. A side-by-side study, not part of the main build log.
+          </p>
+          <ul class="project-card__tags">
+            <li>Comparison</li>
+            <li>HTML/CSS/JS</li>
+            <li>Exploration</li>
+          </ul>
+          <details class="variant-toggle">
+            <summary>Compare all 5 variants</summary>
+            <ul class="variant-list">
+              <li><a href="project-2-todo-app/todo-app-project-chatgpt/index.html">ChatGPT →</a></li>
+              <li><a href="project-2-todo-app/todo-app-project-claude/index.html">Claude →</a></li>
+              <li><a href="project-2-todo-app/todo-app-project-deepseek.html">DeepSeek →</a></li>
+              <li><a href="project-2-todo-app/todo-app-project-gemini/index.html">Gemini →</a></li>
+              <li><a href="project-2-todo-app/todo-app-project-grok/index.html">Grok →</a></li>
+            </ul>
+          </details>
+          <div class="project-card__actions">
+            <a
+              class="btn btn--ghost btn--sm"
+              href="https://github.com/babatundeawo/personal-projects/tree/main/project-2-todo-app"
+              target="_blank"
+              rel="noopener"
+              >View source on GitHub ↗</a
+            >
+          </div>
+        </article>
+
+        <article
+          class="project-card project-card--pending"
+          data-tags="experiment html css javascript comparison weather-app api"
+        >
+          <div class="project-card__stamp">EXPERIMENT</div>
+          <h3>Weather App: 5 Ways</h3>
+          <p>
+            A weather-lookup app brief, given to five different AI models
+            (ChatGPT, Claude, DeepSeek, Gemini and Grok) to compare how each
+            handles API data, layout and error states. A side-by-side
+            study, not part of the main build log.
+          </p>
+          <ul class="project-card__tags">
+            <li>Comparison</li>
+            <li>HTML/CSS/JS</li>
+            <li>Exploration</li>
+          </ul>
+          <details class="variant-toggle">
+            <summary>Compare all 5 variants</summary>
+            <ul class="variant-list">
+              <li><a href="project-3-weather-app/weather-app-chatgpt/index.html">ChatGPT →</a></li>
+              <li><a href="project-3-weather-app/weather-app-claude/index.html">Claude →</a></li>
+              <li><a href="project-3-weather-app/weather-app-deepseek.html">DeepSeek →</a></li>
+              <li><a href="project-3-weather-app/weather-app-gemini/index.html">Gemini →</a></li>
+              <li><a href="project-3-weather-app/weather-app-grok/index.html">Grok →</a></li>
+            </ul>
+          </details>
+          <div class="project-card__actions">
+            <a
+              class="btn btn--ghost btn--sm"
+              href="https://github.com/babatundeawo/personal-projects/tree/main/project-3-weather-app"
               target="_blank"
               rel="noopener"
               >View source on GitHub ↗</a
