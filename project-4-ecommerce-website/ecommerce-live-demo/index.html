@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopFront &middot; Live Static Demo</title>
+    <meta
+      name="description"
+      content="A fully client-side ecommerce demo: catalog, cart and checkout, all running with no backend so it works directly on GitHub Pages."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="banner">
+      <p>
+        <strong>Live static demo</strong> &mdash; catalog, cart and checkout run entirely
+        in your browser with <code>localStorage</code>, no backend involved. It's the
+        static stand-in for the four full-stack (React + Node + MongoDB) builds below.
+        <a href="../README.md" target="_blank" rel="noopener">Read why &rarr;</a>
+      </p>
+    </div>
+
+    <header class="topbar">
+      <a href="index.html" class="brand">
+        <span class="brand__mark">SF</span>
+        <span class="brand__text">ShopFront</span>
+      </a>
+      <div class="topbar__search">
+        <input type="search" id="search-input" placeholder="Search products&hellip;" aria-label="Search products" />
+      </div>
+      <div class="topbar__actions">
+        <a href="../../projects.html" class="btn btn--ghost btn--sm">&larr; Back to build log</a>
+        <button id="cart-toggle" class="cart-toggle" type="button" aria-haspopup="dialog" aria-controls="cart-drawer">
+          🛒 <span id="cart-count">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <p class="eyebrow">Build 004b &middot; Live demo</p>
+        <h1>Shop the catalog, no server required.</h1>
+        <p>
+          Browse, filter, add to cart and check out. Every order is generated locally
+          and saved to your browser, so refreshing the page won't lose your cart.
+        </p>
+      </section>
+
+      <div class="filter-bar" id="category-filter" role="group" aria-label="Filter by category"></div>
+
+      <p class="results-label" id="results-label" aria-live="polite"></p>
+
+      <div class="product-grid" id="product-grid"></div>
+
+      <div class="empty-state" id="empty-state" hidden>
+        <h3>No products match that search</h3>
+        <p>Try a different keyword or clear the category filter.</p>
+      </div>
+    </main>
+
+    <footer class="site-footer-mini">
+      <p>ShopFront is a self-contained demo &mdash; part of the Ecommerce Website: 4 Ways experiment.</p>
+    </footer>
+
+    <!-- Cart drawer -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping cart">
+      <div class="cart-drawer__head">
+        <h2>Your cart</h2>
+        <button id="cart-close" class="icon-btn" type="button" aria-label="Close cart">&times;</button>
+      </div>
+      <div class="cart-drawer__body" id="cart-items"></div>
+      <div class="cart-drawer__foot">
+        <div class="cart-drawer__total">
+          <span>Total</span>
+          <strong id="cart-total">$0.00</strong>
+        </div>
+        <button id="checkout-btn" class="btn btn--primary" type="button" disabled>Checkout</button>
+      </div>
+    </aside>
+
+    <!-- Checkout modal -->
+    <div class="modal-overlay" id="checkout-overlay">
+      <div class="modal" role="dialog" aria-modal="true" aria-label="Checkout">
+        <button id="checkout-close" class="icon-btn modal__close" type="button" aria-label="Close checkout">&times;</button>
+        <div id="checkout-form-view">
+          <h2>Checkout</h2>
+          <p class="modal__hint">This is a simulated checkout &mdash; no payment is processed and no data leaves your browser.</p>
+          <form id="checkout-form">
+            <label>Full name<input type="text" name="name" required placeholder="Ada Lovelace" /></label>
+            <label>Email<input type="email" name="email" required placeholder="ada@example.com" /></label>
+            <label>Delivery address<input type="text" name="address" required placeholder="12 Marina Road, Lagos" /></label>
+            <button type="submit" class="btn btn--primary">Place order</button>
+          </form>
+        </div>
+        <div id="checkout-success-view" hidden>
+          <h2>Order confirmed 🎉</h2>
+          <p id="order-summary"></p>
+          <p class="modal__hint">Saved locally as order <strong id="order-id"></strong>. No real purchase was made.</p>
+          <button id="order-close-btn" class="btn btn--primary">Keep shopping</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

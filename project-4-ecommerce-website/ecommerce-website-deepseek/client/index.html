@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopVerse – E‑Commerce</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo"><i class="fas fa-store"></i> ShopVerse</div>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search products..." />
+      <button id="searchBtn"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+      <button class="wishlist-icon" id="wishlistIcon"><i class="fas fa-heart"></i><span id="wishlistBadge" class="badge">0</span></button>
+      <button class="cart-icon" id="cartIcon"><i class="fas fa-shopping-cart"></i><span id="cartBadge" class="badge">0</span></button>
+      <button class="auth-btn" id="authBtn"><i class="fas fa-user"></i> <span id="authLabel">Login</span></button>
+      <button class="admin-link hidden" id="adminLink"><i class="fas fa-tachometer-alt"></i> Admin</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="appContent"></div>
+  </main>
+
+  <!-- Cart Overlay -->
+  <div class="cart-overlay" id="cartOverlay">
+    <div class="cart-sidebar">
+      <div class="cart-header">
+        <h2>🛒 Your Cart</h2>
+        <button class="cart-close" id="cartClose">&times;</button>
+      </div>
+      <ul class="cart-items" id="cartItems"></ul>
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotalPrice">$0.00</span>
+      </div>
+      <button class="checkout-btn" id="proceedCheckout">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- Auth Modal -->
+  <div class="auth-overlay" id="authOverlay">
+    <div class="auth-modal">
+      <button class="close-auth" id="authClose">&times;</button>
+      <h2 id="authModalTitle">Login</h2>
+      <input type="text" id="authUsername" placeholder="Username" />
+      <input type="password" id="authPassword" placeholder="Password" />
+      <button class="auth-btn-submit" id="authSubmit">Login</button>
+      <div class="toggle-auth">
+        <span id="authToggleText">Don't have an account? <span id="authToggleLink">Register</span></span>
+      </div>
+      <div id="authError" style="color:#ef4444; margin-top:10px; text-align:center; font-size:14px;"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

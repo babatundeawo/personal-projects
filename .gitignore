@@ -2,3 +2,14 @@
 Thumbs.db
 *.log
 .vscode/
+
+# Node / full-stack sub-projects (project-4-ecommerce-website/*)
+node_modules/
+dist/
+build/
+.env
+!.env.example
+
+# Python (AI-Agent-Bootcamp)
+__pycache__/
+*.pyc

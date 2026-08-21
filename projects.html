@@ -6,7 +6,7 @@
     <title>Projects · Babatunde Awoyemi: Build Log</title>
     <meta
       name="description"
-      content="Every build in the log: a safe calculator, a gamified form validator, a student report card dashboard, and a Python AI agent bootcamp in progress. Search and filter by topic."
+      content="Every build in the log: a safe calculator, a gamified form validator, a student report card dashboard, a live static ecommerce demo, and a Python AI agent bootcamp in progress. Search and filter by topic."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -74,7 +74,7 @@
         <p class="eyebrow">Log entries</p>
         <h1>Every build, searchable.</h1>
         <p>
-          Three shipped builds, one in progress, and three side-by-side
+          Three shipped builds, one in progress, and four side-by-side
           experiments. Filter by topic or search by name to find what
           you're after, then open the build to use it and read the code.
         </p>
@@ -100,11 +100,12 @@
           <button class="filter-chip" type="button" data-tag="accessibility" aria-pressed="false">Accessibility</button>
           <button class="filter-chip" type="button" data-tag="data" aria-pressed="false">Data</button>
           <button class="filter-chip" type="button" data-tag="python" aria-pressed="false">Python</button>
+          <button class="filter-chip" type="button" data-tag="fullstack" aria-pressed="false">Full-stack</button>
           <button class="filter-chip" type="button" data-tag="experiment" aria-pressed="false">Experiments</button>
         </div>
       </div>
 
-      <p class="filter-results" id="filter-results" aria-live="polite">Showing all 7 builds</p>
+      <p class="filter-results" id="filter-results" aria-live="polite">Showing all 8 builds</p>
 
       <div class="project-grid" id="project-grid">
         <article
@@ -333,6 +334,46 @@
               target="_blank"
               rel="noopener"
               >View source on GitHub ↗</a
+            >
+          </div>
+        </article>
+
+        <article
+          class="project-card"
+          data-tags="fullstack experiment react node express mongodb ecommerce shop cart checkout"
+        >
+          <div class="project-card__stamp">EXPERIMENT · LIVE DEMO</div>
+          <h3>Ecommerce Website: 4 Ways</h3>
+          <p>
+            A full-stack ecommerce brief (product catalog, cart, checkout, auth,
+            orders), given to four different AI models as a React + Node + MongoDB
+            build. Full-stack apps can't run on static GitHub Pages, so alongside the
+            four source variants there's a fifth, hand-built entry: a fully
+            client-side static demo of the same idea that actually works live here.
+          </p>
+          <ul class="project-card__tags">
+            <li>Full-stack</li>
+            <li>React / Node</li>
+            <li>Live static demo</li>
+          </ul>
+          <details class="variant-toggle">
+            <summary>Compare all 4 source variants + the live demo</summary>
+            <ul class="variant-list">
+              <li><a href="project-4-ecommerce-website/ecommerce-live-demo/index.html" target="_blank" rel="noopener"><strong>Live demo (no setup) →</strong></a></li>
+              <li><a href="https://github.com/babatundeawo/personal-projects/tree/main/project-4-ecommerce-website/ecommerce-website-chatgpt" target="_blank" rel="noopener">Sample 1 — source (chatgpt) ↗</a></li>
+              <li><a href="https://github.com/babatundeawo/personal-projects/tree/main/project-4-ecommerce-website/ecommerce-website-deepseek" target="_blank" rel="noopener">Sample 2 — source (deepseek) ↗</a></li>
+              <li><a href="https://github.com/babatundeawo/personal-projects/tree/main/project-4-ecommerce-website/ecommerce-website-gemini" target="_blank" rel="noopener">Sample 3 — source (gemini) ↗</a></li>
+              <li><a href="https://github.com/babatundeawo/personal-projects/tree/main/project-4-ecommerce-website/ecommerce-website-grok" target="_blank" rel="noopener">Sample 4 — source (grok) ↗</a></li>
+            </ul>
+          </details>
+          <div class="project-card__actions">
+            <a class="btn btn--primary btn--sm" href="project-4-ecommerce-website/ecommerce-live-demo/index.html" target="_blank" rel="noopener">Open live demo →</a>
+            <a
+              class="btn btn--ghost btn--sm"
+              href="https://github.com/babatundeawo/personal-projects/tree/main/project-4-ecommerce-website"
+              target="_blank"
+              rel="noopener"
+              >Why 4 sources, 1 demo? ↗</a
             >
           </div>
         </article>

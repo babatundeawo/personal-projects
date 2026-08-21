@@ -1,0 +1,1 @@
+export const users=[];export const orders=[];export const products=[{_id:"1",name:"Aero Wireless Headphones",price:89.99,category:"Electronics",stock:18},{_id:"2",name:"Urban Runner Sneakers",price:74.5,category:"Fashion",stock:12},{_id:"3",name:"Minimal Desk Lamp",price:39,category:"Home",stock:25}];

@@ -65,12 +65,21 @@ personal-projects/
 │   ├── todo-app-project-gemini/
 │   └── todo-app-project-grok/
 │
-└── project-3-weather-app/          Experiment: 5 AI models, one weather app brief
-    ├── weather-app-chatgpt/
-    ├── weather-app-claude/
-    ├── weather-app-deepseek.html        (single-file build, no folder)
-    ├── weather-app-gemini/
-    └── weather-app-grok/
+├── project-3-weather-app/          Experiment: 5 AI models, one weather app brief
+│   ├── weather-app-chatgpt/
+│   ├── weather-app-claude/
+│   ├── weather-app-deepseek.html        (single-file build, no folder)
+│   ├── weather-app-gemini/
+│   └── weather-app-grok/
+│
+└── project-4-ecommerce-website/    Experiment: 4 AI models, one full-stack ecommerce
+    │                                brief (React + Node + MongoDB), plus a 5th,
+    │                                hand-built entry that actually runs on Pages
+    ├── ecommerce-website-chatgpt/
+    ├── ecommerce-website-deepseek/
+    ├── ecommerce-website-gemini/
+    ├── ecommerce-website-grok/
+    └── ecommerce-live-demo/         Static, client-only demo — no backend needed
 ```
 
 More experiment folders will be added here as new briefs are run — this
@@ -116,6 +125,15 @@ the three stable, shipped builds.
   given to five different generative AI tools each time, kept as comparisons rather than polished builds. Each is
   referenced from the Projects page as an "Experiment" card with an
   expandable list linking to every individual variant.
+- `project-4-ecommerce-website/` is the same idea, but the brief asked for a
+  **full-stack** app (React + Node + MongoDB), which is where "just open
+  `index.html`" stops working — none of the four AI-generated variants can run
+  on static GitHub Pages hosting. That folder has its own
+  [README](./project-4-ecommerce-website/README.md) explaining why, plus a
+  fifth entry, `ecommerce-live-demo/`, that's a fully static, client-only
+  rebuild of the same catalog/cart/checkout flow so there's still something
+  to click "Open build" on. **This is the one to look at first if you just
+  want to see the ecommerce work live: [`project-4-ecommerce-website/ecommerce-live-demo/`](./project-4-ecommerce-website/ecommerce-live-demo/index.html).**
 
 More projects are currently being built and will be added to this log —
 both as `project-N-*` experiments and as new standalone builds — as they
@@ -126,3 +144,5 @@ ship.
 - [`safe-calculator/README.md`](./safe-calculator/README.md)
 - [`smart-form-validator/README.md`](./smart-form-validator/README.md)
 - [`student-report-card/README.md`](./student-report-card/README.md)
+- [`project-4-ecommerce-website/README.md`](./project-4-ecommerce-website/README.md) — start here for the ecommerce experiment
+- [`project-4-ecommerce-website/ecommerce-live-demo/README.md`](./project-4-ecommerce-website/ecommerce-live-demo/README.md)
