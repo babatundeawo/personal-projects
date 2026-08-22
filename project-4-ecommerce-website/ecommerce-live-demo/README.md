@@ -2,12 +2,11 @@
 
 The one ecommerce build in this repo that actually runs on GitHub Pages.
 
-The four other variants in `project-4-ecommerce-website/` (`ecommerce-website-chatgpt`,
-`ecommerce-website-deepseek`, `ecommerce-website-gemini`, `ecommerce-website-grok`) are
-full MERN-stack apps: a React client that needs a build step (Vite or Create React App)
-talking to an Express + MongoDB server. GitHub Pages only serves static files, so none
-of them can run there as-is — see the [project README](../README.md) for how to run
-those locally instead.
+The other variants in `project-4-ecommerce-website/` (`ecommerce-website-variant-1`
+through `ecommerce-website-variant-5`) are full MERN-stack apps: a React client that
+needs a build step (Vite or Create React App) talking to an Express + MongoDB server.
+GitHub Pages only serves static files, so none of them can run there as-is — see the
+[project README](../README.md) for how to run those locally instead.
 
 This folder is a deliberately separate, fully static build: same product-catalog /
 cart / checkout shape, zero backend, zero build step. Open `index.html` directly, or
@@ -26,6 +25,26 @@ serve the folder, and it works.
 ## Stack
 
 Vanilla HTML, CSS and JavaScript. No dependencies, no `npm install`, no build tool.
+
+## Run it locally
+
+No installation needed — just open it.
+
+**Easiest**: double-click `index.html`, or drag it into a browser window.
+
+**Or serve it properly** (recommended, avoids some browsers' quirks with
+`file://` URLs):
+
+```bash
+cd ecommerce-live-demo
+npx serve .
+```
+
+Then open the URL it prints, typically `http://localhost:3000`.
+
+Once GitHub Pages serves the whole repo, this folder works at
+`https://<your-username>.github.io/<repo-name>/project-4-ecommerce-website/ecommerce-live-demo/`
+with no extra configuration.
 
 ## Files
 

@@ -51,34 +51,36 @@ personal-projects/
 │
 ├── AI-Agent-Bootcamp/               In progress, kept untouched, see below
 │
-├── project-1-portfolio-website/    Experiment: 5 AI models, one portfolio brief
-│   ├── portfolio-website-chatgpt/
-│   ├── portfolio-website-claude/
-│   ├── portfolio-website-deepseek/
-│   ├── portfolio-website-gemini/
-│   └── portfolio-website-grok/
+├── project-1-portfolio-website/    Experiment: 5-way comparison, one portfolio brief
+│   ├── portfolio-website-variant-1/
+│   ├── portfolio-website-variant-2/
+│   ├── portfolio-website-variant-3/
+│   ├── portfolio-website-variant-4/
+│   └── portfolio-website-variant-5/
 │
-├── project-2-todo-app/             Experiment: 5 AI models, one to-do app brief
-│   ├── todo-app-project-chatgpt/
-│   ├── todo-app-project-claude/
-│   ├── todo-app-project-deepseek.html   (single-file build, no folder)
-│   ├── todo-app-project-gemini/
-│   └── todo-app-project-grok/
+├── project-2-todo-app/             Experiment: 5-way comparison, one to-do app brief
+│   ├── todo-app-project-variant-1/
+│   ├── todo-app-project-variant-2/
+│   ├── todo-app-project-variant-3.html   (single-file build, no folder)
+│   ├── todo-app-project-variant-4/
+│   └── todo-app-project-variant-5/
 │
-├── project-3-weather-app/          Experiment: 5 AI models, one weather app brief
-│   ├── weather-app-chatgpt/
-│   ├── weather-app-claude/
-│   ├── weather-app-deepseek.html        (single-file build, no folder)
-│   ├── weather-app-gemini/
-│   └── weather-app-grok/
+├── project-3-weather-app/          Experiment: 5-way comparison, one weather app brief
+│   ├── weather-app-variant-1/
+│   ├── weather-app-variant-2/
+│   ├── weather-app-variant-3.html        (single-file build, no folder)
+│   ├── weather-app-variant-4/
+│   └── weather-app-variant-5/
 │
-└── project-4-ecommerce-website/    Experiment: 4 AI models, one full-stack ecommerce
-    │                                brief (React + Node + MongoDB), plus a 5th,
-    │                                hand-built entry that actually runs on Pages
-    ├── ecommerce-website-chatgpt/
-    ├── ecommerce-website-deepseek/
-    ├── ecommerce-website-gemini/
-    ├── ecommerce-website-grok/
+└── project-4-ecommerce-website/    Experiment: 5-way comparison, one full-stack
+    │                                ecommerce brief (React + Node + MongoDB),
+    │                                plus a 6th, hand-built entry that actually
+    │                                runs on Pages
+    ├── ecommerce-website-variant-1/
+    ├── ecommerce-website-variant-2/
+    ├── ecommerce-website-variant-3/
+    ├── ecommerce-website-variant-4/
+    ├── ecommerce-website-variant-5/
     └── ecommerce-live-demo/         Static, client-only demo — no backend needed
 ```
 
@@ -122,15 +124,16 @@ the three stable, shipped builds.
   progress" card that links out to its folder on GitHub.
 - `project-1-portfolio-website/`, `project-2-todo-app/` and
   `project-3-weather-app/` are self-directed experiments: the same brief
-  given to five different generative AI tools each time, kept as comparisons rather than polished builds. Each is
-  referenced from the Projects page as an "Experiment" card with an
-  expandable list linking to every individual variant.
+  attempted five separate times as an independent comparison, kept as
+  comparisons rather than polished builds. Each is referenced from the
+  Projects page as an "Experiment" card with an expandable list linking to
+  every individual variant.
 - `project-4-ecommerce-website/` is the same idea, but the brief asked for a
   **full-stack** app (React + Node + MongoDB), which is where "just open
-  `index.html`" stops working — none of the four AI-generated variants can run
+  `index.html`" stops working — none of the five variants can run
   on static GitHub Pages hosting. That folder has its own
   [README](./project-4-ecommerce-website/README.md) explaining why, plus a
-  fifth entry, `ecommerce-live-demo/`, that's a fully static, client-only
+  sixth entry, `ecommerce-live-demo/`, that's a fully static, client-only
   rebuild of the same catalog/cart/checkout flow so there's still something
   to click "Open build" on. **This is the one to look at first if you just
   want to see the ecommerce work live: [`project-4-ecommerce-website/ecommerce-live-demo/`](./project-4-ecommerce-website/ecommerce-live-demo/index.html).**

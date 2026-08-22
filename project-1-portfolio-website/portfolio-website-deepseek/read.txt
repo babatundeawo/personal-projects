@@ -1,9 +1,0 @@
-portfolio-website/
-├── index.html
-├── style.css
-├── script.js
-├── images/
-│   ├── project1.png   (placeholder)
-│   ├── project2.png   (placeholder)
-│   └── profile.png    (placeholder)
-└── resume.pdf         (placeholder)
