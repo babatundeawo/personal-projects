@@ -51,6 +51,18 @@ personal-projects/
 │
 ├── AI-Agent-Bootcamp/               In progress, kept untouched, see below
 │
+├── python-programming/              Learning archive: standalone Python
+│   │                                exercises, organised by topic (games,
+│   │                                calculators, management systems,
+│   │                                validators, data science/ML)
+│   └── README.md
+│
+├── web-development/                 Learning archive: HTML/CSS/JS course
+│   │                                work and mini-apps (CodeJIKA,
+│   │                                FreeCodeCamp, practice files, an
+│   │                                early portfolio, standalone tools)
+│   └── README.md
+│
 ├── project-1-portfolio-website/    Experiment: 5-way comparison, one portfolio brief
 │   ├── portfolio-website-variant-1/
 │   ├── portfolio-website-variant-2/
@@ -87,6 +99,14 @@ personal-projects/
 More experiment folders will be added here as new briefs are run — this
 repo is actively growing.
 
+`python-programming/` and `web-development/` are a different kind of
+folder again: not shipped builds and not side-by-side experiments, but
+the running **learning archive** behind them — every standalone exercise,
+course project and mini-app, kept and organised rather than discarded.
+Each has its own README indexing every file:
+[`python-programming/README.md`](./python-programming/README.md) and
+[`web-development/README.md`](./web-development/README.md).
+
 ## How the pages fit together
 
 - The hub is a genuine **four-page site**: Home (`index.html`), Projects
@@ -121,7 +141,10 @@ These folders are separate, actively-developing projects and sit outside
 the three stable, shipped builds.
 
 - `AI-Agent-Bootcamp/` is referenced from the Projects page as an "in
-  progress" card that links out to its folder on GitHub.
+  progress" card that links out to its folder on GitHub. It has its own
+  [README](./AI-Agent-Bootcamp/README.md) that documents every task
+  (`Project-00` through `Project-06`) individually, with a direct link to
+  every script.
 - `project-1-portfolio-website/`, `project-2-todo-app/` and
   `project-3-weather-app/` are self-directed experiments: the same brief
   attempted five separate times as an independent comparison, kept as
@@ -142,10 +165,104 @@ More projects are currently being built and will be added to this log —
 both as `project-N-*` experiments and as new standalone builds — as they
 ship.
 
-## Individual project docs
+## Full project & task index
 
-- [`safe-calculator/README.md`](./safe-calculator/README.md)
-- [`smart-form-validator/README.md`](./smart-form-validator/README.md)
-- [`student-report-card/README.md`](./student-report-card/README.md)
-- [`project-4-ecommerce-website/README.md`](./project-4-ecommerce-website/README.md) — start here for the ecommerce experiment
-- [`project-4-ecommerce-website/ecommerce-live-demo/README.md`](./project-4-ecommerce-website/ecommerce-live-demo/README.md)
+Every build, every variant, every bootcamp task, and every learning-archive
+file, linked directly — this is the "everything, referenced" version of
+the tree above.
+
+### Shipped builds
+
+| Build | Live page | Source / README |
+|---|---|---|
+| Build-001 — Safe Calculator | [Open](./safe-calculator/index.html) | [README](./safe-calculator/README.md) |
+| Build-002 — Magical Code Validator (smart form validator) | [Open](./smart-form-validator/index.html) | [README](./smart-form-validator/README.md) |
+| Build-003 — Student Report Card | [Open](./student-report-card/index.html) | [README](./student-report-card/README.md) |
+
+### Build-004 — AI Agent Bootcamp (in progress)
+
+Python-only, not a browser page — see the
+[bootcamp README](./AI-Agent-Bootcamp/README.md) for the full write-up.
+Every task:
+
+- [Project-00 — Python fundamentals](./AI-Agent-Bootcamp/Project-00) (7 warm-up scripts)
+- [Project-01 — Student assistant](./AI-Agent-Bootcamp/Project-01/student_assistant.py)
+- [Project-02 — First AI chat](./AI-Agent-Bootcamp/Project-02/ai_chat.py)
+- [Project-03 — Chat loop + memory](./AI-Agent-Bootcamp/Project-03)
+- [Project-04 — A calculator tool](./AI-Agent-Bootcamp/Project-04)
+- [Project-05 — Deciding when to use the tool](./AI-Agent-Bootcamp/Project-05)
+- [Project-06 — LLM-driven decisions](./AI-Agent-Bootcamp/Project-06)
+
+### Experiment 1 — Portfolio Website: 5 Ways
+
+Same brief, five independent builds. [Folder on GitHub](https://github.com/babatundeawo/personal-projects/tree/main/project-1-portfolio-website)
+
+| Variant | Live page | README |
+|---|---|---|
+| 1 | [Open](./project-1-portfolio-website/portfolio-website-variant-1/index.html) | [README](./project-1-portfolio-website/portfolio-website-variant-1/README.md) |
+| 2 | [Open](./project-1-portfolio-website/portfolio-website-variant-2/index.html) | [README](./project-1-portfolio-website/portfolio-website-variant-2/README.md) |
+| 3 | [Open](./project-1-portfolio-website/portfolio-website-variant-3/index.html) | [README](./project-1-portfolio-website/portfolio-website-variant-3/README.md) |
+| 4 | [Open](./project-1-portfolio-website/portfolio-website-variant-4/index.html) | [README](./project-1-portfolio-website/portfolio-website-variant-4/README.md) |
+| 5 | [Open](./project-1-portfolio-website/portfolio-website-variant-5/index.html) | [README](./project-1-portfolio-website/portfolio-website-variant-5/README.md) |
+
+### Experiment 2 — To Do App: 5 Ways
+
+Same brief, five independent builds. [Folder on GitHub](https://github.com/babatundeawo/personal-projects/tree/main/project-2-todo-app)
+
+| Variant | Live page | README |
+|---|---|---|
+| 1 | [Open](./project-2-todo-app/todo-app-project-variant-1/index.html) | [README](./project-2-todo-app/todo-app-project-variant-1/README.md) |
+| 2 | [Open](./project-2-todo-app/todo-app-project-variant-2/index.html) | [README](./project-2-todo-app/todo-app-project-variant-2/README.md) |
+| 3 | [Open](./project-2-todo-app/todo-app-project-variant-3.html) | *single-file build, no folder/README* |
+| 4 | [Open](./project-2-todo-app/todo-app-project-variant-4/index.html) | [README](./project-2-todo-app/todo-app-project-variant-4/README.md) |
+| 5 | [Open](./project-2-todo-app/todo-app-project-variant-5/index.html) | [README](./project-2-todo-app/todo-app-project-variant-5/README.md) |
+
+### Experiment 3 — Weather App: 5 Ways
+
+Same brief, five independent builds. [Folder on GitHub](https://github.com/babatundeawo/personal-projects/tree/main/project-3-weather-app)
+
+| Variant | Live page | README |
+|---|---|---|
+| 1 | [Open](./project-3-weather-app/weather-app-variant-1/index.html) | [README](./project-3-weather-app/weather-app-variant-1/README.md) |
+| 2 | [Open](./project-3-weather-app/weather-app-variant-2/index.html) | [README](./project-3-weather-app/weather-app-variant-2/README.md) |
+| 3 | [Open](./project-3-weather-app/weather-app-variant-3.html) | *single-file build, no folder/README* |
+| 4 | [Open](./project-3-weather-app/weather-app-variant-4/index.html) | [README](./project-3-weather-app/weather-app-variant-4/README.md) |
+| 5 | [Open](./project-3-weather-app/weather-app-variant-5/index.html) | [README](./project-3-weather-app/weather-app-variant-5/README.md) |
+
+### Experiment 4 — Ecommerce Website: 5 Ways + live demo
+
+Full-stack (React + Node + MongoDB), so these don't run on GitHub Pages —
+start with the [project README](./project-4-ecommerce-website/README.md), which
+explains why and how to run each one locally.
+
+| Variant | Stack | README |
+|---|---|---|
+| Live demo (static, no setup) | Vanilla HTML/CSS/JS | [Open](./project-4-ecommerce-website/ecommerce-live-demo/index.html) · [README](./project-4-ecommerce-website/ecommerce-live-demo/README.md) |
+| 1 | React + Vite / Express (in-memory) | [README](./project-4-ecommerce-website/ecommerce-website-variant-1/README.md) |
+| 2 | Static HTML+JS / Express + MongoDB | [README](./project-4-ecommerce-website/ecommerce-website-variant-2/README.md) |
+| 3 | React (CRA-style) / Express + MongoDB | [README](./project-4-ecommerce-website/ecommerce-website-variant-3/README.md) |
+| 4 | React + Vite (mock data) / Express skeleton | [README](./project-4-ecommerce-website/ecommerce-website-variant-4/README.md) |
+| 5 | React + Vite / Express + MongoDB + JWT + admin | [README](./project-4-ecommerce-website/ecommerce-website-variant-5/README.md) |
+
+### Learning archives
+
+Not shipped builds or experiments — the full set of standalone exercises
+kept and organised rather than discarded. Every file is indexed
+individually in each folder's own README.
+
+- **[`python-programming/`](./python-programming/README.md)** — standalone
+  Python exercises, organised by topic:
+  [games](./python-programming/README.md#games),
+  [calculators & converters](./python-programming/README.md#calculators-and-converters),
+  [management systems](./python-programming/README.md#management-systems),
+  [validators & utilities](./python-programming/README.md#validators-and-utilities),
+  [data science & ML](./python-programming/README.md#data-science-and-ml),
+  [misc & drafts](./python-programming/README.md#misc-and-drafts).
+- **[`web-development/`](./web-development/README.md)** — HTML/CSS/JS
+  course work and mini-apps:
+  [mini-apps](./web-development/README.md#mini-apps),
+  [CodeJIKA](./web-development/README.md#codejika),
+  [FreeCodeCamp](./web-development/README.md#freecodecamp),
+  [HTML/CSS practice files](./web-development/README.md#html-css-practice-files),
+  [an early Portfolio page](./web-development/README.md#portfolio),
+  [Simple Game](./web-development/README.md#simple-game).
