@@ -3,13 +3,13 @@ Thumbs.db
 *.log
 .vscode/
 
-# Node / full-stack sub-projects (project-4-ecommerce-website/*)
+# Node / full-stack sub-projects (experiments/ecommerce-website/*)
 node_modules/
 dist/
 build/
 .env
 !.env.example
 
-# Python (AI-Agent-Bootcamp)
+# Python (in-progress/ai-agent-bootcamp)
 __pycache__/
 *.pyc
