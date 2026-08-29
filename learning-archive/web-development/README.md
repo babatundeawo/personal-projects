@@ -3,17 +3,38 @@
 A working archive of HTML/CSS/JS learning projects, course exercises, and
 standalone mini-apps — the practice reps behind the polished builds in
 the repo root. Everything here is plain HTML/CSS/JS with no build step;
-open any `index.html` (or the file directly) in a browser.
+open any `.html` file directly in a browser.
 
-## mini-apps/
+**One project, one folder.** Every standalone project here lives in its
+own top-level folder, flat, directly under this one — no shared
+"mini-apps" or "practice files" bucket to decide between. To add a new
+one at any time, just create a new folder for it. The only exceptions are
+`CodeJIKA/` and `FreeCodeCamp/`, which are multi-part courses: each
+numbered project inside them is already its own independent folder, just
+grouped under the course it came from.
 
-Small standalone single-page tools, each self-contained in one HTML file.
+## Standalone mini-apps
 
-- [`data-cleaner-and-validator.html`](./mini-apps/data-cleaner-and-validator.html) — "Data Cleaner & Validator": paste in messy data and clean/validate it client-side
-- [`smart-weather-logger-dashboard.html`](./mini-apps/smart-weather-logger-dashboard.html) — "Smart Weather Logger": a dashboard for logging and reviewing weather entries
-- [`smartsave-finance-forecaster.html`](./mini-apps/smartsave-finance-forecaster.html) — "SmartSave Finance Forecaster": a personal-finance forecasting tool
-- [`church-attendance-app-v1.html`](./mini-apps/church-attendance-app-v1.html) — Church Attendance App, first version
-- [`church-attendance-app-v2.html`](./mini-apps/church-attendance-app-v2.html) — Church Attendance App, revised version with more features
+- [`data-cleaner-and-validator/`](./data-cleaner-and-validator) — "Data Cleaner & Validator": paste in messy data and clean/validate it client-side
+- [`smart-weather-logger-dashboard/`](./smart-weather-logger-dashboard) — "Smart Weather Logger": a dashboard for logging and reviewing weather entries
+- [`smartsave-finance-forecaster/`](./smartsave-finance-forecaster) — "SmartSave Finance Forecaster": a personal-finance forecasting tool
+- [`church-attendance-app/`](./church-attendance-app) — Church Attendance App, both versions kept together (`church-attendance-app-v1.html`, `church-attendance-app-v2.html`)
+- [`portfolio/`](./Portfolio) — "Babatunde Ayoola Awoyemi - Portfolio", an early standalone portfolio page (predates the multi-page site in the repo root)
+- [`simple-game/`](./Simple%20Game) — "Cosmic Color Adventure", a small browser game (`index.html` + `script.js` + `style.css`)
+
+## Technique demos
+
+Short, focused single-file demos — each one isolates a single pattern.
+
+- [`animated-button/`](./animated-button) — a hover-animated button
+- [`animated-button-pressed-effect/`](./animated-button-pressed-effect) — a button with a pressed/active effect
+- [`animated-button-ripple-effect/`](./animated-button-ripple-effect) — a button with a click ripple effect
+- [`dropdown-menu/`](./dropdown-menu) — a CSS dropdown menu
+- [`responsive-form/`](./responsive-form) — a form that adapts to screen width
+- [`responsive-image-gallery/`](./responsive-image-gallery) — a responsive image grid/gallery
+- [`responsive-layout/`](./responsive-layout) — a full responsive page layout (header/nav/columns)
+- [`responsive-website/`](./responsive-website) — a small responsive site template
+- [`responsive-website-sample/`](./responsive-website-sample) — a second responsive layout sample
 
 ## CodeJIKA/
 
@@ -45,26 +66,3 @@ Responsive Web Design curriculum exercises, in course order.
 | 13 | Piano | [Open](./FreeCodeCamp/13%20Piano/index.html) |
 
 *(12 isn't present in the archive — numbering follows the original course.)*
-
-## html-css-practice-files/
-
-Short, focused HTML/CSS technique demos — each one isolates a single
-pattern.
-
-- [`animatedButton.html`](./html-css-practice-files/animatedButton.html) — a hover-animated button
-- [`animatedButtonPressedEffect.html`](./html-css-practice-files/animatedButtonPressedEffect.html) — a button with a pressed/active effect
-- [`animatedButtonRippleEffect.html`](./html-css-practice-files/animatedButtonRippleEffect.html) — a button with a click ripple effect
-- [`dropdown.html`](./html-css-practice-files/dropdown.html) — a CSS dropdown menu
-- [`responsiveForm.html`](./html-css-practice-files/responsiveForm.html) — a form that adapts to screen width
-- [`responsiveImageGallery.html`](./html-css-practice-files/responsiveImageGallery.html) — a responsive image grid/gallery
-- [`responsiveLayout.html`](./html-css-practice-files/responsiveLayout.html) — a full responsive page layout (header/nav/columns)
-- [`responsiveWebsite.html`](./html-css-practice-files/responsiveWebsite.html) — a small responsive site template
-- [`responsiveWebsitesample.html`](./html-css-practice-files/responsiveWebsitesample.html) — a second responsive layout sample
-
-## Portfolio/
-
-- [`portfolio.html`](./Portfolio/portfolio.html) — "Babatunde Ayoola Awoyemi - Portfolio", an early standalone portfolio page (predates the multi-page site in the repo root)
-
-## Simple Game/
-
-- [`index.html`](./Simple%20Game/index.html) — "Cosmic Color Adventure", a small browser game (`script.js` + `style.css`)

@@ -80,13 +80,19 @@ personal-projects/
 │       └── README.md              Indexes every task
 │
 └── learning-archive/              Standalone practice exercises, kept and organised
-    ├── python-programming/        Python exercises by topic (games, calculators,
-    │   │                          management systems, validators, data science/ML)
-    │   └── README.md              Indexes every script
-    └── web-development/           HTML/CSS/JS course work and mini-apps (CodeJIKA,
-        │                          FreeCodeCamp, practice files, an early portfolio,
-        │                          standalone tools)
-        └── README.md              Indexes every file
+    ├── python-programming/        One folder per project (flat, no topic nesting) —
+    │   ├── README.md              games, calculators, management systems, validators,
+    │   ├── car-game/               data science/ML — see the README for the full index
+    │   ├── simple-calculator/
+    │   ├── bank-account-management/
+    │   └── … (one folder per project, add new ones freely)
+    └── web-development/           One folder per standalone project, plus two
+        ├── README.md               multi-part course folders (each numbered
+        ├── data-cleaner-and-validator/   sub-project already its own folder)
+        ├── responsive-form/
+        ├── CodeJIKA/
+        ├── FreeCodeCamp/
+        └── … (one folder per project, add new ones freely)
 ```
 
 ## How the pages fit together
@@ -232,7 +238,7 @@ rather than discarded. Every file is indexed individually in each
 folder's own README.
 
 - **[`python-programming/`](./learning-archive/python-programming/README.md)** — standalone
-  Python exercises, organised by topic:
+  Python exercises, each project in its own folder:
   [games](./learning-archive/python-programming/README.md#games),
   [calculators & converters](./learning-archive/python-programming/README.md#calculators-and-converters),
   [management systems](./learning-archive/python-programming/README.md#management-systems),
@@ -240,14 +246,16 @@ folder's own README.
   [data science & ML](./learning-archive/python-programming/README.md#data-science-and-ml),
   [misc & drafts](./learning-archive/python-programming/README.md#misc-and-drafts).
 - **[`web-development/`](./learning-archive/web-development/README.md)** — HTML/CSS/JS
-  course work and mini-apps:
-  [mini-apps](./learning-archive/web-development/README.md#mini-apps),
+  course work and mini-apps, each project in its own folder:
+  [standalone mini-apps](./learning-archive/web-development/README.md#standalone-mini-apps),
+  [HTML/CSS technique demos](./learning-archive/web-development/README.md#technique-demos),
   [CodeJIKA](./learning-archive/web-development/README.md#codejika),
-  [FreeCodeCamp](./learning-archive/web-development/README.md#freecodecamp),
-  [HTML/CSS practice files](./learning-archive/web-development/README.md#html-css-practice-files),
-  [an early Portfolio page](./learning-archive/web-development/README.md#portfolio),
-  [Simple Game](./learning-archive/web-development/README.md#simple-game).
+  [FreeCodeCamp](./learning-archive/web-development/README.md#freecodecamp).
 
-**Adding a new archive entry:** drop the file into the matching topic
-folder (or a new one, if it doesn't fit an existing topic) and add one
-line to that archive's own README — no changes needed anywhere else.
+**Adding a new archive entry, at any time:** every project here — even a
+single file — lives in its own top-level folder, flat, directly under
+`python-programming/` or `web-development/`. There's no topic category to
+decide between: create a new folder named after the project, put the
+file(s) in it, and add one line to that archive's own README. The
+headings inside each README (games, calculators, etc.) are just a
+reading aid, not a folder structure.
