@@ -2,7 +2,7 @@
 
 The one ecommerce build in this repo that actually runs on GitHub Pages.
 
-The other variants in `experiments/ecommerce-website/` (`variant-1`
+The other variants in `ecommerce-website/` (`variant-1`
 through `variant-5`) are full MERN-stack apps: a React client that
 needs a build step (Vite or Create React App) talking to an Express + MongoDB server.
 GitHub Pages only serves static files, so none of them can run there as-is — see the
@@ -43,7 +43,7 @@ npx serve .
 Then open the URL it prints, typically `http://localhost:3000`.
 
 Once GitHub Pages serves the whole repo, this folder works at
-`https://<your-username>.github.io/<repo-name>/experiments/ecommerce-website/live-demo/`
+`https://<your-username>.github.io/<repo-name>/ecommerce-website/live-demo/`
 with no extra configuration.
 
 ## Files

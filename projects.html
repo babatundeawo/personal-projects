@@ -6,7 +6,7 @@
     <title>Projects · Babatunde Awoyemi: Build Log</title>
     <meta
       name="description"
-      content="Every build in the log: a safe calculator, a gamified form validator, a student report card dashboard, a live static ecommerce demo, and a Python AI agent bootcamp in progress. Search and filter by topic."
+      content="An index of every project in the personal-projects repository — 130 projects, each linking straight to its folder on GitHub."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -71,18 +71,17 @@
 
     <main id="main">
       <header class="page-hero">
-        <p class="eyebrow">Log entries</p>
-        <h1>Every build, searchable.</h1>
+        <p class="eyebrow">Repository index</p>
+        <h1>Every project, one link each.</h1>
         <p>
-          Three shipped builds, one in progress, four side-by-side
-          experiments, and two growing archives of practice work. Filter by
-          topic or search by name to find what you're after, then open the
-          build to use it and read the code.
+          130 projects live in this repo, each in its own standalone
+          folder with its own README. This page doesn't try to showcase,
+          preview or rank them — it just points to each one on GitHub.
+          Search below to jump straight to a project by name.
         </p>
         <p class="page-hero__status">
           <span class="status-dot" aria-hidden="true"></span>
-          More builds are currently in progress — this log gets new entries
-          regularly.
+          New projects get added directly as new folders, any time.
         </p>
       </header>
 
@@ -92,398 +91,231 @@
             <circle cx="11" cy="11" r="7"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
-          <label class="visually-hidden" for="project-search">Search builds</label>
-          <input type="search" id="project-search" placeholder="Search builds, e.g. regex, print, calculator" />
-        </div>
-        <div class="filter-bar__tags" role="group" aria-label="Filter by topic">
-          <button class="filter-chip is-active" type="button" data-tag="all" aria-pressed="true">All</button>
-          <button class="filter-chip" type="button" data-tag="javascript" aria-pressed="false">JavaScript</button>
-          <button class="filter-chip" type="button" data-tag="accessibility" aria-pressed="false">Accessibility</button>
-          <button class="filter-chip" type="button" data-tag="data" aria-pressed="false">Data</button>
-          <button class="filter-chip" type="button" data-tag="python" aria-pressed="false">Python</button>
-          <button class="filter-chip" type="button" data-tag="fullstack" aria-pressed="false">Full-stack</button>
-          <button class="filter-chip" type="button" data-tag="experiment" aria-pressed="false">Experiments</button>
-          <button class="filter-chip" type="button" data-tag="archive" aria-pressed="false">Archives</button>
+          <label class="visually-hidden" for="project-search">Search projects</label>
+          <input type="search" id="project-search" placeholder="Search 130 projects by name..." />
         </div>
       </div>
 
-      <p class="filter-results" id="filter-results" aria-live="polite">Showing all 8 builds</p>
+      <p class="filter-results" id="filter-results" aria-live="polite">Showing all 130 projects</p>
 
-      <div class="project-grid" id="project-grid">
-        <article
-          class="project-card"
-          data-tags="javascript error-handling dom guard-clauses calculator"
-        >
-          <div class="project-card__stamp">BUILD-001 · STABLE</div>
-          <h3>Safe Calculator</h3>
-          <p>
-            A calculator engineered to never crash. Guard clauses catch bad
-            input, non-numbers and divide-by-zero before they become
-            runtime errors, with a friendly message instead of a broken
-            page. Keeps the last eight calculations in a sidebar history.
-          </p>
-          <ul class="project-card__tags">
-            <li>JavaScript</li>
-            <li>Error Handling</li>
-            <li>DOM</li>
-          </ul>
-          <div class="project-card__actions">
-            <a class="btn btn--primary btn--sm" href="builds/safe-calculator/index.html" target="_blank" rel="noopener">Open build →</a>
-            <a
-              class="btn btn--ghost btn--sm"
-              href="https://github.com/babatundeawo/personal-projects/tree/main/builds/safe-calculator"
-              target="_blank"
-              rel="noopener"
-              >Source ↗</a
-            >
+      <div class="project-directory" id="project-directory">
+        <section class="project-group">
+          <div class="project-group__head">
+            <h2>Standalone builds</h2>
+            <span class="project-group__count">3</span>
           </div>
-        </article>
+          <ul class="dir-list">
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/safe-calculator" target="_blank" rel="noopener">Safe Calculator</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/smart-form-validator" target="_blank" rel="noopener">Smart Form Validator</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/student-report-card" target="_blank" rel="noopener">Student Report Card</a></li>
+          </ul>
+        </section>
 
-        <article
-          class="project-card"
-          data-tags="javascript regex accessibility modular data password"
-        >
-          <div class="project-card__stamp">BUILD-002 · STABLE</div>
-          <h3>Magical Code Validator</h3>
-          <p>
-            A gamified, accessible registration form with live regex
-            validation, a password entropy meter, achievement badges, and a
-            built-in sandbox for testing your own patterns against real
-            examples.
-          </p>
-          <ul class="project-card__tags">
-            <li>Regex</li>
-            <li>Accessibility</li>
-            <li>Modular JS</li>
-          </ul>
-          <div class="project-card__actions">
-            <a class="btn btn--primary btn--sm" href="builds/smart-form-validator/index.html" target="_blank" rel="noopener">Open build →</a>
-            <a
-              class="btn btn--ghost btn--sm"
-              href="https://github.com/babatundeawo/personal-projects/tree/main/builds/smart-form-validator"
-              target="_blank"
-              rel="noopener"
-              >Source ↗</a
-            >
+        <section class="project-group">
+          <div class="project-group__head">
+            <h2>Portfolio Website</h2>
+            <span class="project-group__count">5</span>
           </div>
-        </article>
+          <p class="project-group__note">Same brief, 5 independent builds.</p>
+          <ul class="dir-list">
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/portfolio-website/variant-1" target="_blank" rel="noopener">Portfolio Website — variant 1</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/portfolio-website/variant-2" target="_blank" rel="noopener">Portfolio Website — variant 2</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/portfolio-website/variant-3" target="_blank" rel="noopener">Portfolio Website — variant 3</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/portfolio-website/variant-4" target="_blank" rel="noopener">Portfolio Website — variant 4</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/portfolio-website/variant-5" target="_blank" rel="noopener">Portfolio Website — variant 5</a></li>
+          </ul>
+        </section>
 
-        <article
-          class="project-card"
-          data-tags="javascript data localstorage print data-modeling"
-        >
-          <div class="project-card__stamp">BUILD-003 · STABLE</div>
-          <h3>Student Report Card</h3>
-          <p>
-            A student records dashboard for tracking scores, attendance and
-            behaviour, with a searchable roster, editable curriculum,
-            auto-calculated grades, and print-ready report cards saved to
-            local storage.
-          </p>
-          <ul class="project-card__tags">
-            <li>Data Modeling</li>
-            <li>LocalStorage</li>
-            <li>Print CSS</li>
-          </ul>
-          <div class="project-card__actions">
-            <a class="btn btn--primary btn--sm" href="builds/student-report-card/index.html" target="_blank" rel="noopener">Open build →</a>
-            <a
-              class="btn btn--ghost btn--sm"
-              href="https://github.com/babatundeawo/personal-projects/tree/main/builds/student-report-card"
-              target="_blank"
-              rel="noopener"
-              >Source ↗</a
-            >
+        <section class="project-group">
+          <div class="project-group__head">
+            <h2>To Do App</h2>
+            <span class="project-group__count">5</span>
           </div>
-        </article>
+          <p class="project-group__note">Same brief, 5 independent builds.</p>
+          <ul class="dir-list">
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/todo-app/variant-1" target="_blank" rel="noopener">To Do App — variant 1</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/todo-app/variant-2" target="_blank" rel="noopener">To Do App — variant 2</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/blob/main/todo-app/variant-3.html" target="_blank" rel="noopener">To Do App — variant 3</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/todo-app/variant-4" target="_blank" rel="noopener">To Do App — variant 4</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/todo-app/variant-5" target="_blank" rel="noopener">To Do App — variant 5</a></li>
+          </ul>
+        </section>
 
-        <article
-          class="project-card project-card--pending"
-          data-tags="python ai-agents in-progress"
-        >
-          <div class="project-card__stamp">BUILD-004 · IN PROGRESS</div>
-          <h3>AI Agent Bootcamp</h3>
-          <p>
-            A self-paced series of Python exercises working up to a full AI
-            agent: memory, tools, and reasoning loops built from first
-            principles. Currently in active development, kept separate from
-            this log while it's under construction.
-          </p>
-          <ul class="project-card__tags">
-            <li>Python</li>
-            <li>AI Agents</li>
-            <li>In Progress</li>
-          </ul>
-          <div class="project-card__actions">
-            <a
-              class="btn btn--primary btn--sm"
-              href="https://github.com/babatundeawo/personal-projects/blob/main/in-progress/ai-agent-bootcamp/README.md"
-              target="_blank"
-              rel="noopener"
-              >Browse every task →</a
-            >
-            <a
-              class="btn btn--ghost btn--sm"
-              href="https://github.com/babatundeawo/personal-projects/tree/main/in-progress/ai-agent-bootcamp"
-              target="_blank"
-              rel="noopener"
-              >View source on GitHub ↗</a
-            >
+        <section class="project-group">
+          <div class="project-group__head">
+            <h2>Weather App</h2>
+            <span class="project-group__count">5</span>
           </div>
-        </article>
+          <p class="project-group__note">Same brief, 5 independent builds.</p>
+          <ul class="dir-list">
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/weather-app/variant-1" target="_blank" rel="noopener">Weather App — variant 1</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/weather-app/variant-2" target="_blank" rel="noopener">Weather App — variant 2</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/blob/main/weather-app/variant-3.html" target="_blank" rel="noopener">Weather App — variant 3</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/weather-app/variant-4" target="_blank" rel="noopener">Weather App — variant 4</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/weather-app/variant-5" target="_blank" rel="noopener">Weather App — variant 5</a></li>
+          </ul>
+        </section>
 
-        <article
-          class="project-card project-card--pending"
-          data-tags="experiment html css javascript comparison portfolio"
-        >
-          <div class="project-card__stamp">EXPERIMENT</div>
-          <h3>Portfolio Website: 5 Ways</h3>
-          <p>
-            The same portfolio brief, attempted five separate times to see
-            how each independent build approaches structure, styling and
-            interaction with plain HTML, CSS and JavaScript. A side-by-side
-            study, not part of the main build log.
-          </p>
-          <ul class="project-card__tags">
-            <li>Comparison</li>
-            <li>HTML/CSS/JS</li>
-            <li>Exploration</li>
-          </ul>
-          <details class="variant-toggle">
-            <summary>Compare all 5 variants</summary>
-            <ul class="variant-list">
-              <li><a href="experiments/portfolio-website/variant-1/index.html" target="_blank" rel="noopener">Sample 1 →</a></li>
-              <li><a href="experiments/portfolio-website/variant-2/index.html" target="_blank" rel="noopener">Sample 2 →</a></li>
-              <li><a href="experiments/portfolio-website/variant-3/index.html" target="_blank" rel="noopener">Sample 3 →</a></li>
-              <li><a href="experiments/portfolio-website/variant-4/index.html" target="_blank" rel="noopener">Sample 4 →</a></li>
-              <li><a href="experiments/portfolio-website/variant-5/index.html" target="_blank" rel="noopener">Sample 5 →</a></li>
-            </ul>
-          </details>
-          <div class="project-card__actions">
-            <a
-              class="btn btn--ghost btn--sm"
-              href="https://github.com/babatundeawo/personal-projects/tree/main/experiments/portfolio-website"
-              target="_blank"
-              rel="noopener"
-              >View source on GitHub ↗</a
-            >
+        <section class="project-group">
+          <div class="project-group__head">
+            <h2>Ecommerce Website</h2>
+            <span class="project-group__count">6</span>
           </div>
-        </article>
+          <p class="project-group__note">5 full-stack builds + one static live demo.</p>
+          <ul class="dir-list">
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/ecommerce-website/variant-1" target="_blank" rel="noopener">Ecommerce Website — variant 1</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/ecommerce-website/variant-2" target="_blank" rel="noopener">Ecommerce Website — variant 2</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/ecommerce-website/variant-3" target="_blank" rel="noopener">Ecommerce Website — variant 3</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/ecommerce-website/variant-4" target="_blank" rel="noopener">Ecommerce Website — variant 4</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/ecommerce-website/variant-5" target="_blank" rel="noopener">Ecommerce Website — variant 5</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/ecommerce-website/live-demo" target="_blank" rel="noopener">Ecommerce Website — live demo</a></li>
+          </ul>
+        </section>
 
-        <article
-          class="project-card project-card--pending"
-          data-tags="experiment html css javascript comparison todo-app productivity"
-        >
-          <div class="project-card__stamp">EXPERIMENT</div>
-          <h3>To Do App: 5 Ways</h3>
-          <p>
-            A simple to-do app brief, attempted five separate times to
-            compare task management UX, state handling and styling choices
-            across each build. A side-by-side study, not part of the main
-            build log.
-          </p>
-          <ul class="project-card__tags">
-            <li>Comparison</li>
-            <li>HTML/CSS/JS</li>
-            <li>Exploration</li>
-          </ul>
-          <details class="variant-toggle">
-            <summary>Compare all 5 variants</summary>
-            <ul class="variant-list">
-              <li><a href="experiments/todo-app/variant-1/index.html" target="_blank" rel="noopener">Sample 1 →</a></li>
-              <li><a href="experiments/todo-app/variant-2/index.html" target="_blank" rel="noopener">Sample 2 →</a></li>
-              <li><a href="experiments/todo-app/variant-3.html" target="_blank" rel="noopener">Sample 3 →</a></li>
-              <li><a href="experiments/todo-app/variant-4/index.html" target="_blank" rel="noopener">Sample 4 →</a></li>
-              <li><a href="experiments/todo-app/variant-5/index.html" target="_blank" rel="noopener">Sample 5 →</a></li>
-            </ul>
-          </details>
-          <div class="project-card__actions">
-            <a
-              class="btn btn--ghost btn--sm"
-              href="https://github.com/babatundeawo/personal-projects/tree/main/experiments/todo-app"
-              target="_blank"
-              rel="noopener"
-              >View source on GitHub ↗</a
-            >
+        <section class="project-group">
+          <div class="project-group__head">
+            <h2>AI Agent Bootcamp</h2>
+            <span class="project-group__count">7</span>
           </div>
-        </article>
+          <p class="project-group__note">Actively growing.</p>
+          <ul class="dir-list">
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/ai-agent-bootcamp/Project-00" target="_blank" rel="noopener">Project-00 — Python fundamentals</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/ai-agent-bootcamp/Project-01" target="_blank" rel="noopener">Project-01 — Student assistant</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/ai-agent-bootcamp/Project-02" target="_blank" rel="noopener">Project-02 — First AI chat</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/ai-agent-bootcamp/Project-03" target="_blank" rel="noopener">Project-03 — Chat loop + memory</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/ai-agent-bootcamp/Project-04" target="_blank" rel="noopener">Project-04 — A calculator tool</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/ai-agent-bootcamp/Project-05" target="_blank" rel="noopener">Project-05 — Deciding when to use the tool</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/ai-agent-bootcamp/Project-06" target="_blank" rel="noopener">Project-06 — LLM-driven decisions</a></li>
+          </ul>
+        </section>
 
-        <article
-          class="project-card project-card--pending"
-          data-tags="experiment html css javascript comparison weather-app api"
-        >
-          <div class="project-card__stamp">EXPERIMENT</div>
-          <h3>Weather App: 5 Ways</h3>
-          <p>
-            A weather-lookup app brief, attempted five separate times to
-            compare how each independent build handles API data, layout
-            and error states. A side-by-side study, not part of the main
-            build log.
-          </p>
-          <ul class="project-card__tags">
-            <li>Comparison</li>
-            <li>HTML/CSS/JS</li>
-            <li>Exploration</li>
-          </ul>
-          <details class="variant-toggle">
-            <summary>Compare all 5 variants</summary>
-            <ul class="variant-list">
-              <li><a href="experiments/weather-app/variant-1/index.html" target="_blank" rel="noopener">Sample 1 →</a></li>
-              <li><a href="experiments/weather-app/variant-2/index.html" target="_blank" rel="noopener">Sample 2 →</a></li>
-              <li><a href="experiments/weather-app/variant-3.html" target="_blank" rel="noopener">Sample 3 →</a></li>
-              <li><a href="experiments/weather-app/variant-4/index.html" target="_blank" rel="noopener">Sample 4 →</a></li>
-              <li><a href="experiments/weather-app/variant-5/index.html" target="_blank" rel="noopener">Sample 5 →</a></li>
-            </ul>
-          </details>
-          <div class="project-card__actions">
-            <a
-              class="btn btn--ghost btn--sm"
-              href="https://github.com/babatundeawo/personal-projects/tree/main/experiments/weather-app"
-              target="_blank"
-              rel="noopener"
-              >View source on GitHub ↗</a
-            >
+        <section class="project-group">
+          <div class="project-group__head">
+            <h2>Python Programming</h2>
+            <span class="project-group__count">67</span>
           </div>
-        </article>
+          <p class="project-group__note">Standalone exercises, one project per folder at repo root. Grows anytime.</p>
+          <ul class="dir-list">
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/area-of-a-rectangle" target="_blank" rel="noopener">Area Of A Rectangle</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/area-of-circle" target="_blank" rel="noopener">Area Of Circle</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/area-of-parallelogram" target="_blank" rel="noopener">Area Of Parallelogram</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/bank-account-management" target="_blank" rel="noopener">Bank Account Management</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/bookstore-inventory-management" target="_blank" rel="noopener">Bookstore Inventory Management</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/calendar-printer" target="_blank" rel="noopener">Calendar Printer</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/car-game" target="_blank" rel="noopener">Car Game</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/confusion-matrix-1" target="_blank" rel="noopener">Confusion Matrix 1</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/confusion-matrix-2" target="_blank" rel="noopener">Confusion Matrix 2</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/confusion-matrix-3" target="_blank" rel="noopener">Confusion Matrix 3</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/contact-book" target="_blank" rel="noopener">Contact Book</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/contact-finder" target="_blank" rel="noopener">Contact Finder</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/data-scaling" target="_blank" rel="noopener">Data Scaling</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/drawing-shapes" target="_blank" rel="noopener">Drawing Shapes</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/election-page-snippet-not-runnable" target="_blank" rel="noopener">Election Page Snippet Not Runnable</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/employee-management-system" target="_blank" rel="noopener">Employee Management System</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/enhanced-scientific-calculator" target="_blank" rel="noopener">Enhanced Scientific Calculator</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/enhanced-to-do-list-manager" target="_blank" rel="noopener">Enhanced To Do List Manager</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/even-odd-checker" target="_blank" rel="noopener">Even Odd Checker</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/expense-tracker" target="_blank" rel="noopener">Expense Tracker</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/expense-tracker-with-monthly-report" target="_blank" rel="noopener">Expense Tracker With Monthly Report</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/factorial-calculator" target="_blank" rel="noopener">Factorial Calculator</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/file-handler" target="_blank" rel="noopener">File Handler</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/fitness-tracker" target="_blank" rel="noopener">Fitness Tracker</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/flappy-bird" target="_blank" rel="noopener">Flappy Bird</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/grade-calculator" target="_blank" rel="noopener">Grade Calculator</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/grade-calculator-quick-version" target="_blank" rel="noopener">Grade Calculator Quick Version</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/guess-the-number-game" target="_blank" rel="noopener">Guess The Number Game</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/hierarchical-clustering-1" target="_blank" rel="noopener">Hierarchical Clustering 1</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/hierarchical-clustering-2" target="_blank" rel="noopener">Hierarchical Clustering 2</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/house-price-prediction" target="_blank" rel="noopener">House Price Prediction</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/largest-number-finder" target="_blank" rel="noopener">Largest Number Finder</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/library-management-system" target="_blank" rel="noopener">Library Management System</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/list-sum-and-average" target="_blank" rel="noopener">List Sum And Average</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/logistic-regression-1" target="_blank" rel="noopener">Logistic Regression 1</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/logistic-regression-2" target="_blank" rel="noopener">Logistic Regression 2</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/movie-collection" target="_blank" rel="noopener">Movie Collection</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/multiplication-tables" target="_blank" rel="noopener">Multiplication Tables</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/music-playlist-manager" target="_blank" rel="noopener">Music Playlist Manager</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/mystical-word-game" target="_blank" rel="noopener">Mystical Word Game</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/number-guessing-game" target="_blank" rel="noopener">Number Guessing Game</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/password-guessing-game" target="_blank" rel="noopener">Password Guessing Game</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/password-validator" target="_blank" rel="noopener">Password Validator</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/prime-number-checker" target="_blank" rel="noopener">Prime Number Checker</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/prime-number-generator" target="_blank" rel="noopener">Prime Number Generator</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/real-world-loan-approval-data" target="_blank" rel="noopener">Real World Loan Approval Data</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/recipe-manager" target="_blank" rel="noopener">Recipe Manager</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/remove-duplicates" target="_blank" rel="noopener">Remove Duplicates</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/save-and-read-a-to-do-list" target="_blank" rel="noopener">Save And Read A To Do List</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/shopping-list" target="_blank" rel="noopener">Shopping List</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/simple-calculator" target="_blank" rel="noopener">Simple Calculator</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/simple-chatbot" target="_blank" rel="noopener">Simple Chatbot</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/simple-to-do-list" target="_blank" rel="noopener">Simple To Do List</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/simple-voting-system" target="_blank" rel="noopener">Simple Voting System</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/snake-game" target="_blank" rel="noopener">Snake Game</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/student-gradebook" target="_blank" rel="noopener">Student Gradebook</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/student-management-system" target="_blank" rel="noopener">Student Management System</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/student-performance-analysis-application" target="_blank" rel="noopener">Student Performance Analysis Application</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/sum-of-prices" target="_blank" rel="noopener">Sum Of Prices</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/temperature-converter" target="_blank" rel="noopener">Temperature Converter</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/to-do-list-with-deadlines" target="_blank" rel="noopener">To Do List With Deadlines</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/treasure-hunt" target="_blank" rel="noopener">Treasure Hunt</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/user-information-validator" target="_blank" rel="noopener">User Information Validator</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/volume-of-a-closed-cylinder" target="_blank" rel="noopener">Volume Of A Closed Cylinder</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/voting-system" target="_blank" rel="noopener">Voting System</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/weather-forecast-fetcher" target="_blank" rel="noopener">Weather Forecast Fetcher</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/weather-report" target="_blank" rel="noopener">Weather Report</a></li>
+          </ul>
+        </section>
 
-        <article
-          class="project-card"
-          data-tags="fullstack experiment react node express mongodb ecommerce shop cart checkout"
-        >
-          <div class="project-card__stamp">EXPERIMENT · LIVE DEMO</div>
-          <h3>Ecommerce Website: 5 Ways</h3>
-          <p>
-            The same full-stack ecommerce brief (product catalog, cart, checkout,
-            auth, orders) built five separate times as an independent comparison —
-            each a React + Node + MongoDB app. Full-stack apps can't run on static
-            GitHub Pages, so alongside the five source variants there's a sixth,
-            hand-built entry: a fully client-side static demo of the same idea
-            that actually works live here.
-          </p>
-          <ul class="project-card__tags">
-            <li>Full-stack</li>
-            <li>React / Node</li>
-            <li>Live static demo</li>
-          </ul>
-          <details class="variant-toggle">
-            <summary>Compare all 5 source variants + the live demo</summary>
-            <ul class="variant-list">
-              <li><a href="experiments/ecommerce-website/live-demo/index.html" target="_blank" rel="noopener"><strong>Live demo (no setup) →</strong></a></li>
-              <li><a href="https://github.com/babatundeawo/personal-projects/tree/main/experiments/ecommerce-website/variant-1" target="_blank" rel="noopener">Sample 1 — source ↗</a></li>
-              <li><a href="https://github.com/babatundeawo/personal-projects/tree/main/experiments/ecommerce-website/variant-2" target="_blank" rel="noopener">Sample 2 — source ↗</a></li>
-              <li><a href="https://github.com/babatundeawo/personal-projects/tree/main/experiments/ecommerce-website/variant-3" target="_blank" rel="noopener">Sample 3 — source ↗</a></li>
-              <li><a href="https://github.com/babatundeawo/personal-projects/tree/main/experiments/ecommerce-website/variant-4" target="_blank" rel="noopener">Sample 4 — source ↗</a></li>
-              <li><a href="https://github.com/babatundeawo/personal-projects/tree/main/experiments/ecommerce-website/variant-5" target="_blank" rel="noopener">Sample 5 — source ↗</a></li>
-            </ul>
-          </details>
-          <div class="project-card__actions">
-            <a class="btn btn--primary btn--sm" href="experiments/ecommerce-website/live-demo/index.html" target="_blank" rel="noopener">Open live demo →</a>
-            <a
-              class="btn btn--ghost btn--sm"
-              href="https://github.com/babatundeawo/personal-projects/tree/main/experiments/ecommerce-website"
-              target="_blank"
-              rel="noopener"
-              >Why 5 sources, 1 demo? ↗</a
-            >
+        <section class="project-group">
+          <div class="project-group__head">
+            <h2>Web Development</h2>
+            <span class="project-group__count">32</span>
           </div>
-        </article>
+          <p class="project-group__note">Standalone exercises, one project per folder at repo root, plus two multi-part courses. Grows anytime.</p>
+          <ul class="dir-list">
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/animated-button" target="_blank" rel="noopener">Animated Button</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/animated-button-pressed-effect" target="_blank" rel="noopener">Animated Button Pressed Effect</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/animated-button-ripple-effect" target="_blank" rel="noopener">Animated Button Ripple Effect</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/church-attendance-app" target="_blank" rel="noopener">Church Attendance App</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/CodeJIKA/Web Project 1" target="_blank" rel="noopener">CodeJIKA — Web Project 1</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/CodeJIKA/Web Project 2" target="_blank" rel="noopener">CodeJIKA — Web Project 2</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/CodeJIKA/Web Project 3" target="_blank" rel="noopener">CodeJIKA — Web Project 3</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/CodeJIKA/Web Project 4" target="_blank" rel="noopener">CodeJIKA — Web Project 4</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/CodeJIKA/Web Project 5" target="_blank" rel="noopener">CodeJIKA — Web Project 5</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/data-cleaner-and-validator" target="_blank" rel="noopener">Data Cleaner And Validator</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/dropdown-menu" target="_blank" rel="noopener">Dropdown Menu</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/FreeCodeCamp/01 cat photo app" target="_blank" rel="noopener">FreeCodeCamp — 01 cat photo app</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/FreeCodeCamp/02 cafe webpage" target="_blank" rel="noopener">FreeCodeCamp — 02 cafe webpage</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/FreeCodeCamp/03 CSS Color Markers" target="_blank" rel="noopener">FreeCodeCamp — 03 CSS Color Markers</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/FreeCodeCamp/04 Registration Form" target="_blank" rel="noopener">FreeCodeCamp — 04 Registration Form</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/FreeCodeCamp/05 Survey Form" target="_blank" rel="noopener">FreeCodeCamp — 05 Survey Form</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/FreeCodeCamp/06 Rothko Painting" target="_blank" rel="noopener">FreeCodeCamp — 06 Rothko Painting</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/FreeCodeCamp/07 Photo Gallery" target="_blank" rel="noopener">FreeCodeCamp — 07 Photo Gallery</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/FreeCodeCamp/08 Nutrition Label" target="_blank" rel="noopener">FreeCodeCamp — 08 Nutrition Label</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/FreeCodeCamp/09 Quiz Webpage" target="_blank" rel="noopener">FreeCodeCamp — 09 Quiz Webpage</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/FreeCodeCamp/10 Tribute Page" target="_blank" rel="noopener">FreeCodeCamp — 10 Tribute Page</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/FreeCodeCamp/11 Balance Sheet" target="_blank" rel="noopener">FreeCodeCamp — 11 Balance Sheet</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/FreeCodeCamp/13 Piano" target="_blank" rel="noopener">FreeCodeCamp — 13 Piano</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/Portfolio" target="_blank" rel="noopener">Portfolio</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/responsive-form" target="_blank" rel="noopener">Responsive Form</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/responsive-image-gallery" target="_blank" rel="noopener">Responsive Image Gallery</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/responsive-layout" target="_blank" rel="noopener">Responsive Layout</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/responsive-website" target="_blank" rel="noopener">Responsive Website</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/responsive-website-sample" target="_blank" rel="noopener">Responsive Website Sample</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/Simple Game" target="_blank" rel="noopener">Simple Game</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/smart-weather-logger-dashboard" target="_blank" rel="noopener">Smart Weather Logger Dashboard</a></li>
+            <li class="dir-item"><a href="https://github.com/babatundeawo/personal-projects/tree/main/smartsave-finance-forecaster" target="_blank" rel="noopener">Smartsave Finance Forecaster</a></li>
+          </ul>
+        </section>
 
-        <article
-          class="project-card project-card--pending"
-          data-tags="archive learning python games calculators management-systems validators data-science ml"
-        >
-          <div class="project-card__stamp">LEARNING ARCHIVE</div>
-          <h3>Python Programming</h3>
-          <p>
-            A running archive of standalone Python exercises and small
-            projects — the practice reps behind the builds above. One
-            project, one folder, no shared categories to maintain; new ones
-            get added whenever. Grouped below by topic just to browse.
-          </p>
-          <ul class="project-card__tags">
-            <li>Python</li>
-            <li>67 projects</li>
-            <li>Growing</li>
-          </ul>
-          <details class="variant-toggle">
-            <summary>Browse by topic</summary>
-            <ul class="variant-list">
-              <li><a href="https://github.com/babatundeawo/personal-projects/blob/main/learning-archive/python-programming/README.md#games" target="_blank" rel="noopener">Games (8) →</a></li>
-              <li><a href="https://github.com/babatundeawo/personal-projects/blob/main/learning-archive/python-programming/README.md#calculators-and-converters" target="_blank" rel="noopener">Calculators &amp; converters (12) →</a></li>
-              <li><a href="https://github.com/babatundeawo/personal-projects/blob/main/learning-archive/python-programming/README.md#management-systems" target="_blank" rel="noopener">Management systems (22) →</a></li>
-              <li><a href="https://github.com/babatundeawo/personal-projects/blob/main/learning-archive/python-programming/README.md#validators-and-utilities" target="_blank" rel="noopener">Validators &amp; utilities (14) →</a></li>
-              <li><a href="https://github.com/babatundeawo/personal-projects/blob/main/learning-archive/python-programming/README.md#data-science-and-ml" target="_blank" rel="noopener">Data science &amp; ML (10) →</a></li>
-              <li><a href="https://github.com/babatundeawo/personal-projects/blob/main/learning-archive/python-programming/README.md#misc-and-drafts" target="_blank" rel="noopener">Misc &amp; drafts (1) →</a></li>
-            </ul>
-          </details>
-          <div class="project-card__actions">
-            <a
-              class="btn btn--primary btn--sm"
-              href="https://github.com/babatundeawo/personal-projects/blob/main/learning-archive/python-programming/README.md"
-              target="_blank"
-              rel="noopener"
-              >Browse the full archive →</a
-            >
-            <a
-              class="btn btn--ghost btn--sm"
-              href="https://github.com/babatundeawo/personal-projects/tree/main/learning-archive/python-programming"
-              target="_blank"
-              rel="noopener"
-              >View source on GitHub ↗</a
-            >
-          </div>
-        </article>
-
-        <article
-          class="project-card project-card--pending"
-          data-tags="archive learning html css javascript codejika freecodecamp"
-        >
-          <div class="project-card__stamp">LEARNING ARCHIVE</div>
-          <h3>Web Development</h3>
-          <p>
-            HTML/CSS/JS course work and standalone mini-apps — the practice
-            reps behind the polished builds above. One project, one folder;
-            CodeJIKA and FreeCodeCamp keep their own numbered sub-projects
-            grouped under the course they came from.
-          </p>
-          <ul class="project-card__tags">
-            <li>HTML/CSS/JS</li>
-            <li>32 projects</li>
-            <li>Growing</li>
-          </ul>
-          <details class="variant-toggle">
-            <summary>Browse by topic</summary>
-            <ul class="variant-list">
-              <li><a href="https://github.com/babatundeawo/personal-projects/blob/main/learning-archive/web-development/README.md#standalone-mini-apps" target="_blank" rel="noopener">Standalone mini-apps (6) →</a></li>
-              <li><a href="https://github.com/babatundeawo/personal-projects/blob/main/learning-archive/web-development/README.md#technique-demos" target="_blank" rel="noopener">Technique demos (9) →</a></li>
-              <li><a href="https://github.com/babatundeawo/personal-projects/blob/main/learning-archive/web-development/README.md#codejika" target="_blank" rel="noopener">CodeJIKA coursework (5) →</a></li>
-              <li><a href="https://github.com/babatundeawo/personal-projects/blob/main/learning-archive/web-development/README.md#freecodecamp" target="_blank" rel="noopener">FreeCodeCamp coursework (12) →</a></li>
-            </ul>
-          </details>
-          <div class="project-card__actions">
-            <a
-              class="btn btn--primary btn--sm"
-              href="https://github.com/babatundeawo/personal-projects/blob/main/learning-archive/web-development/README.md"
-              target="_blank"
-              rel="noopener"
-              >Browse the full archive →</a
-            >
-            <a
-              class="btn btn--ghost btn--sm"
-              href="https://github.com/babatundeawo/personal-projects/tree/main/learning-archive/web-development"
-              target="_blank"
-              rel="noopener"
-              >View source on GitHub ↗</a
-            >
-          </div>
-        </article>
       </div>
 
       <div class="empty-state" id="empty-state">
-        <h3>No builds match that search</h3>
-        <p>Try a different keyword or clear the topic filter.</p>
+        <h3>No projects match that search</h3>
+        <p>Try a different keyword.</p>
       </div>
-    </main>
+
+        </main>
 
     <footer class="site-footer">
       <div class="site-footer__inner">
@@ -506,11 +338,11 @@
             </ul>
           </div>
           <div class="site-footer__col">
-            <h4>Builds</h4>
+            <h4>A few projects</h4>
             <ul>
-              <li><a href="builds/safe-calculator/index.html" target="_blank" rel="noopener">Safe Calculator</a></li>
-              <li><a href="builds/smart-form-validator/index.html" target="_blank" rel="noopener">Magical Code Validator</a></li>
-              <li><a href="builds/student-report-card/index.html" target="_blank" rel="noopener">Student Report Card</a></li>
+              <li><a href="https://github.com/babatundeawo/personal-projects/tree/main/safe-calculator" target="_blank" rel="noopener">Safe Calculator ↗</a></li>
+              <li><a href="https://github.com/babatundeawo/personal-projects/tree/main/smart-form-validator" target="_blank" rel="noopener">Magical Code Validator ↗</a></li>
+              <li><a href="https://github.com/babatundeawo/personal-projects/tree/main/student-report-card" target="_blank" rel="noopener">Student Report Card ↗</a></li>
             </ul>
           </div>
           <div class="site-footer__col">

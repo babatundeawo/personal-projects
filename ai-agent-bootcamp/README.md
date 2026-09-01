@@ -4,7 +4,7 @@ A self-paced series of Python exercises, building up from first principles
 to a working AI agent: plain scripting → talking to a local LLM → giving
 that LLM memory → giving it tools → letting it decide when to use them.
 Each `Project-0N/` folder is one step in that progression. This is
-in-progress work, referenced from the main [Projects page](../../projects.html)
+in-progress work, referenced from the main [Projects page](../projects.html)
 as **Build-004 · In Progress**, and kept separate from the three shipped
 builds in the root of the repo.
 

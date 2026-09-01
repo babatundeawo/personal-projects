@@ -186,6 +186,12 @@
   gap: 20px;
 }
 
+.featured-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 /* -------- process strip -------- */
 .process {
   padding: 8px 0 64px;

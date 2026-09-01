@@ -1,8 +1,8 @@
 # Ecommerce Website: 5 Ways (+ 1 live demo)
 
 The same ecommerce brief, built five separate times as an independent comparison,
-plus one hand-built static demo. Like `experiments/portfolio-website/`,
-`experiments/todo-app/` and `experiments/weather-app/`, this is a side-by-side
+plus one hand-built static demo. Like `portfolio-website/`,
+`todo-app/` and `weather-app/`, this is a side-by-side
 comparison folder rather than a single polished build — except this brief asked
 for a **full-stack** app, which changes what "open it in a browser" means.
 

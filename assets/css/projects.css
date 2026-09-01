@@ -1,5 +1,7 @@
 /* =========================================================
-   PROJECTS
+   PROJECTS — a flat directory pointing to GitHub, not a
+   showcase. Search filters individual links; a whole group
+   collapses away once none of its links match.
    ========================================================= */
 
 .filter-bar {
@@ -48,118 +50,94 @@
   opacity: 0.55;
 }
 
-.filter-bar__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.filter-chip {
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  padding: 7px 13px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--surface-2);
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
-}
-
-.filter-chip:hover {
-  color: var(--blue);
-  border-color: var(--blue);
-}
-
-.filter-chip.is-active {
-  background: var(--blue);
-  border-color: var(--blue);
-  color: #fff;
-}
-
 .filter-results {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   color: var(--text-muted);
-  margin: 0 0 20px;
+  margin: 0 0 28px;
 }
 
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+/* -------- directory groups -------- */
+
+.project-directory {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
   padding-bottom: 64px;
 }
 
-.project-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 24px;
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-direction: column;
-}
-
-.project-card:hover {
-  border-color: var(--blue);
-}
-
-.project-card.is-filtered-out {
+.project-group.is-empty {
   display: none;
 }
 
-.project-card__stamp {
-  align-self: flex-start;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  border-radius: 999px;
-  background: rgba(31, 157, 92, 0.14);
-  color: var(--mint);
+.project-group__head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
   margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
 }
 
-.project-card--pending .project-card__stamp {
-  background: rgba(217, 140, 43, 0.16);
-  color: var(--amber);
+.project-group__head h2 {
+  font-size: 1.05rem;
+  margin: 0;
 }
 
-.project-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 8px;
-}
-
-.project-card p {
-  font-size: 0.92rem;
-  flex-grow: 1;
-}
-
-.project-card__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  list-style: none;
-  padding: 0;
-  margin: 0 0 18px;
-}
-
-.project-card__tags li {
+.project-group__count {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  background: var(--surface-2);
+  font-size: 0.76rem;
   color: var(--text-muted);
-  padding: 4px 9px;
-  border-radius: 6px;
 }
 
-.project-card__actions {
-  margin-top: auto;
+.project-group__note {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  margin: -6px 0 14px;
+}
+
+.dir-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 4px 12px;
+}
+
+.dir-item.is-filtered-out {
+  display: none;
+}
+
+.dir-item a {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.dir-item a:hover,
+.dir-item a:focus-visible {
+  border-color: var(--border);
+  background: var(--surface-2);
+  color: var(--blue);
+}
+
+.dir-item a::after {
+  content: "↗";
+  margin-left: auto;
+  opacity: 0.45;
+  font-size: 0.82rem;
+}
+
+.dir-item--file a::before {
+  content: "";
 }
 
 .empty-state {
@@ -174,75 +152,6 @@
 
 .empty-state h3 {
   margin-bottom: 6px;
-}
-
-.variant-toggle {
-  margin: 0 0 14px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--surface-2);
-  overflow: hidden;
-}
-
-.variant-toggle summary {
-  cursor: pointer;
-  list-style: none;
-  padding: 10px 14px;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.variant-toggle summary::-webkit-details-marker {
-  display: none;
-}
-
-.variant-toggle summary::after {
-  content: "+";
-  font-size: 1rem;
-  margin-left: 8px;
-}
-
-.variant-toggle[open] summary::after {
-  content: "–";
-}
-
-.variant-toggle summary:hover {
-  color: var(--blue);
-}
-
-.variant-list {
-  list-style: none;
-  margin: 0;
-  padding: 4px 14px 12px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.variant-list li {
-  flex: 0 0 auto;
-}
-
-.variant-list a {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  padding: 6px 11px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
-  text-decoration: none;
-  transition: border-color 0.15s ease, color 0.15s ease;
-}
-
-.variant-list a:hover {
-  border-color: var(--blue);
-  color: var(--blue);
 }
 
 .page-hero__status {
@@ -271,5 +180,9 @@
 @media (max-width: 560px) {
   .filter-bar {
     padding: 14px;
+  }
+
+  .dir-list {
+    grid-template-columns: 1fr;
   }
 }

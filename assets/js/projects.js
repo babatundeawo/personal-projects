@@ -1,49 +1,59 @@
 "use strict";
 
 /* ---------------------------------------------------------
-   Search + tag filtering for the project grid
+   Search filtering for the flat project directory.
+   No tag/category filtering — this page just points to
+   GitHub, it doesn't sort projects into categories.
 --------------------------------------------------------- */
-(function projectFilter() {
-  var grid = document.getElementById("project-grid");
-  if (!grid) return;
+(function projectDirectoryFilter() {
+  var directory = document.getElementById("project-directory");
+  if (!directory) return;
 
   var searchInput = document.getElementById("project-search");
-  var chips = Array.prototype.slice.call(
-    document.querySelectorAll(".filter-chip"),
+  var groups = Array.prototype.slice.call(
+    directory.querySelectorAll(".project-group"),
   );
-  var cards = Array.prototype.slice.call(
-    grid.querySelectorAll(".project-card"),
+  var items = Array.prototype.slice.call(
+    directory.querySelectorAll(".dir-item"),
   );
   var resultsLabel = document.getElementById("filter-results");
   var emptyState = document.getElementById("empty-state");
+  var totalCount = items.length;
 
-  var activeTag = "all";
   var query = "";
 
-  function cardMatches(card) {
-    var tags = (card.getAttribute("data-tags") || "").toLowerCase();
-    var text = card.textContent.toLowerCase();
-
-    var matchesTag = activeTag === "all" || tags.indexOf(activeTag) !== -1;
-    var matchesQuery = query === "" || text.indexOf(query) !== -1;
-
-    return matchesTag && matchesQuery;
+  function itemMatches(item) {
+    if (query === "") return true;
+    var text = item.textContent.toLowerCase();
+    return text.indexOf(query) !== -1;
   }
 
-  function applyFilters() {
+  function applyFilter() {
     var visibleCount = 0;
 
-    cards.forEach(function (card) {
-      var matches = cardMatches(card);
-      card.classList.toggle("is-filtered-out", !matches);
-      if (matches) visibleCount += 1;
+    groups.forEach(function (group) {
+      var groupItems = Array.prototype.slice.call(
+        group.querySelectorAll(".dir-item"),
+      );
+      var groupVisible = 0;
+
+      groupItems.forEach(function (item) {
+        var matches = itemMatches(item);
+        item.classList.toggle("is-filtered-out", !matches);
+        if (matches) {
+          groupVisible += 1;
+          visibleCount += 1;
+        }
+      });
+
+      group.classList.toggle("is-empty", groupVisible === 0);
     });
 
     if (resultsLabel) {
       resultsLabel.textContent =
-        visibleCount === cards.length
-          ? "Showing all " + cards.length + " builds"
-          : "Showing " + visibleCount + " of " + cards.length + " builds";
+        visibleCount === totalCount
+          ? "Showing all " + totalCount + " projects"
+          : "Showing " + visibleCount + " of " + totalCount + " projects";
     }
 
     if (emptyState) {
@@ -54,22 +64,9 @@
   if (searchInput) {
     searchInput.addEventListener("input", function () {
       query = searchInput.value.trim().toLowerCase();
-      applyFilters();
+      applyFilter();
     });
   }
 
-  chips.forEach(function (chip) {
-    chip.addEventListener("click", function () {
-      chips.forEach(function (c) {
-        c.classList.remove("is-active");
-        c.setAttribute("aria-pressed", "false");
-      });
-      chip.classList.add("is-active");
-      chip.setAttribute("aria-pressed", "true");
-      activeTag = (chip.getAttribute("data-tag") || "all").toLowerCase();
-      applyFilters();
-    });
-  });
-
-  applyFilters();
+  applyFilter();
 })();

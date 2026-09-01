@@ -1,5 +1,7 @@
 import requests
 
+# WARNING: this key is already public (committed to a public repo) — treat
+# it as burned and swap in your own OpenWeatherMap API key before using this.
 # OpenWeatherMap API Key
 API_KEY = "65c28638e75c85f2749a0fa2038b9c36"
 
