@@ -102,6 +102,9 @@
 
     function showCopied() {
       button.textContent = "Copied!";
+      if (typeof window.showToast === "function") {
+        window.showToast("Email address copied to clipboard");
+      }
       setTimeout(function () {
         button.textContent = originalText;
       }, 1800);

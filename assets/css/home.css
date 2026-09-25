@@ -3,11 +3,41 @@
    ========================================================= */
 
 .hero {
+  position: relative;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 48px;
   align-items: center;
   padding: 60px 0 56px;
+}
+
+/* soft aurora glow behind the hero copy, slowly breathing */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  left: -80px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(var(--spot), 0.22), transparent 65%);
+  filter: blur(10px);
+  z-index: -1;
+  animation: aurora-drift 10s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-drift {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(30px, 20px) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before {
+    animation: none;
+  }
 }
 
 .hero__lede {
@@ -21,7 +51,11 @@
 }
 
 .accent {
-  color: var(--amber);
+  position: relative;
+  background: linear-gradient(120deg, var(--amber), var(--red) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .hero__actions {
@@ -53,7 +87,10 @@
   font-family: var(--font-display);
   font-size: 1.6rem;
   font-weight: 700;
-  color: var(--blue);
+  background: linear-gradient(120deg, var(--blue), var(--blue-bright));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* -------- terminal signature element -------- */
@@ -64,10 +101,22 @@
 .terminal {
   background: #0b1220;
   border-radius: 12px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(108, 140, 255, 0.12);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
   transform: rotate(-1.2deg);
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+
+.hero__terminal:hover .terminal {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(108, 140, 255, 0.28), var(--shadow-glow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal {
+    transition: none;
+  }
 }
 
 .terminal__bar {
@@ -160,6 +209,21 @@
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text-muted);
+  transition: transform 0.25s var(--ease-spring), border-color 0.2s ease,
+    color 0.2s ease, box-shadow 0.25s ease;
+}
+
+.stack-chip:hover {
+  transform: translateY(-3px);
+  border-color: var(--blue);
+  color: var(--blue);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stack-chip {
+    transition: none;
+  }
 }
 
 /* -------- featured builds -------- */
@@ -226,16 +290,46 @@
 
 /* -------- CTA band -------- */
 .cta-band {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   margin: 0 0 64px;
   padding: 48px;
-  border-radius: var(--radius);
-  background: linear-gradient(135deg, var(--blue), var(--violet));
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--blue), var(--violet) 60%, #b3459e);
+  background-size: 200% 200%;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   flex-wrap: wrap;
+  box-shadow: var(--shadow-lg);
+  animation: cta-gradient 8s ease infinite;
+}
+
+.cta-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(420px circle at 85% 20%, rgba(255, 255, 255, 0.18), transparent 60%);
+}
+
+@keyframes cta-gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-band {
+    animation: none;
+  }
 }
 
 .cta-band h2 {

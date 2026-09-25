@@ -194,6 +194,160 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 })();
 
 /* ---------------------------------------------------------
+   Sticky nav: add a compact/scrolled state once the page has
+   moved past the top, for a tighter glass bar on scroll
+--------------------------------------------------------- */
+(function navScrollState() {
+  var nav = document.querySelector(".portfolio-topbar");
+  if (!nav) return;
+
+  function update() {
+    nav.classList.toggle("is-scrolled", window.scrollY > 8);
+  }
+
+  window.addEventListener("scroll", update, { passive: true });
+  update();
+})();
+
+/* ---------------------------------------------------------
+   Stagger .reveal siblings that share a parent, so groups of
+   cards cascade in rather than popping in together
+--------------------------------------------------------- */
+(function staggerReveal() {
+  var seen = new Map();
+  document.querySelectorAll(".reveal").forEach(function (el) {
+    var parent = el.parentElement;
+    var count = seen.get(parent) || 0;
+    el.style.setProperty("--reveal-delay", Math.min(count * 70, 420) + "ms");
+    seen.set(parent, count + 1);
+  });
+})();
+
+/* ---------------------------------------------------------
+   Card spotlight: track the pointer over any .card so the
+   soft radial highlight (defined in base.css) follows it
+--------------------------------------------------------- */
+(function cardSpotlight() {
+  if (prefersReducedMotion || window.matchMedia("(hover: none)").matches) return;
+
+  document.addEventListener(
+    "pointermove",
+    function (event) {
+      var card = event.target.closest ? event.target.closest(".card") : null;
+      if (!card) return;
+      var rect = card.getBoundingClientRect();
+      card.style.setProperty("--mx", event.clientX - rect.left + "px");
+      card.style.setProperty("--my", event.clientY - rect.top + "px");
+    },
+    { passive: true },
+  );
+})();
+
+/* ---------------------------------------------------------
+   Magnetic primary buttons: a subtle pull toward the cursor,
+   the kind of detail that separates a polished build from a
+   default one. Desktop pointer devices only.
+--------------------------------------------------------- */
+(function magneticButtons() {
+  if (prefersReducedMotion || window.matchMedia("(hover: none)").matches) return;
+
+  document.querySelectorAll(".btn--primary").forEach(function (btn) {
+    var strength = 10;
+
+    btn.addEventListener("pointermove", function (event) {
+      var rect = btn.getBoundingClientRect();
+      var x = event.clientX - rect.left - rect.width / 2;
+      var y = event.clientY - rect.top - rect.height / 2;
+      btn.style.transform =
+        "translate(" +
+        (x / rect.width) * strength +
+        "px, " +
+        (y / rect.height) * strength +
+        "px)";
+    });
+
+    btn.addEventListener("pointerleave", function () {
+      btn.style.transform = "";
+    });
+  });
+})();
+
+/* ---------------------------------------------------------
+   Ambient cursor glow: a soft light that trails the pointer
+   across the page. Purely decorative, desktop only, and
+   completely inert under reduced-motion.
+--------------------------------------------------------- */
+(function cursorGlow() {
+  if (prefersReducedMotion || window.matchMedia("(hover: none)").matches) return;
+
+  var glow = document.createElement("div");
+  glow.className = "cursor-glow";
+  document.body.appendChild(glow);
+
+  var raf = null;
+  var targetX = window.innerWidth / 2;
+  var targetY = window.innerHeight / 2;
+  var x = targetX;
+  var y = targetY;
+
+  function loop() {
+    x += (targetX - x) * 0.15;
+    y += (targetY - y) * 0.15;
+    glow.style.transform = "translate(" + x + "px, " + y + "px)";
+    raf = requestAnimationFrame(loop);
+  }
+
+  window.addEventListener(
+    "pointermove",
+    function (event) {
+      targetX = event.clientX;
+      targetY = event.clientY;
+      glow.classList.add("is-active");
+      if (!raf) raf = requestAnimationFrame(loop);
+    },
+    { passive: true },
+  );
+
+  document.addEventListener("pointerleave", function () {
+    glow.classList.remove("is-active");
+  });
+})();
+
+/* ---------------------------------------------------------
+   Shared toast helper: window.showToast(message). Used for
+   "copied to clipboard" and similar lightweight confirmations
+   anywhere on the site.
+--------------------------------------------------------- */
+(function toastSystem() {
+  var stack = null;
+
+  window.showToast = function (message) {
+    if (!stack) {
+      stack = document.createElement("div");
+      stack.className = "toast-stack";
+      stack.setAttribute("aria-live", "polite");
+      document.body.appendChild(stack);
+    }
+
+    var toast = document.createElement("div");
+    toast.className = "toast";
+    toast.textContent = message;
+    stack.appendChild(toast);
+
+    requestAnimationFrame(function () {
+      toast.classList.add("is-visible");
+    });
+
+    setTimeout(function () {
+      toast.classList.remove("is-visible");
+      setTimeout(function () {
+        toast.remove();
+      }, 350);
+    }, 2200);
+  };
+})();
+
+/* ---------------------------------------------------------
    Reveal the page shell once fonts/layout settle, avoiding a
    flash of unstyled/unpositioned content on slow connections
 --------------------------------------------------------- */
