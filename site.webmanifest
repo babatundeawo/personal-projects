@@ -1,0 +1,15 @@
+{
+  "name": "Babatunde Awoyemi: Build Log",
+  "short_name": "Build Log",
+  "description": "A running build log of practical, from-scratch JavaScript projects.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#0c0b0a",
+  "theme_color": "#d9420b",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

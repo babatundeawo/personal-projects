@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Church Attendance App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <style>
+    /* Prevent the app from showing until fully loaded */
+    #root { opacity: 0; transition: opacity 0.5s; }
+    .loaded #root { opacity: 1; }
+  </style>
+
+  </head>
+<body onload="document.body.classList.add('loaded')">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    // ----------------------------------------------------------------
+    // START OF REACT/JSX CODE
+    // ----------------------------------------------------------------
+
+    // Simple icon replacements (Lucide React not available, using text alternatives)
+    const Users = ({ className }) => <span className={className}>👥</span>;
+    const Calendar = ({ className }) => <span className={className}>📅</span>;
+    const MessageSquare = ({ className }) => <span className={className}>💬</span>;
+    const Plus = ({ className }) => <span className={className}>➕</span>;
+    const Search = ({ className }) => <span className={className}>🔍</span>;
+    const Send = ({ className }) => <span className={className}>📤</span>;
+    const X = ({ className }) => <span className={className}>❌</span>;
+    const Edit2 = ({ className }) => <span className={className}>✏️</span>;
+    const Trash2 = ({ className }) => <span className={className}>🗑️</span>;
+    const Download = ({ className }) => <span className={className}>⬇️</span>;
+    const Upload = ({ className }) => <span className={className}>⬆️</span>;
+
+    // ====================================
+    // MAIN APPLICATION COMPONENT
+    // ====================================
+
+    function ChurchAttendanceApp() {
+      // 🚩 Hooks now use React.useState/React.useEffect
+      const [activeTab, setActiveTab] = React.useState('members');
+      const [members, setMembers] = React.useState([]);
+      const [attendanceRecords, setAttendanceRecords] = React.useState([]);
+      const [searchTerm, setSearchTerm] = React.useState('');
+      const [showAddMember, setShowAddMember] = React.useState(false);
+      const [editingMember, setEditingMember] = React.useState(null);
+      const [currentAttendance, setCurrentAttendance] = React.useState({});
+      const [smsMessage, setSmsMessage] = React.useState('');
+      const [selectedAbsent, setSelectedAbsent] = React.useState([]);
+      const [filterStatus, setFilterStatus] = React.useState('all');
+      const [filterDepartment, setFilterDepartment] = React.useState('all');
+      
+      // Removed the erroneous closing brace: };
+
+      // NOTE: Removed useEffect hook as it contained no logic in the provided code
+      // If you need data loading on mount, uncomment and implement the useEffect:
+      /*
+      React.useEffect(() => {
+        loadData();
+      }, []);
+      */
+
+      const loadData = async () => {
+        // Data must now be loaded manually via the Import button.
+        setMembers([]);
+        setAttendanceRecords([]);
+        console.log('App ready. Use the Import button to load your data backup.');
+      };
+
+      const saveMembers = async (newMembers) => {
+        setMembers(newMembers);
+      };
+
+      const saveAttendance = async (newRecords) => {
+        setAttendanceRecords(newRecords);
+      };
+
+      // === PERSISTENCE FUNCTIONS (File Import/Export) ===
+
+      const exportData = () => {
+        const data = {
+          members: members,
+          attendanceRecords: attendanceRecords,
+          exportDate: new Date().toISOString()
+        };
+        const json = JSON.stringify(data, null, 2);
+        const blob = new Blob([json], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        // Forces a download to the user's computer
+        a.download = `church-attendance-backup-${new Date().toISOString().slice(0, 10)}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        alert('Backup file downloaded! Save it to your Google Drive folder.');
+      };
+
+      const handleImportFile = (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        if (file.type !== 'application/json') {
+          alert('Please upload a valid JSON file.');
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const importedData = JSON.parse(e.target.result);
+            if (importedData.members && importedData.attendanceRecords) {
+              setMembers(importedData.members);
+              setAttendanceRecords(importedData.attendanceRecords);
+              alert(`Data imported successfully! (${importedData.members.length} members, ${importedData.attendanceRecords.length} records)`);
+            } else {
+              alert('Error: Imported file does not contain required "members" and "attendanceRecords" keys.');
+            }
+          } catch (error) {
+            alert('Error parsing JSON file. Please ensure the file is not corrupted.');
+            console.error('Import error:', error);
+          }
+        };
+        reader.readAsText(file);
+        // Reset file input so same file can be selected again
+        event.target.value = null; 
+      };
+
+      // ===============================
+
+      const addOrUpdateMember = (memberData) => {
+        if (editingMember) {
+          const updated = members.map(m => m.id === editingMember.id ? { ...memberData, id: editingMember.id } : m);
+          saveMembers(updated);
+          setEditingMember(null);
+        } else {
+          const newMember = { ...memberData, id: Date.now().toString() };
+          saveMembers([...members, newMember]);
+        }
+        setShowAddMember(false);
+      };
+
+      const deleteMember = (id) => {
+        if (confirm('Are you sure you want to delete this member?')) {
+          saveMembers(members.filter(m => m.id !== id));
+        }
+      };
+
+      const markAttendance = async () => {
+        const record = {
+          id: Date.now().toString(),
+          date: new Date().toISOString(),
+          attendance: currentAttendance
+        };
+        await saveAttendance([record, ...attendanceRecords]);
+        setCurrentAttendance({});
+        alert('Attendance saved successfully! Remember to Export Backup to save it to your file.');
+      };
+
+      const getAbsentMembers = () => {
+        return members.filter(m => !currentAttendance[m.id]);
+      };
+
+      const sendBulkSMS = () => {
+        if (selectedAbsent.length === 0) {
+          alert('Please select members to send SMS to');
+          return;
+        }
+        if (!smsMessage.trim()) {
+          alert('Please enter a message');
+          return;
+        }
+
+        const recipients = members.filter(m => selectedAbsent.includes(m.id));
+        const phones = recipients.map(m => m.phone).join(', ');
+
+        alert(`SMS would be sent to ${selectedAbsent.length} member(s):\n${phones}\n\nMessage: ${smsMessage}\n\n(Note: Actual SMS sending requires backend integration)`);
+
+        setSmsMessage('');
+        setSelectedAbsent([]);
+      };
+
+      const filteredMembers = members.filter(m => {
+        const matchesSearch = m.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          m.phone.includes(searchTerm);
+        const matchesStatus = filterStatus === 'all' || m.status === filterStatus;
+        const matchesDepartment = filterDepartment === 'all' || m.department === filterDepartment;
+        return matchesSearch && matchesStatus && matchesDepartment;
+      });
+
+      const departments = [...new Set(members.filter(m => m.status === 'worker').map(m => m.department).filter(Boolean))];
+
+      return (
+        <div className="min-h-screen bg-gray-50">
+
+          <div className="bg-white border-b border-gray-200">
+            <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+              <h1 className="text-2xl font-semibold text-gray-900">Church Attendance</h1>
+              <div className="flex items-center space-x-3">
+                {/* Import Button */}
+                <label
+                  htmlFor="import-data"
+                  className="cursor-pointer bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 flex items-center text-sm border border-gray-300"
+                >
+                  <Upload className="w-4 h-4 mr-2" />
+                  Import Data
+                </label>
+                <input
+                  type="file"
+                  id="import-data"
+                  accept=".json"
+                  onChange={handleImportFile}
+                  className="hidden"
+                />
+
+                {/* Export Button */}
+                <button
+                  onClick={exportData}
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center text-sm"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Export Backup
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white border-b border-gray-200">
+            <div className="max-w-7xl mx-auto px-4">
+              <div className="flex space-x-8">
+                <button
+                  onClick={() => setActiveTab('members')}
+                  className={`py-4 px-1 border-b-2 font-medium text-sm ${activeTab === 'members'
+                    ? 'border-blue-500 text-blue-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    }`}
+                >
+                  <Users className="inline w-5 h-5 mr-2" />
+                  Members
+                </button>
+                <button
+                  onClick={() => setActiveTab('attendance')}
+                  className={`py-4 px-1 border-b-2 font-medium text-sm ${activeTab === 'attendance'
+                    ? 'border-blue-500 text-blue-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    }`}
+                >
+                  <Calendar className="inline w-5 h-5 mr-2" />
+                  Attendance
+                </button>
+                <button
+                  onClick={() => setActiveTab('sms')}
+                  className={`py-4 px-1 border-b-2 font-medium text-sm ${activeTab === 'sms'
+                    ? 'border-blue-500 text-blue-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    }`}
+                >
+                  <MessageSquare className="inline w-5 h-5 mr-2" />
+                  SMS
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 py-6">
+            {activeTab === 'members' && (
+              <MembersTab
+                members={filteredMembers}
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                filterStatus={filterStatus}
+                setFilterStatus={setFilterStatus}
+                filterDepartment={filterDepartment}
+                setFilterDepartment={setFilterDepartment}
+                departments={departments}
+                setShowAddMember={setShowAddMember}
+                setEditingMember={setEditingMember}
+                deleteMember={deleteMember}
+              />
+            )}
+
+            {activeTab === 'attendance' && (
+              <AttendanceTab
+                members={members}
+                currentAttendance={currentAttendance}
+                setCurrentAttendance={setCurrentAttendance}
+                markAttendance={markAttendance}
+                attendanceRecords={attendanceRecords}
+              />
+            )}
+
+            {activeTab === 'sms' && (
+              <SMSTab
+                absentMembers={getAbsentMembers()}
+                selectedAbsent={selectedAbsent}
+                setSelectedAbsent={setSelectedAbsent}
+                smsMessage={smsMessage}
+                setSmsMessage={setSmsMessage}
+                sendBulkSMS={sendBulkSMS}
+                filterStatus={filterStatus}
+                setFilterStatus={setFilterStatus}
+                filterDepartment={filterDepartment}
+                setFilterDepartment={setFilterDepartment}
+                departments={departments}
+              />
+            )}
+          </div>
+
+          {(showAddMember || editingMember) && (
+            <MemberModal
+              member={editingMember}
+              onClose={() => {
+                setShowAddMember(false);
+                setEditingMember(null);
+              }}
+              onSave={addOrUpdateMember}
+            />
+          )}
+        </div>
+      );
+    }
+
+    // ====================================
+    // SUB-COMPONENTS 
+    // ====================================
+
+    function MembersTab({ members, searchTerm, setSearchTerm, filterStatus, setFilterStatus, filterDepartment, setFilterDepartment, departments, setShowAddMember, setEditingMember, deleteMember }) {
+      return (
+        <div>
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-xl font-semibold text-gray-900">All Members ({members.length})</h2>
+            <button
+              onClick={() => setShowAddMember(true)}
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center"
+            >
+              <Plus className="w-5 h-5 mr-2" />
+              Add Member
+            </button>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-4">
+            <div className="flex flex-wrap gap-4">
+              <div className="flex-1 min-w-64">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="text"
+                    placeholder="Search by name or phone..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                </div>
+              </div>
+              <select
+                value={filterStatus}
+                onChange={(e) => setFilterStatus(e.target.value)}
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              >
+                <option value="all">All Status</option>
+                <option value="worker">Workers</option>
+                <option value="non-worker">Non-Workers</option>
+              </select>
+              {departments.length > 0 && (
+                <select
+                  value={filterDepartment}
+                  onChange={(e) => setFilterDepartment(e.target.value)}
+                  className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                >
+                  <option value="all">All Departments</option>
+                  {departments.map(dept => (
+                    <option key={dept} value={dept}>{dept}</option>
+                  ))}
+                </select>
+              )}
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
+                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {members.length === 0 ? (
+                  <tr>
+                    <td colSpan="5" className="px-6 py-12 text-center text-gray-500">
+                      No members found. Click "Add Member" to get started.
+                    </td>
+                  </tr>
+                ) : (
+                  members.map(member => (
+                    <tr key={member.id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{member.name}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{member.phone}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <span className={`px-2 py-1 text-xs font-medium rounded-full ${member.status === 'worker' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800'
+                          }`}>
+                          {member.status === 'worker' ? 'Worker' : 'Non-Worker'}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {member.department || '-'}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <button
+                          onClick={() => setEditingMember(member)}
+                          className="text-blue-600 hover:text-blue-900 mr-4"
+                        >
+                          <Edit2 className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => deleteMember(member.id)}
+                          className="text-red-600 hover:text-red-900"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+    }
+
+    function AttendanceTab({ members, currentAttendance, setCurrentAttendance, markAttendance, attendanceRecords }) {
+      const toggleAttendance = (memberId) => {
+        setCurrentAttendance(prev => ({
+          ...prev,
+          [memberId]: !prev[memberId]
+        }));
+      };
+
+      const presentCount = Object.values(currentAttendance).filter(Boolean).length;
+      const absentCount = members.length - presentCount;
+
+      return (
+        <div>
+          <div className="flex justify-between items-center mb-6">
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900">Mark Attendance</h2>
+              <p className="text-sm text-gray-500 mt-1">{new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+            </div>
+            <button
+              onClick={markAttendance}
+              disabled={Object.keys(currentAttendance).length === 0}
+              className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+            >
+              Save Attendance
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+              <p className="text-sm text-gray-500">Total Members</p>
+              <p className="text-2xl font-semibold text-gray-900 mt-1">{members.length}</p>
+            </div>
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+              <p className="text-sm text-gray-500">Present</p>
+              <p className="text-2xl font-semibold text-green-600 mt-1">{presentCount}</p>
+            </div>
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+              <p className="text-sm text-gray-500">Absent</p>
+              <p className="text-2xl font-semibold text-red-600 mt-1">{absentCount}</p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            {members.length === 0 ? (
+              <p className="text-center text-gray-500 py-8">No members to mark attendance for. Add members first.</p>
+            ) : (
+              <div className="space-y-2">
+                {members.map(member => (
+                  <label
+                    key={member.id}
+                    className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg cursor-pointer"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <input
+                        type="checkbox"
+                        checked={currentAttendance[member.id] || false}
+                        onChange={() => toggleAttendance(member.id)}
+                        className="w-5 h-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
+                      />
+                      <div>
+                        <p className="font-medium text-gray-900">{member.name}</p>
+                        <p className="text-sm text-gray-500">
+                          {member.status === 'worker' ? `Worker - ${member.department}` : 'Non-Worker'}
+                        </p>
+                      </div>
+                    </div>
+                    <span className={`text-sm font-medium ${currentAttendance[member.id] ? 'text-green-600' : 'text-red-600'}`}>
+                      {currentAttendance[member.id] ? 'Present' : 'Absent'}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {attendanceRecords.length > 0 && (
+            <div className="mt-8">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Attendance Records</h3>
+              <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                <div className="divide-y divide-gray-200">
+                  {attendanceRecords.slice(0, 5).map(record => {
+                    const present = Object.values(record.attendance).filter(Boolean).length;
+                    const total = members.length;
+                    return (
+                      <div key={record.id} className="p-4">
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <p className="font-medium text-gray-900">
+                              {new Date(record.date).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                            </p>
+                            <p className="text-sm text-gray-500 mt-1">
+                              {present} present out of {total} members
+                            </p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-2xl font-semibold text-gray-900">{Math.round((present / total) * 100)}%</p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    function SMSTab({ absentMembers, selectedAbsent, setSelectedAbsent, smsMessage, setSmsMessage, sendBulkSMS, filterStatus, setFilterStatus, filterDepartment, setFilterDepartment, departments }) {
+      const toggleAbsent = (memberId) => {
+        setSelectedAbsent(prev =>
+          prev.includes(memberId)
+            ? prev.filter(id => id !== memberId)
+            : [...prev, memberId]
+        );
+      };
+
+      const selectAll = () => {
+        const filtered = getFilteredAbsent();
+        setSelectedAbsent(filtered.map(m => m.id));
+      };
+
+      const deselectAll = () => {
+        setSelectedAbsent([]);
+      };
+
+      const getFilteredAbsent = () => {
+        return absentMembers.filter(m => {
+          const matchesStatus = filterStatus === 'all' || m.status === filterStatus;
+          const matchesDepartment = filterDepartment === 'all' || m.department === filterDepartment;
+          return matchesStatus && matchesDepartment;
+        });
+      };
+
+      const filteredAbsent = getFilteredAbsent();
+
+      return (
+        <div>
+          <h2 className="text-xl font-semibold text-gray-900 mb-6">Send SMS to Absent Members</h2>
+
+          {absentMembers.length === 0 ? (
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
+              <MessageSquare className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+              <p className="text-gray-500">No absent members to send messages to.</p>
+              <p className="text-sm text-gray-400 mt-2">Mark attendance first to see absent members here.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="font-semibold text-gray-900">Absent Members ({filteredAbsent.length})</h3>
+                  <div className="space-x-2">
+                    <button
+                      onClick={selectAll}
+                      className="text-sm text-blue-600 hover:text-blue-700"
+                    >
+                      Select All
+                    </button>
+                    <button
+                      onClick={deselectAll}
+                      className="text-sm text-gray-600 hover:text-gray-700"
+                    >
+                      Deselect All
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <select
+                    value={filterStatus}
+                    onChange={(e) => setFilterStatus(e.target.value)}
+                    className="px-3 py-1 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  >
+                    <option value="all">All Status</option>
+                    <option value="worker">Workers</option>
+                    <option value="non-worker">Non-Workers</option>
+                  </select>
+                  {departments.length > 0 && (
+                    <select
+                      value={filterDepartment}
+                      onChange={(e) => setFilterDepartment(e.target.value)}
+                      className="px-3 py-1 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    >
+                      <option value="all">All Departments</option>
+                      {departments.map(dept => (
+                        <option key={dept} value={dept}>{dept}</option>
+                      ))}
+                    </select>
+                  )}
+                </div>
+
+                <div className="space-y-2 max-h-96 overflow-y-auto">
+                  {filteredAbsent.map(member => (
+                    <label
+                      key={member.id}
+                      className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg cursor-pointer border border-gray-100"
+                    >
+                      <div className="flex items-center space-x-3">
+                        <input
+                          type="checkbox"
+                          checked={selectedAbsent.includes(member.id)}
+                          onChange={() => toggleAbsent(member.id)}
+                          className="w-5 h-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
+                        />
+                        <div>
+                          <p className="font-medium text-gray-900">{member.name}</p>
+                          <p className="text-sm text-gray-500">{member.phone}</p>
+                        </div>
+                      </div>
+                      <span className="text-xs text-gray-500">
+                        {member.status === 'worker' ? member.department : 'Non-Worker'}
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h3 className="font-semibold text-gray-900 mb-4">Compose Message</h3>
+                <textarea
+                  value={smsMessage}
+                  onChange={(e) => setSmsMessage(e.target.value)}
+                  placeholder="Type your message here..."
+                  className="w-full h-64 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                />
+                <div className="flex justify-between items-center mt-4">
+                  <p className="text-sm text-gray-500">
+                    {selectedAbsent.length} recipient{selectedAbsent.length !== 1 ? 's' : ''} selected
+                  </p>
+                  <button
+                    onClick={sendBulkSMS}
+                    disabled={selectedAbsent.length === 0 || !smsMessage.trim()}
+                    className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center"
+                  >
+                    <Send className="w-4 h-4 mr-2" />
+                    Send SMS
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    function MemberModal({ member, onClose, onSave }) {
+      // 🚩 Hook uses React.useState
+      const [formData, setFormData] = React.useState(
+        member || { name: '', phone: '', status: 'non-worker', department: '' }
+      );
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!formData.name.trim() || !formData.phone.trim()) {
+          alert('Please fill in all required fields');
+          return;
+        }
+        onSave(formData);
+      };
+
+      return (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg shadow-xl max-w-md w-full">
+            <div className="flex justify-between items-center p-6 border-b border-gray-200">
+              <h3 className="text-lg font-semibold text-gray-900">
+                {member ? 'Edit Member' : 'Add New Member'}
+              </h3>
+              <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSubmit} className="p-6 space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Name *</label>
+                <input
+                  type="text"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
+                <input
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Status *</label>
+                <select
+                  value={formData.status}
+                  // If status changes to 'non-worker', clear the department.
+                  onChange={(e) => setFormData({ ...formData, status: e.target.value, department: e.target.value === 'non-worker' ? '' : formData.department })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                >
+                  <option value="non-worker">Non-Worker</option>
+                  <option value="worker">Worker</option>
+                </select>
+              </div>
+
+              {formData.status === 'worker' && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Department *</label>
+                  <input
+                    type="text"
+                    value={formData.department}
+                    onChange={(e) => setFormData({ ...formData, department: e.target.value })}
+                    placeholder="e.g. Choir, Ushering, Media"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    required={formData.status === 'worker'}
+                  />
+                </div>
+              )}
+
+              <div className="flex space-x-3 pt-4">
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                >
+                  {member ? 'Update' : 'Add'} Member
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      );
+    }
+    // ----------------------------------------------------------------
+    // END OF REACT/JSX CODE
+    // ----------------------------------------------------------------
+
+
+    // Initialize the application 
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(<ChurchAttendanceApp />);
+    
+  </script>
+</body>
+</html>

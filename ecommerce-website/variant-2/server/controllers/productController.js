@@ -1,0 +1,6 @@
+const Product = require('../models/Product');
+exports.getProducts = async (req, res) => { try { res.json(await Product.find({})); } catch (err) { res.status(500).json({ msg: err.message }); } };
+exports.getProductById = async (req, res) => { try { const p = await Product.findById(req.params.id); if (!p) return res.status(404).json({ msg: 'Not found' }); res.json(p); } catch (err) { res.status(500).json({ msg: err.message }); } };
+exports.createProduct = async (req, res) => { try { const p = new Product(req.body); await p.save(); res.status(201).json(p); } catch (err) { res.status(400).json({ msg: err.message }); } };
+exports.updateProduct = async (req, res) => { try { const p = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true }); res.json(p); } catch (err) { res.status(400).json({ msg: err.message }); } };
+exports.deleteProduct = async (req, res) => { try { await Product.findByIdAndDelete(req.params.id); res.json({ msg: 'Deleted' }); } catch (err) { res.status(400).json({ msg: err.message }); } };

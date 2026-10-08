@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaboom Game</title>
+  <script src="https://unpkg.com/kaboom/dist/kaboom.js"></script>
+</head>
+<body>
+  <script type="module">
+    kaboom({
+      background: [173, 245, 255],
+    });
+
+    loadSprite("decoration", "/sprites/cloud.png");
+    loadSprite("ground", "/sprites/steel.png");
+    loadSprite("portal", "/sprites/portal.png");
+    loadSprite("apple", "/sprites/apple.png");
+    loadSprite("enemy", "/sprites/spike.png");
+    loadSprite("grass", "/sprites/grass.png");
+    loadSprite("doggie", "/sprites/onion.png");
+
+    // Add our Main Character.
+    const doggie = add([
+      sprite("doggie"),
+      pos(10, 25),
+      area(),
+      body(),
+    ]);
+
+    // Add Enemy
+    add([
+      sprite("enemy"),
+      pos(width(), 0),
+      area(),
+      body(),
+      move(LEFT, 100),
+      "enemy",
+    ]);
+
+    // Add our Level.
+    addLevel(
+      [
+        "     ",
+        "    ",
+        "      O",
+        "=== ========",
+      ],
+      {
+        width: 64,
+        height: 120,
+        "=": () => [sprite("grass"), area(), solid()],
+        A: () => [sprite("apple"), area(), solid(), "food"],
+        O: () => [sprite("portal"), area(), "portal"],
+      }
+    );
+
+    // Move our Character.
+    onKeyPress("space", () => doggie.jump());
+    onKeyDown("right", () => {
+      doggie.move(120, 0);
+    });
+    onKeyDown("left", () => {
+      doggie.move(-120, 0);
+    });
+
+    // Collision Events
+    doggie.onCollide("enemy", () => {
+      shake();
+    });
+    doggie.onCollide("food", (food) => {
+      destroy(food);
+      burp();
+    });
+    doggie.onCollide("portal", () => {
+      go("FinalLevel");
+    });
+
+    // Final Level Scene
+    scene("FinalLevel", () => {
+      // Add our Level.
+      addLevel(
+        [
+          "",
+          "",
+          "D",
+          "=====",
+        ],
+        {
+          width: 64,
+          height: 120,
+          "=": () => [sprite("ground"), area(), solid()],
+          A: () => [sprite("apple"), area(), solid(), "food"],
+          O: () => [sprite("portal"), area(), "portal"],
+          D: () => [sprite("decoration")],
+        }
+      );
+      const doggie = add([sprite("doggie"), pos(0, 0), area(), body()]);
+      onKeyPress("space", () => doggie.jump());
+      onKeyDown("right", () => {
+        doggie.move(120, 0);
+      });
+      onKeyDown("left", () => {
+        doggie.move(-120, 0);
+      });
+    });
+
+    // Start the game with the main scene
+    start();
+  </script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+/* =========================================================
+   PROJECTS — a flat, searchable directory that points to
+   GitHub. Works without JavaScript (everything is visible).
+   ========================================================= */
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  margin-top: var(--s-5);
+  padding: var(--s-2) var(--s-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  background: var(--bg-elev);
+  color: var(--text-2);
+  font-size: var(--fs-sm);
+}
+.status__dot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0 var(--accent);
+  animation: ping 2.4s var(--ease-out) infinite;
+}
+@keyframes ping {
+  70% { box-shadow: 0 0 0 8px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+.toolbar {
+  position: sticky;
+  top: var(--header-h);
+  z-index: calc(var(--z-header) - 1);
+  padding-block: var(--s-3);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  -webkit-backdrop-filter: saturate(1.5) blur(14px);
+  backdrop-filter: saturate(1.5) blur(14px);
+  border-block: 1px solid var(--line);
+}
+.toolbar__inner {
+  display: grid;
+  gap: var(--s-3);
+}
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.search svg {
+  position: absolute;
+  left: var(--s-4);
+  width: 18px;
+  height: 18px;
+  color: var(--text-3);
+  pointer-events: none;
+}
+.search input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 var(--s-7) 0 calc(var(--s-4) + 28px);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-pill);
+  background: var(--bg-elev);
+  font-size: var(--fs-base);
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+}
+.search input:focus-visible {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-tint);
+}
+.search kbd {
+  position: absolute;
+  right: var(--s-4);
+  display: none;
+  min-width: 24px;
+  padding: 1px 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  text-align: center;
+}
+@media (hover: hover) and (pointer: fine) {
+  .search kbd { display: block; }
+}
+
+.filters {
+  display: flex;
+  gap: var(--s-2);
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(90deg, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, #000 92%, transparent);
+}
+.filters::-webkit-scrollbar { display: none; }
+.filter {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: 44px;
+  padding: 0 var(--s-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--text-2);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color var(--dur-fast), color var(--dur-fast), border-color var(--dur-fast);
+}
+.filter span {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-3);
+}
+.filter:hover {
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+.filter[aria-pressed="true"] {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+.filter[aria-pressed="true"] span {
+  color: inherit;
+  opacity: 0.7;
+}
+@media (min-width: 900px) {
+  .toolbar__inner { grid-template-columns: minmax(280px, 360px) 1fr; align-items: center; }
+  .filters { -webkit-mask-image: none; mask-image: none; flex-wrap: wrap; overflow: visible; }
+}
+
+.results {
+  margin: var(--s-5) 0;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+}
+
+.directory {
+  display: grid;
+  gap: var(--s-4);
+  grid-template-columns: 1fr;
+}
+.group {
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--bg-elev);
+  padding: var(--s-5);
+}
+.group.is-empty { display: none; }
+.group__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+.group__head h2 {
+  font-size: var(--fs-lg);
+}
+.group__count {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--primary-text);
+}
+.group__note {
+  margin-top: var(--s-2);
+  color: var(--text-3);
+  font-size: var(--fs-sm);
+}
+.dir-list {
+  display: grid;
+  gap: 2px;
+  margin-top: var(--s-4);
+}
+.dir-item.is-hidden { display: none; }
+.dir-item a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  min-height: 44px;
+  padding: var(--s-2) var(--s-3);
+  margin-inline: calc(var(--s-3) * -1);
+  border-radius: var(--r-sm);
+  color: var(--text-2);
+  font-size: var(--fs-sm);
+  transition: background-color var(--dur-fast), color var(--dur-fast), padding var(--dur) var(--ease-out);
+}
+.dir-item a::after {
+  content: "\2197";
+  flex: none;
+  color: var(--text-3);
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  transition: opacity var(--dur-fast), transform var(--dur) var(--ease-out);
+}
+.dir-item a:hover,
+.dir-item a:focus-visible {
+  background: var(--bg-sunk);
+  color: var(--text);
+  padding-left: var(--s-4);
+}
+.dir-item a:hover::after,
+.dir-item a:focus-visible::after {
+  opacity: 1;
+  transform: none;
+  color: var(--primary-text);
+}
+.dir-item mark {
+  background: var(--primary-tint);
+  color: var(--primary-text);
+  border-radius: 3px;
+}
+
+@media (min-width: 760px) {
+  .directory { grid-template-columns: repeat(2, 1fr); align-items: start; }
+  .group--wide { grid-column: 1 / -1; }
+  .group--wide .dir-list { grid-template-columns: repeat(2, 1fr); column-gap: var(--s-6); }
+}
+@media (min-width: 1100px) {
+  .directory { grid-template-columns: repeat(3, 1fr); }
+  .group--wide .dir-list { grid-template-columns: repeat(3, 1fr); }
+}
+
+.empty {
+  margin-block: var(--s-8);
+  padding: var(--s-8) var(--s-5);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-lg);
+  text-align: center;
+}
+.empty h2 { font-size: var(--fs-xl); }
+.empty p { margin: var(--s-3) 0 var(--s-5); color: var(--text-2); }
