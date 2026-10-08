@@ -1,0 +1,10 @@
+name: Suggest an idea
+description: A suggestion for the site or for a project.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like to see?
+    validations:
+      required: true

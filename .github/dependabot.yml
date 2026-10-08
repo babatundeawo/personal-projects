@@ -1,0 +1,12 @@
+# Keeps the automation in .github/workflows up to date by opening pull requests.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "chore"
+    groups:
+      github-actions:
+        patterns: ["*"]

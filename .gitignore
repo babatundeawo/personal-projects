@@ -1,0 +1,18 @@
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+
+# Node / full-stack sub-projects (ecommerce-website/*)
+node_modules/
+dist/
+build/
+.env
+!.env.example
+
+# Python (ai-agent-bootcamp)
+__pycache__/
+*.pyc
+
+# Build output (created by the deploy workflow)
+_site/

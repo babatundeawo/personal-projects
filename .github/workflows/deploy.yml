@@ -1,0 +1,111 @@
+# Builds, checks and deploys the site.
+#   - Push to main (or "Run workflow" button): build, check, deploy to GitHub Pages.
+#   - Pull request: build and check only. A downloadable preview is attached to the run.
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Least privilege by default; the deploy job asks for more below.
+permissions:
+  contents: read
+
+# Never run two deployments at once, and never cancel one halfway through.
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build and check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Cache tool downloads
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-tools-${{ runner.os }}-v1
+          restore-keys: npm-tools-${{ runner.os }}-
+
+      - name: Assemble the site into _site
+        run: |
+          mkdir _site
+          # Everything is published as-is, except files that only matter on GitHub.
+          tar -cf - \
+            --exclude='./.git' --exclude='./.github' --exclude='./_site' --exclude='*/node_modules' \
+            --exclude='./docs' --exclude='./scripts' \
+            --exclude='./README.md' --exclude='./CONTRIBUTING.md' --exclude='./SECURITY.md' \
+            --exclude='./.gitignore' --exclude='./.htmlvalidate.json' \
+            . | tar -xf - -C _site
+          # Publish files exactly as they are (no Jekyll processing).
+          touch _site/.nojekyll
+
+      - name: Check that the key files exist
+        run: |
+          for f in index.html projects.html about.html contact.html 404.html sitemap.xml robots.txt site.webmanifest og-image.png; do
+            test -f "_site/$f" || { echo "::error::Missing $f"; exit 1; }
+          done
+
+      - name: Check JavaScript syntax
+        run: |
+          for f in assets/js/site.js assets/js/home.js assets/js/projects.js assets/js/contact.js; do
+            node --check "$f"
+          done
+
+      - name: Lint HTML (reports problems, does not block)
+        continue-on-error: true
+        run: npx --yes html-validate@8 index.html projects.html about.html contact.html 404.html
+
+      - name: Check links (reports problems, does not block)
+        uses: lycheeverse/lychee-action@v2
+        continue-on-error: true
+        with:
+          args: >-
+            --offline --no-progress --root-dir "${{ github.workspace }}/_site"
+            "_site/index.html" "_site/projects.html" "_site/about.html" "_site/contact.html"
+          fail: false
+
+      - name: Lighthouse report (reports scores, does not block)
+        uses: treosh/lighthouse-ci-action@v12
+        continue-on-error: true
+        with:
+          configPath: ./.github/lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: false
+
+      - name: Upload the site for deployment
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Upload a downloadable preview (pull requests only)
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-preview
+          path: _site
+          retention-days: 14
+
+  deploy:
+    name: Deploy to GitHub Pages
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

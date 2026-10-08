@@ -1,0 +1,23 @@
+name: Report a bug
+description: Something on the site or in a project isn't working.
+labels: [bug]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Where did it happen?
+      description: The page address, or the project folder name.
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What went wrong?
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device
+      placeholder: Safari on iPhone, Chrome on Windows, ...
