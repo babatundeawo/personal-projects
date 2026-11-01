@@ -6,7 +6,7 @@ runs:
   using: composite
   steps:
     - name: Set up Node.js (current long-term-support version)
-      uses: actions/setup-node@v6
+      uses: actions/setup-node@v7
       with:
         node-version: lts/*
 
