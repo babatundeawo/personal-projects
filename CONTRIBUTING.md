@@ -15,20 +15,22 @@ You can do everything from the GitHub website:
 2. Make your change and choose **Propose changes**. GitHub creates a branch for you.
 3. Click **Create pull request** and describe the change in a sentence or two.
 
-Automated checks run on every pull request. A red cross means a check found a problem; open it to read why.
+Automated checks run on every pull request and attach a downloadable preview. A red cross means a check found a problem; open it to read why.
 
-## Working on the site locally (developers)
+## Working on the site on your own computer (developers)
 
-The site is plain HTML, CSS and JavaScript, so any static file server works:
+The page files in the top folder are templates (they pull in `partials/` and data), so build the site first. You need Node.js 20 or newer:
 
 ```bash
-python3 -m http.server 8000
+node scripts/build.mjs --check
+cd _site && python3 -m http.server 8000
 ```
 
-Then open `http://localhost:8000`.
+Then open `http://localhost:8000/`. The fonts are only downloaded on GitHub; locally the site uses your system fonts. Run `npm install --no-save --prefix .fonts @fontsource-variable/geist @fontsource-variable/geist-mono @fontsource/instrument-serif` first if you want them.
 
 Guidelines:
 
-- The site's design tokens (colors, type, spacing, motion) live at the top of `assets/css/site.css`. Use them rather than hard-coded values.
+- The design tokens (colors, type, spacing, motion) live at the top of `assets/css/site.css`. Use them rather than hard-coded values.
+- Do not add `style="..."` attributes or inline scripts: the Content Security Policy blocks them and the build fails.
 - `assets/css/base.css`, `portfolio-nav.css`, `assets/js/portfolio-nav.js` and `animations.js` are still used by `safe-calculator`, `smart-form-validator`, `student-report-card` and the ecommerce live demo. Do not change them without checking those pages.
 - Keep each project self-contained in its own folder.

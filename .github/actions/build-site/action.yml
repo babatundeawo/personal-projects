@@ -1,0 +1,30 @@
+# Shared by the deploy and pull-request workflows so both build and check the site the same way.
+name: Build and check the site
+description: Downloads the self-hosted fonts, assembles the site into _site/, and fails clearly if anything would ship broken.
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Node.js (current long-term-support version)
+      uses: actions/setup-node@v6
+      with:
+        node-version: lts/*
+
+    - name: Download the fonts (Geist, Geist Mono, Instrument Serif)
+      shell: bash
+      continue-on-error: true
+      run: |
+        # The fonts are served from this site itself (no Google Fonts), which is faster and private.
+        npm install --no-save --no-audit --no-fund --prefix .fonts \
+          @fontsource-variable/geist@5 @fontsource-variable/geist-mono@5 @fontsource/instrument-serif@5
+
+    - name: Check JavaScript syntax
+      shell: bash
+      run: |
+        for f in assets/js/*.js scripts/*.mjs; do
+          node --check "$f" || { echo "::error file=$f::JavaScript syntax error"; exit 1; }
+        done
+
+    - name: Build the site and run the checks
+      shell: bash
+      run: node scripts/build.mjs --check

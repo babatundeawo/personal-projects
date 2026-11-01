@@ -14,5 +14,6 @@ build/
 __pycache__/
 *.pyc
 
-# Build output (created by the deploy workflow)
+# Build output and downloaded fonts (created by the deploy workflow)
 _site/
+.fonts/

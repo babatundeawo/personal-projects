@@ -1,8 +1,10 @@
-# Keeps the automation in .github/workflows up to date by opening pull requests.
+# Keeps the automation (workflows and the shared build step) up to date by opening pull requests.
 version: 2
 updates:
   - package-ecosystem: "github-actions"
-    directory: "/"
+    directories:
+      - "/"
+      - "/.github/actions/build-site"
     schedule:
       interval: "weekly"
     commit-message:

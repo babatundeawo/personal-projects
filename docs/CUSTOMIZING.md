@@ -1,49 +1,59 @@
 # Customizing the site
 
-Edit any file on github.com by opening it and clicking the pencil icon. Save with **Commit changes**.
+Edit any file on github.com by opening it and clicking the pencil icon. Save with **Commit changes**. The site republishes by itself.
+
+## Words
+
+Each page is a plain `.html` file in the top folder: `index.html`, `projects.html`, `about.html`, `contact.html`, `404.html`, `offline.html`. Change the words between tags such as `<p>...</p>`. Leave the tags and the first two lines (the `<!doctype html>` line and the `<!--meta ...-->` line) alone. The `<!--meta ...-->` line holds that page's title and search description; you can edit the text inside the quote marks.
+
+The header and footer are shared and live in `partials/header.html` and `partials/footer.html`. Change them once and every page follows.
 
 ## Colors
 
-Open `assets/css/site.css`. Near the top, find `:root` (light mode) and `:root[data-theme="dark"]` (dark mode). Change the color codes there:
+Open `assets/css/site.css`. The color block near the top defines every color twice: a hex value and a more precise `oklch` value. Change both for a color. The most useful ones:
 
 | Name | What it controls |
 | --- | --- |
-| `--primary` | The orange used for buttons and highlights |
-| `--accent` | The teal used for "stable" labels |
-| `--bg`, `--bg-elev`, `--bg-sunk` | Page, card and footer backgrounds |
+| `--primary` | The orange used for buttons and the accents |
+| `--primary-text` | The orange when used as text |
+| `--accent` | The teal used for "stable" labels and Open links |
+| `--bg`, `--elev`, `--sunk` | Page, card and footer backgrounds |
 | `--text`, `--text-2`, `--text-3` | Main, secondary and quiet text |
 
-Keep text readable: the light button color needs white text with a contrast of at least 4.5. A free checker is at webaim.org/resources/contrastchecker.
+Keep text readable: aim for a contrast of at least 4.5 (checker: webaim.org/resources/contrastchecker). The current colors were all measured and pass in light and dark.
 
-## Text
+## The project list
 
-Each page is a plain `.html` file in the repository root: `index.html`, `projects.html`, `about.html`, `contact.html`, `404.html`. Edit the words between tags, such as `<p>…</p>`. Leave the tags themselves alone.
+`data/projects.json` is the one list that feeds the Projects page, the filters, the counts and the Open links. See "Adding a new project" in [DEPLOYMENT.md](DEPLOYMENT.md).
 
-The email address appears in `contact.html` and in `assets/js/contact.js`; change both.
+## Email address
+
+It appears in `contact.html` and in `assets/js/contact.js`. Change both.
+
+## Names
+
+`data/site.json` holds the site name and your GitHub names. They feed page titles, sharing previews and search-engine data.
 
 ## Fonts
 
-Fonts load from Google Fonts in the `<link rel="stylesheet" href="https://fonts.googleapis.com/…">` line in each page's `<head>`. The font names are set in `site.css` by `--font-display`, `--font-body`, `--font-serif` and `--font-mono`. If you change families, update that link in all five pages.
+The fonts are downloaded and served from the site itself on every publish (Geist, Geist Mono, Instrument Serif). To use different ones, edit the `@font-face` lines at the top of `assets/css/site.css`, the font list in `scripts/build.mjs` and the download line in `.github/actions/build-site/action.yml`.
 
-## Images and icons
+## Icons and sharing picture
 
 | File | Purpose |
 | --- | --- |
 | `favicon.svg`, `favicon.ico` | Browser tab icon |
 | `apple-touch-icon.png` | iPhone home screen icon (180 by 180) |
-| `icon-192.png`, `icon-512.png`, `icon-maskable-512.png` | App icons listed in `site.webmanifest` |
-| `og-image.png` | The preview picture shown when the site is shared (1200 by 630) |
+| `icon-192.png`, `icon-512.png`, `icon-maskable-512.png` | App icons used when installed |
+| `og-image.png` | The picture shown when the site is shared (1200 by 630) |
+| `assets/screenshots/wide.png`, `narrow.png` | Pictures in the install prompt on some browsers |
 
-To replace one, open the repository folder, click **Add file > Upload files**, and upload a file with the same name.
+To replace one, open the folder, choose **Add file > Upload files** and upload a file with the same name. The maskable icon needs its picture inside the middle 60 percent, because phones crop the edges into a circle or squircle.
 
-## Project list
+## Change the install prompt timing
 
-See "Add a new project" in [DEPLOYMENT.md](DEPLOYMENT.md).
+In `assets/js/pwa.js`, the numbers `25000` (first visit) and `6000` (later visits) are milliseconds before the install card appears. `DISMISS_DAYS` is how long it stays away after "Not now".
 
 ## Search engines
 
-`sitemap.xml` lists the pages. Add a `<url><loc>…</loc></url>` entry if you add a new page.
-
-## Page address and Content Security Policy
-
-Each page has a `Content Security Policy` line in its `<head>`. It lists the only places the page may load code, styles and fonts from. If you add a script, style sheet or font from another website, add that website to the line, or the browser will block it.
+`sitemap.xml` and `robots.txt` are regenerated on every publish from your pages. Nothing to edit.

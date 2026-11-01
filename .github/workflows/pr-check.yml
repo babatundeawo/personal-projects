@@ -1,0 +1,54 @@
+# Checks every pull request and attaches a downloadable preview. Nothing is published.
+name: Check pull request
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Build and check
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Build and check the site
+        uses: ./.github/actions/build-site
+
+      - name: Upload a preview of the site
+        uses: actions/upload-artifact@v7
+        with:
+          name: site-preview
+          path: _site
+          retention-days: 7
+
+      - name: Lint HTML (reports problems, does not block)
+        continue-on-error: true
+        run: npx --yes html-validate@8 _site/index.html _site/projects.html _site/about.html _site/contact.html _site/404.html _site/offline.html
+
+      - name: Check links (reports problems, does not block)
+        uses: lycheeverse/lychee-action@v2
+        continue-on-error: true
+        with:
+          args: >-
+            --offline --no-progress --root-dir "${{ github.workspace }}/_site"
+            "_site/index.html" "_site/projects.html" "_site/about.html" "_site/contact.html"
+          fail: false
+
+      - name: Lighthouse report (reports scores, does not block)
+        uses: treosh/lighthouse-ci-action@v12
+        continue-on-error: true
+        with:
+          configPath: ./.github/lighthouserc.json
+          uploadArtifacts: true

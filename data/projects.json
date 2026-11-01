@@ -1,0 +1,581 @@
+{
+  "_help": "One entry per project. 'name' is what visitors see. 'path' is the folder (or .html file) inside the repository. The build adds the Open link by itself when the folder contains an index.html.",
+  "groups": [
+    {
+      "id": "standalone",
+      "title": "Standalone builds",
+      "note": "",
+      "items": [
+        {
+          "name": "Safe Calculator",
+          "path": "safe-calculator"
+        },
+        {
+          "name": "Smart Form Validator",
+          "path": "smart-form-validator"
+        },
+        {
+          "name": "Student Report Card",
+          "path": "student-report-card"
+        }
+      ]
+    },
+    {
+      "id": "portfolio-website",
+      "title": "Portfolio Website",
+      "note": "Same brief, 5 independent builds.",
+      "items": [
+        {
+          "name": "Portfolio Website — variant 1",
+          "path": "portfolio-website/variant-1"
+        },
+        {
+          "name": "Portfolio Website — variant 2",
+          "path": "portfolio-website/variant-2"
+        },
+        {
+          "name": "Portfolio Website — variant 3",
+          "path": "portfolio-website/variant-3"
+        },
+        {
+          "name": "Portfolio Website — variant 4",
+          "path": "portfolio-website/variant-4"
+        },
+        {
+          "name": "Portfolio Website — variant 5",
+          "path": "portfolio-website/variant-5"
+        }
+      ]
+    },
+    {
+      "id": "to-do-app",
+      "title": "To Do App",
+      "note": "Same brief, 5 independent builds.",
+      "items": [
+        {
+          "name": "To Do App — variant 1",
+          "path": "todo-app/variant-1"
+        },
+        {
+          "name": "To Do App — variant 2",
+          "path": "todo-app/variant-2"
+        },
+        {
+          "name": "To Do App — variant 3",
+          "path": "todo-app/variant-3.html"
+        },
+        {
+          "name": "To Do App — variant 4",
+          "path": "todo-app/variant-4"
+        },
+        {
+          "name": "To Do App — variant 5",
+          "path": "todo-app/variant-5"
+        }
+      ]
+    },
+    {
+      "id": "weather-app",
+      "title": "Weather App",
+      "note": "Same brief, 5 independent builds.",
+      "items": [
+        {
+          "name": "Weather App — variant 1",
+          "path": "weather-app/variant-1"
+        },
+        {
+          "name": "Weather App — variant 2",
+          "path": "weather-app/variant-2"
+        },
+        {
+          "name": "Weather App — variant 3",
+          "path": "weather-app/variant-3.html"
+        },
+        {
+          "name": "Weather App — variant 4",
+          "path": "weather-app/variant-4"
+        },
+        {
+          "name": "Weather App — variant 5",
+          "path": "weather-app/variant-5"
+        }
+      ]
+    },
+    {
+      "id": "ecommerce-website",
+      "title": "Ecommerce Website",
+      "note": "5 full-stack builds + one static live demo.",
+      "items": [
+        {
+          "name": "Ecommerce Website — variant 1",
+          "path": "ecommerce-website/variant-1"
+        },
+        {
+          "name": "Ecommerce Website — variant 2",
+          "path": "ecommerce-website/variant-2"
+        },
+        {
+          "name": "Ecommerce Website — variant 3",
+          "path": "ecommerce-website/variant-3"
+        },
+        {
+          "name": "Ecommerce Website — variant 4",
+          "path": "ecommerce-website/variant-4"
+        },
+        {
+          "name": "Ecommerce Website — variant 5",
+          "path": "ecommerce-website/variant-5"
+        },
+        {
+          "name": "Ecommerce Website — live demo",
+          "path": "ecommerce-website/live-demo"
+        }
+      ]
+    },
+    {
+      "id": "ai-agent-bootcamp",
+      "title": "AI Agent Bootcamp",
+      "note": "Actively growing.",
+      "items": [
+        {
+          "name": "Project-00 — Python fundamentals",
+          "path": "ai-agent-bootcamp/Project-00"
+        },
+        {
+          "name": "Project-01 — Student assistant",
+          "path": "ai-agent-bootcamp/Project-01"
+        },
+        {
+          "name": "Project-02 — First AI chat",
+          "path": "ai-agent-bootcamp/Project-02"
+        },
+        {
+          "name": "Project-03 — Chat loop + memory",
+          "path": "ai-agent-bootcamp/Project-03"
+        },
+        {
+          "name": "Project-04 — A calculator tool",
+          "path": "ai-agent-bootcamp/Project-04"
+        },
+        {
+          "name": "Project-05 — Deciding when to use the tool",
+          "path": "ai-agent-bootcamp/Project-05"
+        },
+        {
+          "name": "Project-06 — LLM-driven decisions",
+          "path": "ai-agent-bootcamp/Project-06"
+        }
+      ]
+    },
+    {
+      "id": "python-programming",
+      "title": "Python Programming",
+      "note": "Standalone exercises, one project per folder at repo root. Grows anytime.",
+      "items": [
+        {
+          "name": "Area Of A Rectangle",
+          "path": "area-of-a-rectangle"
+        },
+        {
+          "name": "Area Of Circle",
+          "path": "area-of-circle"
+        },
+        {
+          "name": "Area Of Parallelogram",
+          "path": "area-of-parallelogram"
+        },
+        {
+          "name": "Bank Account Management",
+          "path": "bank-account-management"
+        },
+        {
+          "name": "Bookstore Inventory Management",
+          "path": "bookstore-inventory-management"
+        },
+        {
+          "name": "Calendar Printer",
+          "path": "calendar-printer"
+        },
+        {
+          "name": "Car Game",
+          "path": "car-game"
+        },
+        {
+          "name": "Confusion Matrix 1",
+          "path": "confusion-matrix-1"
+        },
+        {
+          "name": "Confusion Matrix 2",
+          "path": "confusion-matrix-2"
+        },
+        {
+          "name": "Confusion Matrix 3",
+          "path": "confusion-matrix-3"
+        },
+        {
+          "name": "Contact Book",
+          "path": "contact-book"
+        },
+        {
+          "name": "Contact Finder",
+          "path": "contact-finder"
+        },
+        {
+          "name": "Data Scaling",
+          "path": "data-scaling"
+        },
+        {
+          "name": "Drawing Shapes",
+          "path": "drawing-shapes"
+        },
+        {
+          "name": "Election Page Snippet Not Runnable",
+          "path": "election-page-snippet-not-runnable"
+        },
+        {
+          "name": "Employee Management System",
+          "path": "employee-management-system"
+        },
+        {
+          "name": "Enhanced Scientific Calculator",
+          "path": "enhanced-scientific-calculator"
+        },
+        {
+          "name": "Enhanced To Do List Manager",
+          "path": "enhanced-to-do-list-manager"
+        },
+        {
+          "name": "Even Odd Checker",
+          "path": "even-odd-checker"
+        },
+        {
+          "name": "Expense Tracker",
+          "path": "expense-tracker"
+        },
+        {
+          "name": "Expense Tracker With Monthly Report",
+          "path": "expense-tracker-with-monthly-report"
+        },
+        {
+          "name": "Factorial Calculator",
+          "path": "factorial-calculator"
+        },
+        {
+          "name": "File Handler",
+          "path": "file-handler"
+        },
+        {
+          "name": "Fitness Tracker",
+          "path": "fitness-tracker"
+        },
+        {
+          "name": "Flappy Bird",
+          "path": "flappy-bird"
+        },
+        {
+          "name": "Grade Calculator",
+          "path": "grade-calculator"
+        },
+        {
+          "name": "Grade Calculator Quick Version",
+          "path": "grade-calculator-quick-version"
+        },
+        {
+          "name": "Guess The Number Game",
+          "path": "guess-the-number-game"
+        },
+        {
+          "name": "Hierarchical Clustering 1",
+          "path": "hierarchical-clustering-1"
+        },
+        {
+          "name": "Hierarchical Clustering 2",
+          "path": "hierarchical-clustering-2"
+        },
+        {
+          "name": "House Price Prediction",
+          "path": "house-price-prediction"
+        },
+        {
+          "name": "Largest Number Finder",
+          "path": "largest-number-finder"
+        },
+        {
+          "name": "Library Management System",
+          "path": "library-management-system"
+        },
+        {
+          "name": "List Sum And Average",
+          "path": "list-sum-and-average"
+        },
+        {
+          "name": "Logistic Regression 1",
+          "path": "logistic-regression-1"
+        },
+        {
+          "name": "Logistic Regression 2",
+          "path": "logistic-regression-2"
+        },
+        {
+          "name": "Movie Collection",
+          "path": "movie-collection"
+        },
+        {
+          "name": "Multiplication Tables",
+          "path": "multiplication-tables"
+        },
+        {
+          "name": "Music Playlist Manager",
+          "path": "music-playlist-manager"
+        },
+        {
+          "name": "Mystical Word Game",
+          "path": "mystical-word-game"
+        },
+        {
+          "name": "Number Guessing Game",
+          "path": "number-guessing-game"
+        },
+        {
+          "name": "Password Guessing Game",
+          "path": "password-guessing-game"
+        },
+        {
+          "name": "Password Validator",
+          "path": "password-validator"
+        },
+        {
+          "name": "Prime Number Checker",
+          "path": "prime-number-checker"
+        },
+        {
+          "name": "Prime Number Generator",
+          "path": "prime-number-generator"
+        },
+        {
+          "name": "Real World Loan Approval Data",
+          "path": "real-world-loan-approval-data"
+        },
+        {
+          "name": "Recipe Manager",
+          "path": "recipe-manager"
+        },
+        {
+          "name": "Remove Duplicates",
+          "path": "remove-duplicates"
+        },
+        {
+          "name": "Save And Read A To Do List",
+          "path": "save-and-read-a-to-do-list"
+        },
+        {
+          "name": "Shopping List",
+          "path": "shopping-list"
+        },
+        {
+          "name": "Simple Calculator",
+          "path": "simple-calculator"
+        },
+        {
+          "name": "Simple Chatbot",
+          "path": "simple-chatbot"
+        },
+        {
+          "name": "Simple To Do List",
+          "path": "simple-to-do-list"
+        },
+        {
+          "name": "Simple Voting System",
+          "path": "simple-voting-system"
+        },
+        {
+          "name": "Snake Game",
+          "path": "snake-game"
+        },
+        {
+          "name": "Student Gradebook",
+          "path": "student-gradebook"
+        },
+        {
+          "name": "Student Management System",
+          "path": "student-management-system"
+        },
+        {
+          "name": "Student Performance Analysis Application",
+          "path": "student-performance-analysis-application"
+        },
+        {
+          "name": "Sum Of Prices",
+          "path": "sum-of-prices"
+        },
+        {
+          "name": "Temperature Converter",
+          "path": "temperature-converter"
+        },
+        {
+          "name": "To Do List With Deadlines",
+          "path": "to-do-list-with-deadlines"
+        },
+        {
+          "name": "Treasure Hunt",
+          "path": "treasure-hunt"
+        },
+        {
+          "name": "User Information Validator",
+          "path": "user-information-validator"
+        },
+        {
+          "name": "Volume Of A Closed Cylinder",
+          "path": "volume-of-a-closed-cylinder"
+        },
+        {
+          "name": "Voting System",
+          "path": "voting-system"
+        },
+        {
+          "name": "Weather Forecast Fetcher",
+          "path": "weather-forecast-fetcher"
+        },
+        {
+          "name": "Weather Report",
+          "path": "weather-report"
+        }
+      ]
+    },
+    {
+      "id": "web-development",
+      "title": "Web Development",
+      "note": "Standalone exercises, one project per folder at repo root, plus two multi-part courses. Grows anytime.",
+      "items": [
+        {
+          "name": "Animated Button",
+          "path": "animated-button"
+        },
+        {
+          "name": "Animated Button Pressed Effect",
+          "path": "animated-button-pressed-effect"
+        },
+        {
+          "name": "Animated Button Ripple Effect",
+          "path": "animated-button-ripple-effect"
+        },
+        {
+          "name": "Church Attendance App",
+          "path": "church-attendance-app"
+        },
+        {
+          "name": "CodeJIKA — Web Project 1",
+          "path": "CodeJIKA/Web Project 1"
+        },
+        {
+          "name": "CodeJIKA — Web Project 2",
+          "path": "CodeJIKA/Web Project 2"
+        },
+        {
+          "name": "CodeJIKA — Web Project 3",
+          "path": "CodeJIKA/Web Project 3"
+        },
+        {
+          "name": "CodeJIKA — Web Project 4",
+          "path": "CodeJIKA/Web Project 4"
+        },
+        {
+          "name": "CodeJIKA — Web Project 5",
+          "path": "CodeJIKA/Web Project 5"
+        },
+        {
+          "name": "Data Cleaner And Validator",
+          "path": "data-cleaner-and-validator"
+        },
+        {
+          "name": "Dropdown Menu",
+          "path": "dropdown-menu"
+        },
+        {
+          "name": "FreeCodeCamp — 01 cat photo app",
+          "path": "FreeCodeCamp/01 cat photo app"
+        },
+        {
+          "name": "FreeCodeCamp — 02 cafe webpage",
+          "path": "FreeCodeCamp/02 cafe webpage"
+        },
+        {
+          "name": "FreeCodeCamp — 03 CSS Color Markers",
+          "path": "FreeCodeCamp/03 CSS Color Markers"
+        },
+        {
+          "name": "FreeCodeCamp — 04 Registration Form",
+          "path": "FreeCodeCamp/04 Registration Form"
+        },
+        {
+          "name": "FreeCodeCamp — 05 Survey Form",
+          "path": "FreeCodeCamp/05 Survey Form"
+        },
+        {
+          "name": "FreeCodeCamp — 06 Rothko Painting",
+          "path": "FreeCodeCamp/06 Rothko Painting"
+        },
+        {
+          "name": "FreeCodeCamp — 07 Photo Gallery",
+          "path": "FreeCodeCamp/07 Photo Gallery"
+        },
+        {
+          "name": "FreeCodeCamp — 08 Nutrition Label",
+          "path": "FreeCodeCamp/08 Nutrition Label"
+        },
+        {
+          "name": "FreeCodeCamp — 09 Quiz Webpage",
+          "path": "FreeCodeCamp/09 Quiz Webpage"
+        },
+        {
+          "name": "FreeCodeCamp — 10 Tribute Page",
+          "path": "FreeCodeCamp/10 Tribute Page"
+        },
+        {
+          "name": "FreeCodeCamp — 11 Balance Sheet",
+          "path": "FreeCodeCamp/11 Balance Sheet"
+        },
+        {
+          "name": "FreeCodeCamp — 13 Piano",
+          "path": "FreeCodeCamp/13 Piano"
+        },
+        {
+          "name": "Portfolio",
+          "path": "Portfolio"
+        },
+        {
+          "name": "Responsive Form",
+          "path": "responsive-form"
+        },
+        {
+          "name": "Responsive Image Gallery",
+          "path": "responsive-image-gallery"
+        },
+        {
+          "name": "Responsive Layout",
+          "path": "responsive-layout"
+        },
+        {
+          "name": "Responsive Website",
+          "path": "responsive-website"
+        },
+        {
+          "name": "Responsive Website Sample",
+          "path": "responsive-website-sample"
+        },
+        {
+          "name": "Simple Game",
+          "path": "Simple Game"
+        },
+        {
+          "name": "Smart Weather Logger Dashboard",
+          "path": "smart-weather-logger-dashboard"
+        },
+        {
+          "name": "Smartsave Finance Forecaster",
+          "path": "smartsave-finance-forecaster"
+        }
+      ]
+    }
+  ]
+}

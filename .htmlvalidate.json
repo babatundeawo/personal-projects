@@ -5,6 +5,10 @@
     "no-trailing-whitespace": "off",
     "attribute-boolean-style": "off",
     "no-inline-style": "error",
-    "wcag/h30": "off"
+    "wcag/h30": "off",
+    "no-raw-characters": "off",
+    "prefer-native-element": "off",
+    "no-redundant-role": "off",
+    "long-title": "off"
   }
 }

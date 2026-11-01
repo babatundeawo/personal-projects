@@ -1,85 +1,64 @@
-# Deployment guide
+# Deployment
 
-Everything here is done in your web browser, on github.com. You never need a terminal.
+The site is published to GitHub Pages by GitHub Actions. There is nothing to run on your computer.
 
-## How it works, in plain words
+## What happens when you save a change
 
-- Your website is the set of files in this repository.
-- Whenever a change lands on the **main** branch, a robot called **GitHub Actions** copies the site, runs some checks, and publishes it to **GitHub Pages** at `https://babatundeawo.github.io/personal-projects/`.
-- Changes you want to review first go on a separate **branch** and arrive as a **pull request**. The live site does not change until you **merge** the pull request.
-- Every older version stays in the repository's history, so you can always go back.
+1. You commit a change to the `main` branch (for example by editing a file on github.com).
+2. The **Deploy site** workflow starts (Actions tab).
+3. It **builds** the site: it downloads the fonts, assembles the pages, builds the project list from `data/projects.json`, writes the offline service worker and app manifest, and **checks** the result.
+4. If every check passes, it **publishes** to GitHub Pages.
+5. It then **visits the live site** and confirms the home page, the install manifest and the offline worker are really there.
 
-## One-time setup: switch publishing to GitHub Actions
+A green tick on all three steps means the live site is correct. This usually takes one to two minutes.
 
-1. Open the repository on github.com.
-2. Click **Settings** (top row of tabs).
-3. In the left menu click **Pages**.
-4. Under **Build and deployment**, find **Source** and choose **GitHub Actions**.
+## One-time setup
 
-You should see the Source drop-down now says "GitHub Actions". This only needs doing once.
+1. Repository **Settings > Pages**. Under **Build and deployment > Source**, choose **GitHub Actions**.
+2. Push or merge to `main` once. The first run publishes the site.
 
-## Make a change and review it before it goes live
+The address is `https://<your-username>.github.io/<repository-name>/` and is worked out automatically from the repository name. If you rename the repository, the next publish adapts by itself.
 
-Use this for any edit you want to look at first.
+## Changing a pull request safely
 
-1. Open the file on github.com and click the pencil icon (**Edit this file**).
-2. Make your change. At the bottom choose **Create a new branch for this commit and start a pull request**, then click **Propose changes**.
-3. Click **Create pull request**.
-4. Wait about two minutes. At the bottom of the pull request you should see **Build and check** with a green tick. Click **Details**, scroll down to **Artifacts**, and download **site-preview**.
-5. Unzip `site-preview` and double-click `index.html` to look at the site in your browser. Resize the window to check phone sizes too.
-6. Happy? Click **Merge pull request**, then **Confirm merge**. The site updates within a minute or two. Not happy? Click **Close pull request**. The live site is untouched either way.
+When someone opens a pull request, **Check pull request** builds and checks it and attaches a **site-preview** download (Actions run page, bottom, Artifacts). Nothing is published until the change is merged.
 
-GitHub Pages cannot host a live preview of a pull request, so the downloadable preview stands in for one.
+## If a publish fails
 
-## Check that a deployment worked
+Open the **Actions** tab, click the red run, then click the red step. The message says what is wrong in plain language, for example:
 
-1. Click the **Actions** tab.
-2. Open the newest run called **Deploy site**.
-3. A **green tick** means it worked: the site is live within a minute. A **red cross** means something failed.
-4. Open your site address and refresh. If you still see the old page, hold **Shift** and click refresh.
-
-## Reading an error
-
-1. In the **Actions** tab click the run with the red cross.
-2. Click the red step (for example **Build and check**).
-3. Look for a line starting with `Error`. It names the file or problem.
-
-| You see | What it means | What to do |
+| Message | What it means | Fix |
 | --- | --- | --- |
-| `Missing index.html` (or another page) | A required file was deleted or renamed | Put the file back, or revert the change (see below) |
-| `Error: Get Pages site failed` or `Pages is not enabled` | The one-time setup was skipped | Follow "One-time setup" above, then click **Re-run all jobs** |
-| Steps marked with an orange or grey warning but a green tick overall | Reports only (HTML lint, link check, Lighthouse) | Safe to ignore, or read them for hints |
+| `index.html is missing or has lost its first two lines` | The first two lines of a page were edited | Restore the `<!doctype html>` line and the `<!--meta ...-->` line below it |
+| `broken link or file reference` | A page points to a file that does not exist | Fix the name, or add the file |
+| `unknown include` | A `<!--@include name-->` line has a typo | Valid names: `head`, `header`, `footer`, `pwa-ui` |
+| `inline style=""` | Someone added a `style="..."` attribute | Move the style into a `.css` file (the security policy blocks inline styles) |
+| `Fonts: 0 of 4 font files found` (yellow warning) | The font download did not work this time | Nothing breaks; the site uses system fonts. Re-run the workflow |
 
-## Update the text or images
+You can re-run any workflow with **Re-run all jobs**, or start a publish by hand from **Actions > Deploy site > Run workflow**.
 
-Open a file on github.com, click the pencil icon, change it, and click **Commit changes**. Choose **Create a new branch and start a pull request** if you want to review first. See [CUSTOMIZING.md](CUSTOMIZING.md) for where each thing lives.
+## Roll back
 
-## Roll back to a previous version
+Publishing is just "build whatever is on `main`". To undo a bad change, open the commit on the **Commits** page and choose **Revert**, then merge. The site rebuilds from the reverted code.
 
-1. Click **Pull requests**, then **Closed**, and open the pull request you want to undo.
-2. Click **Revert** near the top.
-3. Click **Create pull request**, then **Merge pull request**.
+## How updates reach visitors
 
-The site returns to how it was before that change.
+The offline worker has a version number that changes whenever any site file changes. Visitors who already have the site see a small **A new version is ready. Refresh** prompt on their next visit. Their page is never reloaded without them tapping Refresh.
 
-## Use your own domain (optional)
+## Adding a new project
 
-1. Buy a domain from any registrar.
-2. In the repository open **Settings > Pages**, type your domain under **Custom domain**, and click **Save**.
-3. At your registrar open the DNS settings and add the records GitHub lists in [its custom domain guide](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
-4. Back in **Settings > Pages** tick **Enforce HTTPS** once it becomes available.
-5. Update the address in these places: the `canonical`, `og:url`, `og:image` and `twitter:image` lines in each page's `<head>`, `sitemap.xml`, and `robots.txt`. In `404.html`, replace `/personal-projects/` with `/` everywhere.
+1. Add the folder to the repository as usual.
+2. Open `data/projects.json`, click the pencil, and add a line like `{ "name": "My Project", "path": "my-project" }` inside the right collection. Mind the commas.
+3. Commit. The count on every page, the search and the **Open** link (when the folder has an `index.html`) update automatically.
 
-## Turn on GitHub's free security switches
+The workflow log lists any folder that is not in `data/projects.json`, so nothing is forgotten silently.
 
-1. **Settings > Code security** (or **Advanced Security**).
-2. Switch on **Dependency graph**, **Dependabot alerts**, **Dependabot security updates**, **Secret scanning** and **Push protection**. Secret scanning warns you if a password or key is ever pasted into the repository.
-3. Switch on **Private vulnerability reporting** so visitors can use the link in `SECURITY.md`.
+## Custom domain (optional)
 
-The **CodeQL** workflow in `.github/workflows` scans the code every week and on every pull request. Results appear under the **Security** tab.
+Add a file named `CNAME` at the top of the repository containing only your domain (for example `example.com`), set the domain in **Settings > Pages**, and publish. The build detects the file and uses the domain for every address on the site.
 
-## Add a new project
+## Security notes
 
-1. Click **Add file > Create new file** and type `my-project/README.md` (the slash creates the folder).
-2. Write a line or two about the project and commit.
-3. Open `projects.html`, click the pencil, find the right group, copy one `<li class="dir-item">…</li>` line, and change the name and the folder name in the address. Also increase the count shown next to that group's title and the total (`130`) on the page.
+- Each page carries a Content Security Policy that only allows files from this site. GitHub Pages cannot send HTTP security headers, so the policy is set in the page itself; it therefore cannot include `frame-ancestors`.
+- The workflows request the least permission they need, and Dependabot proposes updates to them weekly.
+- Nothing on the site stores personal data. The contact form opens the visitor's own email app.

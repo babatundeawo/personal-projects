@@ -1,0 +1,27 @@
+<!doctype html>
+<!--meta {"title":"Offline · Babatunde Awoyemi: Build Log","description":"You are offline. Pages you have already visited are still available.","current":"","css":["home"],"scripts":["offline"],"abs":true,"robots":"noindex","type":"plain","path":"offline.html"}-->
+<html lang="en">
+  <head>
+    <!--@include head-->
+  </head>
+  <body>
+    <!--@include header-->
+
+    <main id="main">
+      <div class="ambient" aria-hidden="true"></div>
+      <section class="container lost">
+        <p class="eyebrow">You are offline</p>
+        <h1>No connection, <span class="serif">no problem.</span></h1>
+        <p class="lede">This page isn't saved on your device yet. Pages you have already visited still open from storage. Reconnect to load the rest.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="{{ROOT}}index.html">Open the home page <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <button class="btn btn--ghost" id="retry" type="button">Try again</button>
+        </div>
+      </section>
+    </main>
+
+    <!--@include footer-->
+    <!--@include pwa-ui-->
+    {{SCRIPTS}}
+  </body>
+</html>

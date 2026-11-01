@@ -1,15 +1,28 @@
 {
+  "id": "{{BASE}}",
   "name": "Babatunde Awoyemi: Build Log",
   "short_name": "Build Log",
-  "description": "A running build log of practical, from-scratch JavaScript projects.",
-  "start_url": "./",
-  "scope": "./",
-  "display": "browser",
+  "description": "A running build log of practical, from-scratch web and Python projects.",
+  "start_url": "{{BASE}}index.html?source=pwa",
+  "scope": "{{BASE}}",
+  "display": "standalone",
+  "orientation": "any",
+  "lang": "en",
+  "dir": "ltr",
   "background_color": "#0c0b0a",
-  "theme_color": "#d9420b",
+  "theme_color": "#0c0b0a",
+  "categories": ["education", "developer tools", "portfolio"],
   "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    { "src": "{{BASE}}icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "{{BASE}}icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "{{BASE}}icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Browse projects", "short_name": "Projects", "description": "Search every project", "url": "{{BASE}}projects.html", "icons": [{ "src": "{{BASE}}icon-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "Get in touch", "short_name": "Contact", "description": "Send a message", "url": "{{BASE}}contact.html", "icons": [{ "src": "{{BASE}}icon-192.png", "sizes": "192x192", "type": "image/png" }] }
+  ],
+  "screenshots": [
+    { "src": "{{BASE}}assets/screenshots/wide.png", "sizes": "1280x720", "type": "image/png", "form_factor": "wide", "label": "The Build Log home page with its terminal listing the current builds" },
+    { "src": "{{BASE}}assets/screenshots/narrow.png", "sizes": "540x960", "type": "image/png", "form_factor": "narrow", "label": "The searchable project index on a phone" }
   ]
 }
