@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weather App</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+<section class="card">
+<header><div><p class="eyebrow">LIVE FORECAST</p><h1>Weather App</h1><p class="sub">Search any city for current conditions and a 5-day forecast.</p></div><button id="themeBtn" class="icon">🌙</button></header>
+
+<form id="searchForm" class="search">
+<label class="searchbox">🔍 <input id="cityInput" type="search" placeholder="Enter city name..." required></label>
+<button class="primary">Search</button>
+<button id="locationBtn" type="button" class="secondary">📍 My Location</button>
+</form>
+<p id="status" class="status" role="status"></p>
+
+<section id="weatherPanel" hidden>
+<div class="current">
+<div><p id="location" class="location">City</p><p id="localTime" class="sub">Local time</p>
+<div class="tempRow"><span id="icon" class="weatherIcon">☀️</span><span id="temp" class="temp">--°C</span></div>
+<p id="condition" class="condition">Clear sky</p></div>
+<div class="details">
+<div>💧 <small>Humidity</small><strong id="humidity">--%</strong></div>
+<div>🌬️ <small>Wind</small><strong id="wind">-- km/h</strong></div>
+<div>🌡️ <small>Feels Like</small><strong id="feels">--°C</strong></div>
+<div>☀️ <small>UV Index</small><strong id="uv">--</strong></div>
+</div>
+</div>
+<div class="heading"><h2>5-Day Forecast</h2><button id="unitBtn" class="link" type="button">°C / °F</button></div>
+<div id="forecast" class="forecast"></div>
+</section>
+
+<div class="heading recentHead"><h2>Recent Cities</h2><button id="clearBtn" class="link">Clear</button></div>
+<div id="recent" class="recent"></div>
+</section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

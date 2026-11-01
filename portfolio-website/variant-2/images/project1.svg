@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400">
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#12313A"/>
+      <stop offset="100%" stop-color="#0E1B22"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#skyGrad)"/>
+  <circle cx="470" cy="110" r="46" fill="#FFD166" opacity="0.85"/>
+  <g fill="#E7ECEF" opacity="0.9">
+    <ellipse cx="200" cy="180" rx="70" ry="34"/>
+    <ellipse cx="150" cy="195" rx="50" ry="26"/>
+    <ellipse cx="255" cy="195" rx="50" ry="26"/>
+  </g>
+  <g stroke="#4F9DDE" stroke-width="4" stroke-linecap="round">
+    <line x1="150" y1="240" x2="140" y2="270"/>
+    <line x1="190" y1="240" x2="180" y2="275"/>
+    <line x1="230" y1="240" x2="220" y2="270"/>
+  </g>
+  <rect x="60" y="300" width="200" height="60" rx="8" fill="#182029" stroke="#212B36" stroke-width="2"/>
+  <text x="80" y="326" font-family="monospace" font-size="16" fill="#7CFFB2">Lagos, NG</text>
+  <text x="80" y="348" font-family="monospace" font-size="13" fill="#8B97A3">28°C · light rain</text>
+</svg>

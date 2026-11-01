@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Babatunde Ayoola Awoyemi - Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Google Fonts & Font Awesome for icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #2d3e50;
+        --accent: #00b894;
+        --bg: #f7f9fa;
+        --card-bg: #fff;
+        --shadow: 0 4px 24px #0002;
+        --radius: 14px;
+      }
+      html {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+      *, *:before, *:after {
+        box-sizing: inherit;
+      }
+      body {
+        font-family: "Montserrat", "Roboto", Arial, sans-serif;
+        margin: 0;
+        background: var(--bg);
+        color: #222;
+        min-height: 100vh;
+      }
+      header {
+        background: linear-gradient(
+          90deg,
+          var(--primary) 60%,
+          var(--accent) 100%
+        );
+        color: #fff;
+        padding: 3.5rem 0 2rem 0;
+        text-align: center;
+        position: relative;
+        box-shadow: var(--shadow);
+      }
+      .profile-img {
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid #fff;
+        box-shadow: 0 2px 16px #0003;
+        margin-top: -40px;
+        background: #eee;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 2;
+        position: relative;
+      }
+      header h1 {
+        margin: 1.5rem 0 0.3rem 0;
+        font-size: 2.7rem;
+        letter-spacing: 1px;
+        font-weight: 700;
+      }
+      header .subtitle {
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-bottom: 0.7rem;
+        color: #e0e0e0;
+      }
+      .contact-bar {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin: 0.7rem 0 0.3rem 0;
+        font-size: 1.05rem;
+      }
+      .contact-bar i {
+        margin-right: 0.4em;
+        color: var(--accent);
+      }
+      .address {
+        font-size: 1rem;
+        color: #e0e0e0;
+        margin-bottom: 0.5rem;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 2.5rem auto;
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 2.5rem 2.5rem 2rem 2.5rem;
+        position: relative;
+        z-index: 1;
+        animation: fadeIn 1.2s;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      h2 {
+        color: var(--primary);
+        font-size: 1.5rem;
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+      }
+      h2::after {
+        content: "";
+        display: block;
+        height: 3px;
+        width: 60px;
+        background: var(--accent);
+        border-radius: 2px;
+        margin-top: 0.3rem;
+      }
+      .section {
+        margin-bottom: 2.5rem;
+      }
+      .about-me {
+        display: flex;
+        gap: 2.5rem;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+      }
+      .about-text {
+        flex: 2;
+        font-size: 1.08rem;
+        line-height: 1.7;
+        color: #333;
+      }
+      .quick-facts {
+        flex: 1;
+        background: #f1f6fa;
+        border-radius: 10px;
+        padding: 1.2rem 1.2rem 1rem 1.2rem;
+        margin-top: 0.5rem;
+        box-shadow: 0 2px 8px #0001;
+        font-size: 1.01rem;
+      }
+      .quick-facts .fact {
+        margin-bottom: 0.7rem;
+        display: flex;
+        align-items: center;
+        gap: 0.7em;
+      }
+      .quick-facts .fact i {
+        color: var(--accent);
+        font-size: 1.1em;
+        min-width: 1.2em;
+      }
+      .tags-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7em;
+        margin-bottom: 0.7em;
+      }
+      .tag {
+        background: var(--accent);
+        color: #fff;
+        border-radius: 20px;
+        padding: 0.3em 1.1em;
+        font-size: 0.98em;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        box-shadow: 0 1px 4px #0001;
+        transition: background 0.2s;
+        cursor: default;
+        user-select: none;
+      }
+      .timeline {
+        border-left: 3px solid var(--accent);
+        margin-left: 0.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+      .timeline-entry {
+        margin-bottom: 2.2rem;
+        position: relative;
+        animation: fadeInUp 0.8s;
+      }
+      .timeline-entry:last-child {
+        margin-bottom: 0;
+      }
+      .timeline-entry::before {
+        content: "";
+        position: absolute;
+        left: -1.1rem;
+        top: 0.3rem;
+        width: 1.1rem;
+        height: 1.1rem;
+        background: var(--accent);
+        border-radius: 50%;
+        border: 3px solid #fff;
+        box-shadow: 0 1px 4px #0002;
+      }
+      .timeline-title {
+        font-weight: 700;
+        color: var(--primary);
+        font-size: 1.08rem;
+        margin-bottom: 0.2rem;
+      }
+      .timeline-meta {
+        font-size: 0.97rem;
+        color: #888;
+        margin-bottom: 0.3rem;
+      }
+      .timeline-desc {
+        font-size: 1.01rem;
+        color: #333;
+        margin-bottom: 0.2rem;
+      }
+      .chips-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em;
+        margin: 0.7em 0 0.3em 0;
+      }
+      .chip {
+        background: #e8f0fe;
+        color: #2d3e50;
+        border-radius: 16px;
+        padding: 0.25em 1em;
+        font-size: 0.97em;
+        font-weight: 500;
+        box-shadow: 0 1px 4px #0001;
+        user-select: none;
+      }
+      .card-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .card {
+        background: #f1f6fa;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px #0001;
+        padding: 1.2rem 1.2rem 1rem 1.2rem;
+        flex: 1 1 260px;
+        min-width: 220px;
+        transition: transform 0.15s;
+      }
+      .card:hover {
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 6px 24px #0002;
+      }
+      .card-title {
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 0.3rem;
+        font-size: 1.08rem;
+      }
+      .card-meta {
+        color: #888;
+        font-size: 0.97rem;
+        margin-bottom: 0.3rem;
+      }
+      .card-desc {
+        color: #333;
+        font-size: 1.01rem;
+      }
+      .refs-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2.5rem;
+        margin-top: 1rem;
+      }
+      .ref-card {
+        background: #f1f6fa;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px #0001;
+        padding: 1rem 1.2rem;
+        min-width: 220px;
+        flex: 1 1 220px;
+        font-size: 1.01rem;
+      }
+      .ref-card strong {
+        color: var(--primary);
+        font-size: 1.05em;
+      }
+      .section .chips-row {
+        margin-bottom: 0.5em;
+      }
+      /* Responsive */
+      @media (max-width: 900px) {
+        .container {
+          padding: 1.2rem;
+        }
+        .about-me {
+          flex-direction: column;
+          gap: 1.2rem;
+        }
+        .card-grid {
+          flex-direction: column;
+          gap: 1rem;
+        }
+        .refs-list {
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 2rem;
+        }
+        .container {
+          padding: 0.5rem;
+        }
+        .profile-img {
+          width: 100px;
+          height: 100px;
+          margin-top: -50px;
+        }
+      }
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      /* Customer logos grid */
+      .customers-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        margin: 1.2rem 0 0.5rem 0;
+        align-items: center;
+      }
+      .customer-card {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 1px 6px #0001;
+        padding: 0.7rem 1.2rem;
+        font-size: 1.01rem;
+        color: #2d3e50;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.7em;
+        min-width: 170px;
+        transition: box-shadow 0.2s;
+      }
+      .customer-card i {
+        color: var(--accent);
+        font-size: 1.2em;
+      }
+      .customer-card:hover {
+        box-shadow: 0 4px 16px #00b89422;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img
+        src="images/tunde.jpg"
+        alt="Babatunde Awoyemi"
+        class="profile-img"
+        loading="lazy"
+      />
+      <h1>Babatunde Ayoola Awoyemi</h1>
+      <div class="subtitle">
+        Atmospheric Physicist &nbsp;|&nbsp; STEM Innovator &amp; CEO &nbsp;|&nbsp;
+        Robotics &amp; Coding Consultant
+      </div>
+      <div class="contact-bar">
+        <span
+          ><i class="fas fa-envelope"></i> babatundeawoyemi@hotmail.com</span
+        >
+        <span><i class="fas fa-phone"></i> +234 812 690 9498</span>
+        <span><i class="fas fa-cake-candles"></i> Sept 17, 1991</span>
+      </div>
+      <div class="address">
+        <i class="fas fa-location-dot"></i> No 21, Unit 4, Zone 2, Akingbile,
+        Moniya, Ibadan, Oyo State, Nigeria
+      </div>
+    </header>
+    <div class="container">
+      <!-- About Me -->
+      <section class="about-me">
+        <div class="about-text">
+          <h2>About Me</h2>
+          <p>
+            Hello! I'm <strong>Babatunde Awoyemi</strong>, CEO of
+            <strong>Techbase Consultant Services</strong>, where we empower the
+            next generation with STEM, Coding, and Robotics skills. As an
+            atmospheric physicist, educator, and tech enthusiast, I blend
+            science, innovation, and leadership to inspire learners and drive
+            impactful projects across Nigeria. My work spans research,
+            curriculum development, and consulting for top schools and
+            government agencies. I believe in making learning fun, practical,
+            and future-ready!
+          </p>
+          <div class="tags-row">
+            <span class="tag">CEO & STEM Leader</span>
+            <span class="tag">Atmospheric Science</span>
+            <span class="tag">Robotics & Coding</span>
+            <span class="tag">Consultant</span>
+            <span class="tag">Innovation</span>
+          </div>
+        </div>
+        <div class="quick-facts">
+          <div class="fact"><i class="fas fa-flag"></i> Nigerian Citizen</div>
+          <div class="fact">
+            <i class="fas fa-language"></i> English, Yoruba, Pidgin
+          </div>
+          <div class="fact">
+            <i class="fas fa-graduation-cap"></i> MSc Atmospheric Physics
+          </div>
+          <div class="fact">
+            <i class="fas fa-briefcase"></i> CEO, Techbase Consultant Services
+          </div>
+          <div class="fact">
+            <i class="fas fa-robot"></i> Robotics & Coding Trainer
+          </div>
+        </div>
+      </section>
+
+      <!-- Customers / Partners -->
+      <section class="section">
+        <h2>Clients & Partners</h2>
+        <div class="customers-grid">
+          <div class="customer-card">
+            <i class="fas fa-school"></i> Knowledge Base International Schools
+          </div>
+          <div class="customer-card">
+            <i class="fas fa-school"></i> Baptist Model High School (Ikola,
+            Isolo, Ijegun)
+          </div>
+          <div class="customer-card">
+            <i class="fas fa-school"></i> Lead British International School
+          </div>
+          <div class="customer-card">
+            <i class="fas fa-school"></i> Thames Valley College
+          </div>
+          <div class="customer-card">
+            <i class="fas fa-school"></i> Bethel America College
+          </div>
+          <div class="customer-card">
+            <i class="fas fa-building"></i> Oyo State TESCOM
+          </div>
+          <div class="customer-card">
+            <i class="fas fa-chalkboard-teacher"></i> Consultant, Knowledge Base
+            International Schools, Ibadan
+          </div>
+        </div>
+      </section>
+
+      <!-- Research Interests -->
+      <section class="section">
+        <h2>Research Interests</h2>
+        <div class="chips-row">
+          <span class="chip">Vegetation-Atmosphere Interactions</span>
+          <span class="chip">Carbon & Methane Dynamics</span>
+          <span class="chip">Remote Sensing</span>
+          <span class="chip">Ecosystem Monitoring</span>
+          <span class="chip">Climate & Biodiversity</span>
+          <span class="chip">Sustainable Energy</span>
+          <span class="chip">Solar Variability</span>
+        </div>
+      </section>
+
+      <!-- Education Timeline -->
+      <section class="section">
+        <h2>Education</h2>
+        <div class="timeline">
+          <div class="timeline-entry">
+            <div class="timeline-title">M.Sc. Atmospheric Physics</div>
+            <div class="timeline-meta">
+              University of Ibadan, Nigeria &mdash; 2019
+            </div>
+            <div class="timeline-desc">
+              Specialization: Atmospheric Physics<br />
+              Supervisor: Dr. T.A. Otunla
+            </div>
+          </div>
+          <div class="timeline-entry">
+            <div class="timeline-title">B.Sc. Physics</div>
+            <div class="timeline-meta">
+              University of Ibadan, Nigeria &mdash; 2014
+            </div>
+            <div class="timeline-desc">
+              Specialization: Physics<br />
+              Supervisor: Dr. T. Ogunseye
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Research Experience Timeline -->
+      <section class="section">
+        <h2>Research Experience</h2>
+        <div class="timeline">
+          <div class="timeline-entry">
+            <div class="timeline-title">Research Assistant</div>
+            <div class="timeline-meta">University of Ibadan (2017-2018)</div>
+            <div class="timeline-desc">
+              Project:
+              <em
+                >Estimation of All-Sky Normal Solar Irradiance in Nigeria
+                Utilizing MODIS Satellite Data</em
+              ><br />
+              Developed Ferret NOAA and MATLAB programs, analyzed atmospheric
+              parameters, and validated models with NASA and NIMET data.
+            </div>
+          </div>
+          <div class="timeline-entry">
+            <div class="timeline-title">Undergraduate Researcher</div>
+            <div class="timeline-meta">University of Ibadan (2013-2014)</div>
+            <div class="timeline-desc">
+              Project:
+              <em
+                >Investigating Solar Dynamics: Unveiling the Intricacies of
+                Solar Structure and Variability</em
+              ><br />
+              Conducted heliophysics literature review, Fortran simulations, and
+              studied solar-terrestrial interactions.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Leadership & Teaching Experience Cards -->
+      <section class="section">
+        <h2>Leadership & Teaching</h2>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-title">CEO & Lead STEM Consultant</div>
+            <div class="card-meta">
+              Techbase Consultant Services (2022–Present)
+            </div>
+            <div class="card-desc">
+              Leading STEM, Coding, and Robotics training for schools and
+              organizations. Driving innovation and digital skills for the next
+              generation.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Consultant</div>
+            <div class="card-meta">
+              Knowledge Base International Schools, Ibadan (2022–Present)
+            </div>
+            <div class="card-desc">
+              Designing and implementing STEM curricula, training staff, and
+              boosting student engagement and enrollment.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Head of Training & Programs</div>
+            <div class="card-meta">
+              Techbridge Consulting Ltd, Lagos (2019–2022)
+            </div>
+            <div class="card-desc">
+              Led robotics and coding education, managed training teams, and
+              drove significant growth in customer base and revenue.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Manuscripts -->
+      <section class="section">
+        <h2>Manuscripts in Progress</h2>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-title">All-Sky Solar Irradiance in Nigeria</div>
+            <div class="card-meta">Target: Renewable Energy</div>
+            <div class="card-desc">Supervisor: Dr T.A. Otunla</div>
+          </div>
+          <div class="card">
+            <div class="card-title">Wind Energy Potential in Nigeria</div>
+            <div class="card-meta">
+              Target: Int. J. of Energy &amp; Environmental Engineering
+            </div>
+            <div class="card-desc">Supervisor: Dr T.A. Otunla</div>
+          </div>
+          <div class="card">
+            <div class="card-title">Solar Dynamics & Variability</div>
+            <div class="card-meta">Target: ICRERA Conference</div>
+            <div class="card-desc">Supervisor: Dr T. Ogunseye</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Professional Affiliations -->
+      <section class="section">
+        <h2>Professional Affiliations</h2>
+        <div class="chips-row">
+          <span class="chip">CEO, Techbase Consultant Services</span>
+          <span class="chip"
+            >Consultant, Knowledge Base International Schools</span
+          >
+          <span class="chip">Head of Training, Techbridge Consulting Ltd</span>
+          <span class="chip">Instructor, NTeach Programme</span>
+          <span class="chip">Data Analyst, IITA</span>
+          <span class="chip">Radiation Protection Intern, NIRPR</span>
+        </div>
+      </section>
+
+      <!-- Certifications -->
+      <section class="section">
+        <h2>Certifications</h2>
+        <div class="chips-row">
+          <span class="chip">YALI RLC West Africa Leadership (2024/2025)</span>
+          <span class="chip">LEAP Africa SDG Volunteer</span>
+          <span class="chip"
+            >Design Thinking (Australian Computing Academy)</span
+          >
+          <span class="chip">Cartedo Design Thinking (COVID-19)</span>
+        </div>
+      </section>
+
+      <!-- Professional Services -->
+      <section class="section">
+        <h2>Professional Services</h2>
+        <div class="chips-row">
+          <span class="chip">STEM & Robotics Training</span>
+          <span class="chip">Research Consulting</span>
+          <span class="chip">Data Analysis</span>
+          <span class="chip">Journal Editing</span>
+          <span class="chip">Curriculum Development</span>
+        </div>
+      </section>
+
+      <!-- Community Services -->
+      <section class="section">
+        <h2>Community & Volunteering</h2>
+        <div class="chips-row">
+          <span class="chip">NYSC/SERVICOM Member</span>
+          <span class="chip">RCCF President (NYSC)</span>
+        </div>
+      </section>
+
+      <!-- Languages -->
+      <section class="section">
+        <h2>Languages</h2>
+        <div class="chips-row">
+          <span class="chip">English</span>
+          <span class="chip">Yoruba</span>
+          <span class="chip">Pidgin</span>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section class="section">
+        <h2>Skills</h2>
+        <div class="chips-row">
+          <span class="chip">Atmospheric &amp; Climate Modeling</span>
+          <span class="chip">Remote Sensing &amp; Data Analysis</span>
+          <span class="chip">Ecosystem Monitoring</span>
+          <span class="chip">Carbon &amp; Methane Budgeting</span>
+          <span class="chip">Research Writing</span>
+          <span class="chip">Python Programming</span>
+          <span class="chip">Model Validation</span>
+          <span class="chip">Renewable Energy Analysis</span>
+          <span class="chip">Curriculum Development</span>
+          <span class="chip">Team Leadership</span>
+          <span class="chip">Robotics &amp; Coding</span>
+          <span class="chip">STEM Training</span>
+        </div>
+      </section>
+
+      <!-- Personal Interests -->
+      <section class="section">
+        <h2>Personal Interests</h2>
+        <div class="chips-row">
+          <span class="chip">Reading &amp; Writing</span>
+          <span class="chip">Travelling</span>
+          <span class="chip">Meeting People</span>
+          <span class="chip">Programming &amp; Teaching</span>
+          <span class="chip">Documentaries &amp; Sci-Fi</span>
+          <span class="chip">Football &amp; Gaming</span>
+          <span class="chip">DIY Projects</span>
+          <span class="chip">Creative Activities</span>
+        </div>
+      </section>
+
+      <!-- References -->
+      <section class="section">
+        <h2>References</h2>
+        <div class="refs-list">
+          <div class="ref-card">
+            <strong>Prof. Tunde Popoola</strong><br />
+            Professor (Solid Earth Physics), University of Ibadan<br />
+            <i class="fas fa-envelope"></i> itundepopoola@yahoo.com
+          </div>
+          <div class="ref-card">
+            <strong>Prof. O.E. Oyewande</strong><br />
+            Reader, Department of Physics, University of Ibadan<br />
+            <i class="fas fa-envelope"></i> eoyewande@gmail.com
+          </div>
+          <div class="ref-card">
+            <strong>Dr T.A. Otunla</strong><br />
+            Senior Lecturer (Atmospheric Physics), University of Ibadan<br />
+            <i class="fas fa-envelope"></i> biodunotunla@yahoo.com
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
+<!-- End of portfolio.html -->
+<!-- This is a simple portfolio page for Babatunde Ayoola Awoyemi, showcasing his background, skills, education, research interests, and professional experience. The page is designed to be clean, modern, and responsive, with sections for personal information, research experience, leadership roles, and more. It uses HTML and CSS for structure and styling, with a focus on readability and user engagement. -->

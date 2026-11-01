@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Dashboard Pro</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-default">
+  <div class="app-container">
+    <!-- Header Controls -->
+    <header class="app-header">
+      <div class="brand">
+        <span class="logo-icon">🌤️</span>
+        <h1>Atmosphere Pro</h1>
+      </div>
+      <div class="header-actions">
+        <button id="unitToggle" class="pill-btn" title="Toggle °C / °F">°C</button>
+        <button id="themeToggle" class="pill-btn" title="Toggle Dark/Light Mode">🌙</button>
+      </div>
+    </header>
+
+    <!-- Search Section -->
+    <section class="search-section">
+      <form id="searchForm" class="search-box">
+        <div class="input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="cityInput" placeholder="Search city or state..." autocomplete="off" required>
+        </div>
+        <button type="submit" id="searchBtn">Search</button>
+        <button type="button" id="locationBtn" title="Use My Current Location" class="icon-btn">📍</button>
+      </form>
+      
+      <!-- Recent Searches -->
+      <div id="recentSearches" class="recent-searches hidden">
+        <span class="recent-label">Recent:</span>
+        <div id="recentTags" class="tags-container"></div>
+      </div>
+    </section>
+
+    <!-- State Messages -->
+    <div id="loader" class="loader-container hidden">
+      <div class="spinner"></div>
+      <p>Fetching weather data...</p>
+    </div>
+
+    <div id="errorMessage" class="error-card hidden">
+      <span class="error-icon">⚠️</span>
+      <p id="errorText">City not found. Please check spelling.</p>
+    </div>
+
+    <!-- Main Weather Content -->
+    <main id="weatherContainer" class="weather-main hidden">
+      
+      <!-- Primary Current Weather Box -->
+      <section class="current-weather-card">
+        <div class="card-header">
+          <div class="location-box">
+            <h2 id="cityName">--</h2>
+            <p id="dateTime">--</p>
+          </div>
+          <span id="weatherBadge" class="weather-badge">--</span>
+        </div>
+
+        <div class="primary-temp-display">
+          <div class="temp-wrapper">
+            <img id="weatherIcon" src="" alt="Weather condition" class="main-weather-icon">
+            <span id="tempValue" class="temp-degree">--</span>
+            <span id="tempUnit" class="temp-unit-label">°C</span>
+          </div>
+          <div class="temp-meta">
+            <p class="feels-like">Feels like <span id="feelsLike">--</span>°</p>
+            <p class="high-low">H: <span id="tempHigh">--</span>° • L: <span id="tempLow">--</span>°</p>
+          </div>
+        </div>
+
+        <p id="weatherDescription" class="condition-text">--</p>
+      </section>
+
+      <!-- Key Weather Metrics Grid -->
+      <section class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="icon">💧</span>
+            <span>Humidity</span>
+          </div>
+          <span id="humidity" class="metric-value">--%</span>
+          <div class="metric-bar"><div id="humidityBar" class="bar-fill" style="width: 0%;"></div></div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="icon">🌬️</span>
+            <span>Wind Speed</span>
+          </div>
+          <span id="windSpeed" class="metric-value">-- m/s</span>
+          <span id="windDirection" class="sub-value">Direction: --</span>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="icon">⏲️</span>
+            <span>Pressure</span>
+          </div>
+          <span id="pressure" class="metric-value">-- hPa</span>
+          <span class="sub-value">Atmospheric</span>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="icon">👁️</span>
+            <span>Visibility</span>
+          </div>
+          <span id="visibility" class="metric-value">-- km</span>
+          <span id="visibilityStatus" class="sub-value">--</span>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="icon">🌅</span>
+            <span>Sunrise</span>
+          </div>
+          <span id="sunrise" class="metric-value">--:--</span>
+          <span class="sub-value">Dawn</span>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="icon">🌇</span>
+            <span>Sunset</span>
+          </div>
+          <span id="sunset" class="metric-value">--:--</span>
+          <span class="sub-value">Dusk</span>
+        </div>
+      </section>
+
+      <!-- 5-Day Forecast Carousel/Grid -->
+      <section class="forecast-section">
+        <h3>5-Day Forecast</h3>
+        <div id="forecastContainer" class="forecast-grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

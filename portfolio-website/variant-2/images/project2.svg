@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400">
+  <rect width="640" height="400" fill="#0E141B"/>
+  <g fill="#182029" stroke="#212B36" stroke-width="2">
+    <rect x="40" y="60" width="170" height="280" rx="8"/>
+    <rect x="235" y="60" width="170" height="280" rx="8"/>
+    <rect x="430" y="60" width="170" height="280" rx="8"/>
+  </g>
+  <text x="56" y="90" font-family="monospace" font-size="13" fill="#4F9DDE">TO DO</text>
+  <text x="251" y="90" font-family="monospace" font-size="13" fill="#FFD166">IN PROGRESS</text>
+  <text x="446" y="90" font-family="monospace" font-size="13" fill="#7CFFB2">DONE</text>
+
+  <g fill="#131A22" stroke="#2A3540" stroke-width="1.5">
+    <rect x="52" y="108" width="146" height="42" rx="6"/>
+    <rect x="52" y="160" width="146" height="42" rx="6"/>
+    <rect x="247" y="108" width="146" height="42" rx="6"/>
+    <rect x="442" y="108" width="146" height="42" rx="6"/>
+    <rect x="442" y="160" width="146" height="42" rx="6"/>
+    <rect x="442" y="212" width="146" height="42" rx="6"/>
+  </g>
+</svg>

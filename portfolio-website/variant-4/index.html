@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Dev | Senior Full-Stack Engineer</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-300">
+
+  <!-- Glassmorphic Navbar -->
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/70 dark:bg-slate-950/70 border-b border-slate-200/50 dark:border-slate-800/50">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#home" class="text-2xl font-black tracking-tight flex items-center gap-2">
+        <span class="w-8 h-8 rounded-lg bg-brand-600 text-white flex items-center justify-center font-bold text-lg shadow-lg shadow-brand-500/30">&lt;/&gt;</span>
+        Alex<span class="text-brand-600 dark:text-brand-500">.dev</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600 dark:text-slate-300">
+        <a href="#about" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">About</a>
+        <a href="#skills" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Skills</a>
+        <a href="#projects" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Projects</a>
+        <a href="#contact" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <!-- Theme Switcher Button -->
+        <button id="theme-toggle" class="p-2.5 rounded-full bg-slate-200/60 dark:bg-slate-800/60 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all text-slate-700 dark:text-amber-400">
+          <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+          <i class="fa-solid fa-sun text-lg hidden dark:block"></i>
+        </button>
+
+        <!-- CTA Button -->
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-lg shadow-brand-500/25 transition-all transform hover:-translate-y-0.5">
+          Get in Touch <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen pt-32 pb-20 flex items-center relative overflow-hidden">
+    <!-- Ambient Blur Effect -->
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/2 -left-40 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-7 space-y-8">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 dark:bg-brand-500/10 border border-brand-200 dark:border-brand-500/20 text-brand-600 dark:text-brand-400 text-xs font-semibold tracking-wide">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Available for New Opportunities
+        </div>
+        
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
+          Crafting <span class="bg-gradient-to-r from-brand-600 via-indigo-500 to-purple-600 bg-clip-text text-transparent">Digital Experiences</span> That Scale.
+        </h1>
+        
+        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
+          Full-Stack Web Engineer specializing in high-performance web applications, responsive interfaces, and interactive user experiences built with modern architecture.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a href="#projects" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-7 py-3.5 rounded-xl shadow-xl shadow-brand-500/25 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+            Explore Work <i class="fa-solid fa-code"></i>
+          </a>
+          <a href="resume.pdf" download class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 text-slate-800 dark:text-slate-200 font-bold px-7 py-3.5 rounded-xl transition-all shadow-sm flex items-center gap-2">
+            Download Resume <i class="fa-solid fa-download text-sm"></i>
+          </a>
+        </div>
+
+        <!-- Tech Pills -->
+        <div class="pt-8 border-t border-slate-200 dark:border-slate-800/80 flex items-center gap-6 text-slate-400 text-2xl">
+          <i class="fa-brands fa-react hover:text-cyan-400 transition-colors"></i>
+          <i class="fa-brands fa-node-js hover:text-emerald-500 transition-colors"></i>
+          <i class="fa-brands fa-js hover:text-amber-400 transition-colors"></i>
+          <i class="fa-brands fa-html5 hover:text-orange-500 transition-colors"></i>
+          <i class="fa-brands fa-git-alt hover:text-red-500 transition-colors"></i>
+        </div>
+      </div>
+
+      <!-- Hero Profile Image Badge -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative group">
+          <div class="absolute -inset-1 bg-gradient-to-r from-brand-600 to-purple-600 rounded-3xl blur opacity-30 group-hover:opacity-70 transition duration-1000"></div>
+          <div class="relative bg-white dark:bg-slate-900 p-3 rounded-3xl shadow-2xl border border-slate-100 dark:border-slate-800">
+            <img src="assets/profile.png" alt="Alex Developer" class="w-full max-w-md rounded-2xl aspect-square object-cover">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Project Section with Live Filters -->
+  <section id="projects" class="py-24 bg-white dark:bg-slate-900/50 border-y border-slate-200/60 dark:border-slate-800/60">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-3xl font-extrabold tracking-tight">Featured Projects</h2>
+        <p class="text-slate-600 dark:text-slate-400 mt-3">A selection of my recent works, filterable by technology stack.</p>
+        
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap justify-center gap-2 mt-8" id="filter-buttons">
+          <button data-filter="all" class="filter-btn active-filter px-5 py-2 rounded-full text-sm font-semibold transition-all">All Projects</button>
+          <button data-filter="react" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all">React</button>
+          <button data-filter="javascript" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all">JavaScript</button>
+          <button data-filter="api" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all">REST APIs</button>
+        </div>
+      </div>
+
+      <!-- Project Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-item group bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" data-category="react api">
+          <div class="relative overflow-hidden aspect-video">
+            <img src="assets/project1.png" alt="Weather Dashboard" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+              <a href="#" class="w-10 h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold shadow hover:bg-brand-500 hover:text-white transition-colors"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              <a href="#" class="w-10 h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold shadow hover:bg-brand-500 hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex gap-2 mb-3">
+              <span class="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-brand-100 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400">React</span>
+              <span class="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400">OpenWeather API</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">Weather Intelligence Dashboard</h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">Real-time weather analytics display with hourly forecasts, geolocation tracking, and dynamic themes.</p>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-item group bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" data-category="javascript">
+          <div class="relative overflow-hidden aspect-video">
+            <img src="assets/project2.png" alt="Task Tracker" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+              <a href="#" class="w-10 h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold shadow hover:bg-brand-500 hover:text-white transition-colors"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              <a href="#" class="w-10 h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold shadow hover:bg-brand-500 hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex gap-2 mb-3">
+              <span class="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400">JavaScript ES6</span>
+              <span class="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">Local Storage</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">Pro Productivity Suite</h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">Task management hub with multi-list state management, priority filter tags, and offline caching.</p>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-item group bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" data-category="react api">
+          <div class="relative overflow-hidden aspect-video">
+            <img src="assets/project1.png" alt="E-Commerce Store" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+              <a href="#" class="w-10 h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold shadow hover:bg-brand-500 hover:text-white transition-colors"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              <a href="#" class="w-10 h-10 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold shadow hover:bg-brand-500 hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex gap-2 mb-3">
+              <span class="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-brand-100 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400">React</span>
+              <span class="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">Tailwind</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">Digital Storefront API</h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">Complete shopping catalog featuring cart interactions, instant search, and sleek micro-animations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Contact Form -->
+  <section id="contact" class="py-24 relative">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 sm:p-12 border border-slate-200/80 dark:border-slate-800 shadow-2xl relative overflow-hidden">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-extrabold tracking-tight">Let's Work Together</h2>
+          <p class="text-slate-600 dark:text-slate-400 mt-2">Have a project in mind or want to discuss full-time roles?</p>
+        </div>
+
+        <form id="contact-form" class="space-y-6">
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-500 mb-2">Your Name</label>
+              <input type="text" id="name" required placeholder="Jane Doe" class="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 focus:border-brand-500 focus:outline-none transition-all">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-500 mb-2">Your Email</label>
+              <input type="email" id="email" required placeholder="jane@example.com" class="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 focus:border-brand-500 focus:outline-none transition-all">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-500 mb-2">Message</label>
+            <textarea id="message" rows="5" required placeholder="Tell me about your project..." class="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 focus:border-brand-500 focus:outline-none transition-all"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-4 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl shadow-lg shadow-brand-500/25 transition-all flex items-center justify-center gap-2 text-base">
+            Send Message <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 border-t border-slate-200 dark:border-slate-800 text-center text-sm text-slate-500">
+    <p>&copy; 2026 Alex Developer. Engineered with HTML, Tailwind CSS, & JavaScript.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
